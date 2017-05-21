@@ -28,19 +28,17 @@ disqus_account: hwanseung-github-io
 github_repository: https://github.com/jacobtomlinson/carte-noire
 addthis_id: ra-513c6fa83da6ec67
 post_limit: 5
-twitter_username: jekyllrb
-github_username:  jekyll
 
 # Social usernames/URLs
-twitter_username: _jacobtomlinson
-github_username:  jacobtomlinson
-instagram_username: 
+twitter_username: rucifer1217
+github_username:  hwanseung
+instagram_username: hwanseunglee
 reddit_username: 
-linkedin_link: http://carte-noire.jacobtomlinson.co.uk/
-google_plus_link: http://carte-noire.jacobtomlinson.co.uk/
-stackoverflow_link: http://carte-noire.jacobtomlinson.co.uk/
-xing_link:
-facebook_link:
+linkedin_link: https://www.linkedin.com/in/hwanseung-lee-2b492a59/
+google_plus_link: 
+stackoverflow_link: 
+xing_link: 
+facebook_link: https://www.facebook.com/hwanseung.lee
 
 # Footer
 footer_left: "Made with <i class=\"fa fa-heart\"></i> by <a href=\"https://twitter.com/_JacobTomlinson\">Jacob Tomlinson</a>"
