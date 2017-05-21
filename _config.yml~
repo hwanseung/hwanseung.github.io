@@ -52,10 +52,10 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
+theme: minima
 gems:
   - jekyll-feed
 permalink: pretty
 exclude:
   - Gemfile
   - Gemfile.lock
-  - [vendor]
