@@ -1,0 +1,36 @@
+---
+layout: post
+title: DB2 connection refused error 발생시 해결방법...
+date: 2011-08-06 13:53:51.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Web
+tags:
+- connection refused
+- DB2
+- ibm
+- JDBC
+- Time Out
+meta: {}
+author: Hwanseung Lee
+---
+<p>DB2를 쓰다가..&nbsp;</p>
+<p>내 컴퓨터에서 이클립스에서 톰켓으로 하면 DB접근이 잘되는데</p>
+<p>웃기게도 DB2가 있는 그 서버에서 톰켓에서 실행시키면</p>
+<p>Time out error 발생.....</p>
+<p>그래서 127.0.0.1로 바꾸어서 실행해보니 connection refused error발생....</p>
+<p>그래서 구글링 결과...</p>
+<p>db2set DB2COMM=protocal_name 을 쓰라고 되어 있어서</p>
+<p><span class="Apple-style-span" style="color: rgb(0, 0, 0); font-family: arial, sans-serif, ����; font-size: 13px; line-height: normal; background-color: rgb(255, 255, 255); ">
+<p style="font-family: arial, sans-serif, ����; font-size: 0.76em; padding-right: 0px; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0.3em; padding-bottom: 0.7em; "><tt style="font-family: monospace, sans-serif; font-size: small !important; ">#db2set DB2COMM=tcpip</tt></p>
+<p style="font-family: arial, sans-serif, ����; font-size: 0.76em; padding-right: 0px; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0.3em; padding-bottom: 0.7em; "><tt style="font-family: monospace, sans-serif; font-size: small !important; ">#db2stop</tt></p>
+<p style="font-family: arial, sans-serif, ����; font-size: 0.76em; padding-right: 0px; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0.3em; padding-bottom: 0.7em; "><tt style="font-family: monospace, sans-serif; font-size: small !important; ">#db2start</p>
+<p>과 같이 실행 해봄..&nbsp;</tt></p>
+<p></span><br />
+실행결과 잘된다. ㅋㅋ</p>
+<p>그래서 다시 호스트 주소 바꾸어서 해보니 Time out.. 그냥 서야겠다... </p>
+<p>참조 :&nbsp;<a href="https://www-304.ibm.com/support/docview.wss?uid=swg21403644">https://www-304.ibm.com/support/docview.wss?uid=swg21403644&nbsp;</a><br />
+&nbsp;<br />
+&nbsp;</p>

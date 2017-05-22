@@ -1,0 +1,251 @@
+---
+layout: post
+title: xna에서  SpriteFont를 이용하지않고 유니코드를 간단히 빨리 써보는 방법
+date: 2008-12-03 09:53:11.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/XNA
+tags:
+- spritefont
+- XNA
+meta: {}
+author: Hwanseung Lee
+---
+<p><span class="Apple-style-span" style="color: rgb(0, 0, 0); font-family: APPLEGOTHIC; "><span style="font-size: 130%; color: rgb(51, 51, 255); "><strong>
+<div>
+
+</div>
+<div>
+<span class="Apple-style-span" style="background-color: rgb(212, 42, 27);"><span class="Apple-style-span" style="color: rgb(255, 255, 255);">제가 작성한 글이 아니며 좋은 글이 있길레</span></span></div>
+<div>
+<span class="Apple-style-span" style="background-color: rgb(212, 42, 27);"><span class="Apple-style-span" style="color: rgb(255, 255, 255);"> 나중에 써먹어 볼라고 퍼왔습니다.;;</span></span><span class="Apple-style-span" style="color: rgb(255, 0, 0); font-size: 12px; font-weight: normal; line-height: 18px; "><a href="http://nomoreid.egloos.com/2910890" style="color: rgb(89, 144, 191); text-decoration: underline; "></a></span></div>
+<div>
+<span class="Apple-style-span" style="color: rgb(128, 31, 191);">기본적으로 xna에서 SpriteFont를 이용해서 글을 써야 됩니다.</span></div>
+<div>
+<span class="Apple-style-span" style="color: rgb(128, 31, 191);">유니코드를 써서 할려면 빌드시간이 6시간정도(코어2와 램2기가 사양에서)</span></div>
+<div>
+<span class="Apple-style-span" style="color: rgb(128, 31, 191);">걸립답니다. 근데 이걸쓰면 간단히 빨리 된다고 합니다.</span></div>
+<div>
+<span class="Apple-style-span" style="color: rgb(255, 255, 255);">    </span></div>
+<div>
+<span class="Apple-style-span" style="color: rgb(255, 255, 255);"><br />
+</span></div>
+<div>
+<span class="Apple-style-span" style="color: rgb(48, 88, 210);">원본주소 -> </span>   <span class="Apple-style-span" style="font-size: 12px; font-weight: normal; line-height: 18px; "><a href="http://nomoreid.egloos.com/2910890" style="text-decoration: underline; "><span class="Apple-style-span" style="color: rgb(48, 88, 210);"><span style="font-size: 14pt; ">http://nomoreid.egloos.com/2910890</span></span></a></span></div>
+<div>
+<span class="Apple-style-span" style="color: rgb(255, 0, 0); font-size: 12px; font-weight: normal; line-height: 18px;"><span class="Apple-style-span" style="color: rgb(255, 255, 255); font-size: 16px; font-weight: bold; line-height: 23px; "><span class="Apple-style-span" style="background-color: rgb(251, 143, 34);">-----------------------------------------------------------</span></span></span></div>
+<div><span class="Apple-style-span" style="color: rgb(255, 255, 255);"><span class="Apple-style-span" style="color: rgb(0, 0, 0); font-size: 12px; font-weight: normal; line-height: 18px; "><span style="color: rgb(255, 0, 0); ">* 주의 사항</span><br />
+<span style="color: rgb(255, 0, 0); ">0. 이글에 대한 모든 권리는 저에게 있습니다. ( 소스에 대한 권리는 개발자 분에게 있습니다. )</span><br />
+<span style="color: rgb(255, 0, 0); ">1. 이글을 퍼가실때는 아래 댓글로 어디에 퍼가시는지 반드시 알려 주십시요. </span><br />
+<span style="color: rgb(255, 0, 0); ">2. 개인블로그등 비상업적인 목적이라면 출처만 밝혀주시면 모두 허용하겠습니다. 단 상업적인 목적이나 상업적인 싸이트에서 게시하실 경우 저에게 연락해 주십시요. </span><br />
+<span style="color: rgb(255, 0, 0); ">3. 오탈자나 잘못된 부분들도 모두 아래 댓글에 달아 주십시요 ^^; 부탁드립니다. </span><br />
+<span style="color: rgb(255, 0, 0); ">4. 퍼가실때 이 메시지와 퍼온 주소 (<a href="http://nomoreid.egloos.com/2910890" style="color: rgb(89, 144, 191); text-decoration: underline; ">http://nomoreid.egloos.com/2910890</a>)를 빠뜨리지 말아주십시요.</span><br />
+<span style="color: rgb(255, 0, 0); ">5. 아래 소스틑 아직 XBOX360 에서 테스트 해보지 못했습니다. 기술적으로 안될 이유는 없어 보입니다만 혹시나 안될때는 저에게 알려 주십시요. 아는분 엑박360을 빌려서 테스트 해보겠습니다. ^^;</span></span></span></div>
+<div><span class="Apple-style-span" style="color: rgb(255, 0, 0); font-size: 12px; font-weight: normal; line-height: 18px;"><br />
+</span></div>
+<p>0. 서문.</strong></span><br />
+<span style="color: rgb(255, 0, 0); "></span><br />
+폰트 출력하는 루틴을 맨땅에 헤딩으로 짤려다 보니 분명히 누군가 만들어놨는데 삽질하는거 같아서 구글링을 통해 XNAExtras를 찾게 되었습니다.</p>
+<p>XNAExtras는 xna diaries 라는 전 MS직원(현재 구글 직원-_-;;)인 <a href="http://blogs.msdn.com/garykac/default.aspx" style="color: rgb(89, 144, 191); text-decoration: underline; ">Gary Kacmarcik씨가 운영했던 블로그</a>에 공개된 툴 + 소스+ 샘플 입니다. 블로그를 통해 틈틈히 공개했던 소스와 툴을 정리해서 모아둔 거라고 보시면 됩니다. 그 안에 우리가 원하던 윈도우 폰트를 텍스쳐로 만들고 화면에 출력하는 부분이 들어 있는것이죠. ^^;</p>
+<p>너무나도 깔끔하고 쉽게 되어 있어서 별로 설명할게 없더군요. 폰트를 기본으로 하는것이므로 유니코드들도 모두 지원 합니다. 또 콘솔게임에서 꼭 필요한 텍스트 파일을 지정해서 해당 폰트만 따로 텍스쳐로 뽑아내는 기능등도 있습니다. (불필요한 폰트 데이터가 들어가는걸 방지하는거죠. 비됴 메모리는 한정되어 있으니.) 간단하게 응용하면 여러 다른 기종에서도 윈도 폰트를 사용하게  할 수 있을거 같습니다.</p>
+<p>(xml의 스키마가 공개되어 있으니 해당 xml을 읽어서 font 데이터와 매칭시키는 부분만 따로 만들어주면 texture 데이터를 그대로 이용해서 쓸 수 있을거 같네요. png 포맷이니.)</p>
+<p>일단 간단하게 순서를 정리해 보면 다음과 같습니다.</p>
+<p><span style="color: rgb(51, 51, 255); ">0. 먼저 XNA Game Studio Express 1.0이 깔려 있는 컴퓨터가 있어야  합니다.</span><br />
+<span style="color: rgb(0, 0, 153); ">1. xnaextras를 다운 -> 압축풀기<br />
+2. bmgontgen 유틸리티로 폰트에서 png와 xml을 추출<br />
+3. xnaextras의 bitmap font를 포함하는 프로그램을 짠다.</span> </p>
+<p><a name="2910890_1"></a><span style="color: rgb(0, 0, 153); "></span></p>
+<p>
+<strong><span style="font-size: 130%; color: rgb(51, 51, 255); ">1. xnaextras를 다운 -> 압축풀기</span></strong></p>
+<p>12월 1일 최신 버전입니다. 근데 당분간 업데이트는 없을거 같습니다.개발자가 구글로 회사를 옮겼다고 하네요. -_-;;근데 현재 있는것 만으로도 상당히 쓸만합니다.</p>
+<p>URL : <a href="http://blogs.msdn.com/garykac/archive/2006/12/01/xnaextras-update.aspx" style="color: rgb(89, 144, 191); text-decoration: underline; ">http://blogs.msdn.com/garykac/archive/2006/12/01/xnaextras-update.aspx</a></p>
+<p>압축을 풀면 다음과 같은 디렉토리가 생깁니다.</p>
+<p align="left"><img class="image_left" border="0" onmouseover="this.style.cursor='pointer'" alt="" src="{{ site.baseurl }}/assets/b0031591_10010047.jpg" width="435" height="68" onclick="Control.Modal.openDialog(this, event, 'http://pds4.egloos.com/pds/200701/01/91/b0031591_10010047.jpg');" align="left" style="margin-right: 15px; margin-bottom: 15px; cursor: pointer; " /></p>
+<p>
+<strong><span style="color: rgb(51, 51, 255); "></span></strong><br />
+<strong><span style="color: rgb(51, 51, 255); "></span></strong><br />
+<strong><span style="color: rgb(51, 51, 255); "></span></strong><br />
+<strong><span style="color: rgb(51, 51, 255); "></span></strong><br />
+<strong><span style="color: rgb(51, 51, 255); "></span></strong></p>
+<p><span style="color: rgb(51, 51, 255); "><u>Tools - bmfontgen 유틸리디가 들어있는 디렉토리</u></span><br />
+<span style="color: rgb(51, 51, 255); "><u>XML Schema - 소스에서 사용하는 xml의 스키마가 들어있는 디렉토리 (볼일은 없음)</u></span><br />
+<span style="color: rgb(51, 51, 255); "><u>XNA Samples - 여러가지 응용 샘플이 있는 디렉토리 , <strong>XNAExtras에서 사용하는 실제 소스는 samples/common 에 다 들어 있습니다.</strong></u></span><br />
+<strong><span style="color: rgb(51, 51, 255); "></span></strong></p>
+<p><strong><span style="font-size: 130%; color: rgb(51, 51, 255); ">2. bmfontgen 유틸리티로 폰트에서 png와 xml을 추출</span></strong></p>
+<p>일단 C:\WINDOWS\Fonts 에 있는 폰트라면 모두 추출할 수 있습니다. <br />
+요즘 유행하는 비스타의 맑은 고딕을 추출해 보았습니다.<br />
+단 맑은 고딕에는 한자가 없더라구요. 바탕체에는 한자가 있습니다.<br />
+폰트에 없는 글자는 당연히 출력되지 않습니다.</p>
+<p>cmd 창에서 tool이 깔린 디렉토리에 가서 다음과 같이 입력하면 폰트를 같은 디렉토리에 bitmap으로 뽑아줍니다.</p>
+<p><span style="color: rgb(204, 0, 0); "><strong>BMFontGen -name "맑은 고딕" -size 12 -output "malgun12" -range 0000-fffe</strong><br />
+BMFontGen - v1.0 beta (build 1119)<br />
+Copyright 2006 Microsoft Corp.<br />
+WARNING : No character information for 0100-0110<br />
+WARNING : No character information for 0112-0125<br />
+WARNING : No character information for 0128-0130<br />
+.......................</span></p>
+<p>옵션에 대해 설명드리면 </p>
+<p>-name 은 윈도우 폰트 이름 입니다.<br />
+-size 출력될 폰트 싸이즈<br />
+-output 파일명의 앞부분입니다.<br />
+-range 출력될 폰트 코드의 범위입니다. 일단 2byte 문자의 모든 범위 (0000 - fffe) 를 출력하게 했습니다. 아래의 WARNING은 폰트가 없는 코드 범위를 알려주는 겁니다. 폰트별로 모든 코드를 다 가지고 있는게 아니라서 적절한 범위를 짤라 사용하면 되겠습니다.</p>
+<p>BMFontGen의 모든 기능에 대해서는 <a href="http://blogs.msdn.com/garykac/articles/732007.aspx" style="color: rgb(89, 144, 191); text-decoration: underline; ">여기</a>를 참고해 주십시요.</p>
+<p>유용한 옵션중에 -source 라는 옵션이 있습니다. 게임에서 사용하는 대사파일등을 지정해두면 (중복 지정가능) 해당 대사에 사용된 폰트들만 추출해 주는 기능입니다. ^^;</p>
+<p>위와 같이 실행하면 같은 디렉토리 안에 output에서 지정된 파일명으로 추출된 폰트 파일들이 다수 있을겁니다.</p>
+<p></p>
+<div style="text-align: center; font-family: APPLEGOTHIC, 굴림, sans-serif; font-size: 9pt; color: rgb(0, 0, 0); line-height: 150%; ">
+<img class="image_mid" border="0" onmouseover="this.style.cursor='pointer'" alt="" src="{{ site.baseurl }}/assets/b0031591_11013696.jpg" width="439" height="432" onclick="Control.Modal.openDialog(this, event, 'http://pds3.egloos.com/pds/200701/01/91/b0031591_11013696.jpg');" style="cursor: pointer; margin-top: 15px; margin-bottom: 15px; " /></div>
+<p>png 파일을 클릭해 보면 흰색 박스만 나올것입니다. 투명색 + 흰색 글자라 아무것도 보이지 않습니다.<br />
+(저도 처음에 안되는줄 알았습니다. -_-;)</p>
+<p> -blackbg 을 붙이면 확인용으로 배경을 검게 할 수 있습니다. 하지만 그대로 쓰면 화면이 <a href="http://nomoreid.egloos.com/2909932" style="color: rgb(89, 144, 191); text-decoration: underline; ">이렇게</a> 나온다는거..</p>
+<p>그외에 안티알리아싱이라든지 여러가지 유용한 옵션이 많습니다. 참 -bmsize <em>size</em> (256-1024) 이 옵션은 비트맵의 싸이즈를 256-1024까지 바꿔 줍니다. 디폴트는 512구요. 한글처럼 글자가 많은경우는 1024정도로 크게 뽑아주는게 좋겠죠.</p>
+<p>아래는 굴림체를 배경을 검게해서 512X512로 추출한겁니다.</p>
+<div style="text-align: center; font-family: APPLEGOTHIC, 굴림, sans-serif; font-size: 9pt; color: rgb(0, 0, 0); line-height: 150%; ">
+<img class="image_mid" border="0" onmouseover="this.style.cursor='pointer'" alt="" src="{{ site.baseurl }}/assets/b0031591_07011856.png" width="256" height="256" onclick="Control.Modal.openDialog(this, event, 'http://pds3.egloos.com/pds/200701/02/91/b0031591_07011856.png');" style="cursor: pointer; margin-top: 15px; margin-bottom: 15px; " /></div>
+<p></p>
+<p><span style="font-size: 130%; color: rgb(0, 0, 153); "><strong>3. xnaextras의 bitmap font를 포함하는 프로그램을 짠다.</strong></span></p>
+<p> 실제 프로그램에 적용하는 순서는 다음과 같다.</p>
+<p>ㄱ. 빈프로젝트를 하나 만든다.</p>
+<p>ㄴ. Content 디렉토리를 하나 만들고 위에서 생성한 png 파일과 xml 파일을 넣는다. XMLExtra 라는 폴더를 만들고 Samples/Common에 있는 BitmapFont.cs 파일을 copy하고 프로젝트에 add 한다.</p>
+<p>ㄷ. png와 xml 파일의 properities 창에서 Build Action 을 Embedded Resource 로 수정.</p>
+<p>ㄹ. Solution Explorer에 Reference 쪽에 System.xml 추가.</p>
+<p>ㅁ. 프로젝트에 멤버변수로 BitmapFont 를 등록 , Initialize()함수에서 BitmapFont를 new 이때 xml과 연결시켜줌 , LoadGraphicsContent 함수에 등록 , Draw 에 등록</p>
+<p>ㅂ. 실행.</p>
+<p>이게 전부이다. xml을 이용한 데이터 바인딩을 통해 아주 쉽게 쓸 수 있는 형태로 구현해 두었다는것을 알 수 있다.</p>
+<p>아래 부분에 프로젝트를 만들고 파일을 추가한 후 수정한 부분만 붉은색으로 바꿔 보겠다.</p>
+<p>
+#region Using Statements<br />
+using System;<br />
+using System.Collections.Generic;<br />
+using Microsoft.Xna.Framework;<br />
+using Microsoft.Xna.Framework.Audio;<br />
+using Microsoft.Xna.Framework.Content;<br />
+using Microsoft.Xna.Framework.Graphics;<br />
+using Microsoft.Xna.Framework.Input;<br />
+using Microsoft.Xna.Framework.Storage;</p>
+<p><span style="color: rgb(255, 0, 0); ">using XNAExtras;</span></p>
+<p>#endregion</p>
+<p>namespace WindowsGame1<br />
+{<br />
+    /// &lt;summary><br />
+    /// This is the main type for your game<br />
+    /// &lt;/summary><br />
+    public class Game1 : Microsoft.Xna.Framework.Game<br />
+    {<br />
+        GraphicsDeviceManager graphics;<br />
+        ContentManager content;</p>
+<p>        //Bitmap<br />
+<span style="color: rgb(255, 0, 0); ">        BitmapFont m_Malgun;</span></p>
+<p>        public Game1()<br />
+        {<br />
+            graphics = new GraphicsDeviceManager(this);<br />
+            content = new ContentManager(Services);<br />
+        }</p>
+<p>
+        /// &lt;summary><br />
+        /// Allows the game to perform any initialization it needs to before starting to run.<br />
+        /// This is where it can query for any required services and load any non-graphic<br />
+        /// related content.  Calling base.Initialize will enumerate through any components<br />
+        /// and initialize them as well.<br />
+        /// &lt;/summary><br />
+        protected override void Initialize()<br />
+        {<br />
+            // TODO: Add your initialization logic here<br />
+<span style="color: rgb(255, 0, 0); ">            m_Malgun = new BitmapFont("Content/malgun.xml");<br />
+</span>            base.Initialize();<br />
+        }</p>
+<p>
+        /// &lt;summary><br />
+        /// Load your graphics content.  If loadAllContent is true, you should<br />
+        /// load content from both ResourceManagementMode pools.  Otherwise, just<br />
+        /// load ResourceManagementMode.Manual content.<br />
+        /// &lt;/summary><br />
+        /// &lt;param name="loadAllContent">Which type of content to load.&lt;/param><br />
+        protected override void LoadGraphicsContent(bool loadAllContent)<br />
+        {<br />
+            if (loadAllContent)<br />
+            {<br />
+                // TODO: Load any ResourceManagementMode.Automatic content<br />
+            }<br />
+            // TODO: Load any ResourceManagementMode.Manual content<br />
+            <span style="color: rgb(255, 0, 0); ">m_Malgun.Reset(graphics.GraphicsDevice);</span><br />
+        }</p>
+<p>
+        /// &lt;summary><br />
+        /// Unload your graphics content.  If unloadAllContent is true, you should<br />
+        /// unload content from both ResourceManagementMode pools.  Otherwise, just<br />
+        /// unload ResourceManagementMode.Manual content.  Manual content will get<br />
+        /// Disposed by the GraphicsDevice during a Reset.<br />
+        /// &lt;/summary><br />
+        /// &lt;param name="unloadAllContent">Which type of content to unload.&lt;/param><br />
+        protected override void UnloadGraphicsContent(bool unloadAllContent)<br />
+        {<br />
+            if (unloadAllContent == true)<br />
+            {<br />
+                content.Unload();<br />
+            }<br />
+        }</p>
+<p>
+        /// &lt;summary><br />
+        /// Allows the game to run logic such as updating the world,<br />
+        /// checking for collisions, gathering input and playing audio.<br />
+        /// &lt;/summary><br />
+        /// &lt;param name="gameTime">Provides a snapshot of timing values.&lt;/param><br />
+        protected override void Update(GameTime gameTime)<br />
+        {<br />
+            // Allows the default game to exit on Xbox 360 and Windows<br />
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)<br />
+                this.Exit();</p>
+<p>            // TODO: Add your update logic here</p>
+<p>            base.Update(gameTime);<br />
+        }</p>
+<p>
+        /// &lt;summary><br />
+        /// This is called when the game should draw itself.<br />
+        /// &lt;/summary><br />
+        /// &lt;param name="gameTime">Provides a snapshot of timing values.&lt;/param><br />
+        protected override void Draw(GameTime gameTime)<br />
+        {<br />
+            graphics.GraphicsDevice.Clear(Color.CornflowerBlue);</p>
+<p>            // TODO: Add your drawing code here<br />
+<span style="color: rgb(255, 0, 0); ">            Color cHilite = Color.DarkBlue;<br />
+            Color cWhite = Color.White;</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            int nX = 20;<br />
+            int nY = -15;</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            nY += 20;</span></p>
+<p>
+<span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "안녕하세요 謹賀新年");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "반갑습니다 폰트 테스트 ひびつれづれ 是日");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "あけましておめでとうございます(´ω｀)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "1234567890  </span><a href="mailto:%E2%99%A3%E2%99%AC!@#$%" style="color: rgb(89, 144, 191); text-decoration: underline; "><span style="color: rgb(255, 0, 0); ">♣♬!@#$%</span></a><span style="color: rgb(255, 0, 0); ">^&amp;*() ");<br />
+            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㄱ - 느낌표, 물음표 등 부호(！,／...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㄴ - 괄호, 따옴표 등 부호(［, 》...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㄷ - 더하기, 빼기 등의 수학적 부호(＋, ＞, ×...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㄹ - 단위(＄, ℃, ㎖...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅁ - 특수부호(＃, ♣, ♬...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅂ - 연결 및 표시선(─, ┐, ╆...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅅ - 한글 원문자 및 괄호문자(㉠, ㈐, ㈃...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅇ - 알파벳과 숫자 원문자 및 괄호문자(ⓑ, ⒀, ⑧...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅈ - 숫자(Ⅷ, ３, ⅱ...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅊ - 분수와 아래첨자, 윗첨자(⅔, ⁴, ₂...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅋ - 한글(ㄱ, ㅞ...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅌ - 이상한 한글 조합(ㅫ, ㆋ...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅍ - 알파벳(ｘ, Ａ, Ｎ...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅎ - 그리스 글자(Β, Δ, Σ...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㄲ - 영어 발음기호(æ, ŋ, ð...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㄸ - 일본어 히라가나(あ, け, ず...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅃ - 일본어 가타카나(ア, ヴ, ォ...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅆ - 이상한 글자들(Д, ю, щ...)");</span></p>
+<p><span style="color: rgb(255, 0, 0); ">            m_Malgun.DrawString(nX, nY +=( m_Malgun.LineHeight +5), cWhite, "ㅉ - 없음");</span></p>
+<p> </p>
+<p>            base.Draw(gameTime);<br />
+        }<br />
+    }<br />
+}</p>
+<p>* 실제 코딩하는 부분은 거의 없습니다.^^; 데이터 바인딩을 xml로 ^^;</p>
+<p>* 이외에 리소스를 embeded resource로 해서 실행파일에 넣지 않고 따로 파일로 뽑아서 하는 방법도 있습니다.(samples/BitmapFontDemo)</p>
+<p>* Samples 에 여러가지 데모들이 있으니 많이 연구하시고 공개 해주세요. ^^; Sprite를 응용한 TextBox 예제도 있습니다.</p>
+<p></span></p>

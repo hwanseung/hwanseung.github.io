@@ -1,0 +1,53 @@
+---
+layout: post
+title: Image -> BitmapImage 변환
+date: 2009-11-12 15:13:49.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/WPF
+tags:
+- CONVERT
+- image
+- wpf
+meta: {}
+author: Hwanseung Lee
+---
+<div>
+System.Drawing.Image -&gt;System.Media.Imaging.BitmapImage로 변환 방법.ㅋ</div>
+<div>
+</div>
+<div>
+WPF에서 다른 형식일때 바인딩할때 쓰임</div>
+<div>
+</div>
+<div>
+</div>
+<div>일단 첨부 파일 추가 하고</div>
+<div>
+</div>
+<div>
+<div>&lt;Window.Resources&gt;</div>
+<div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&lt;Maple:ImgConveter x:Key="ImgConveter"/&gt;</div>
+<div>&lt;/Window.Resources&gt;</div>
+<div>위에 처럼 리소스에 등록</div>
+<div>
+</div>
+<div>
+&lt;ImageBrush ImageSource="{Binding ALBUMART,Converter={StaticResource ImgToBI_tumbnail}}" Stretch="Fill" /&gt;</div>
+<div>바인딩할떄 요로코롬 쓰면 됨.</div>
+</div>
+<div>
+</div>
+<p>
+<div>
+</div>
+<div></p>
+<div>
+</div>
+<div>
+</div>
+<div>
+</div>
+</div>

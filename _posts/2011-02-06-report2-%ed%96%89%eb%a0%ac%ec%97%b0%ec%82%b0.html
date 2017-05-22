@@ -1,0 +1,126 @@
+---
+layout: post
+title: Report2  행렬연산
+date: 2011-02-06 02:27:48.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/numerical analysis
+tags:
+- 수치해석
+meta:
+  _thumbnail_id: '1056'
+author: Hwanseung Lee
+---
+<p><font class="Apple-style-span" color="#333333" face="굴림"><span class="Apple-style-span" style="font-size: 9pt; line-height: 1.5;"><img src="{{ site.baseurl }}/assets/cfile25.uf.132E66334D4E06F70C7739.png" class="aligncenter" width="376" height="439" alt="" filename="제목 없음.png" filemime="image/jpeg" /></span></font>
+<div>
+<textarea name="code" class="cpp" style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><br />
+#include &lt;iostream&gt;<br />
+#include &lt;fstream&gt;<br />
+#include &lt;cmath&gt;<br />
+#include &lt;iomanip&gt;</p>
+<p>using namespace std;</p>
+<p>//1.a+b<br />
+//2.b-3a<br />
+//3.(a+b)의 전치행렬<br />
+//4.ac<br />
+//5.ac의 전치행렬</p>
+<p>int A[2][3]={0,};<br />
+int B[2][3]={0,};<br />
+int C[3][2]={0,};</p>
+<p>int AsumB[2][3]={0,};</p>
+<p>int Bsum3A[2][3]={0,};</p>
+<p>int AsumB_[3][2]={0,};</p>
+<p>int AmulC[2][2]={0,};</p>
+<p>int AmulC_[2][2]={0,};</p>
+<p>int main(void)<br />
+{<br />
+	ifstream fin;<br />
+	fin.open("input.txt");</p>
+<p>	int i=0;<br />
+	int j=0;<br />
+	int x=0;</p>
+<p>	int inputx=0;<br />
+	int inputy=0;</p>
+<p>	for(int i=0;i&lt;3;i++)<br />
+	{<br />
+		fin&gt;&gt;inputx;<br />
+		fin&gt;&gt;inputy;<br />
+		//cout&lt;&lt;inputx&lt;&lt;" "&lt;&lt;inputy&lt;&lt;endl;<br />
+		for(int j=0;j&lt;inputx;j++)<br />
+		{<br />
+			for(int x=0;x&lt;inputy;x++)<br />
+			{<br />
+				if( i==0)<br />
+					fin&gt;&gt;A[j][x];<br />
+				if( i==1)<br />
+					fin&gt;&gt;B[j][x];<br />
+				if( i==2)<br />
+					fin&gt;&gt;C[j][x];<br />
+			}<br />
+		}<br />
+	}</p>
+<p>	cout &lt;&lt;"problem 1."&lt;&lt;endl;<br />
+	for(i=0;i&lt;2;i++)<br />
+	{<br />
+		for(j=0;j&lt;3;j++)<br />
+		{<br />
+			AsumB[i][j]=A[i][j]+B[i][j];<br />
+			cout &lt;&lt;AsumB[i][j]&lt;&lt;" ";<br />
+		}<br />
+		cout &lt;&lt;endl;<br />
+	}<br />
+	cout &lt;&lt;endl;</p>
+<p>	cout &lt;&lt;"problem 2."&lt;&lt;endl;<br />
+	for(i=0;i&lt;2;i++)<br />
+	{<br />
+		for(j=0;j&lt;3;j++)<br />
+		{<br />
+			Bsum3A[i][j]=B[i][j]-(3*A[i][j]);<br />
+			cout &lt;&lt;Bsum3A[i][j]&lt;&lt;" ";<br />
+		}<br />
+		cout &lt;&lt;endl;<br />
+	}<br />
+	cout &lt;&lt;endl;</p>
+<p>	cout &lt;&lt;"problem 3."&lt;&lt;endl;<br />
+	for(i=0;i&lt;3;i++)<br />
+	{<br />
+		for(j=0;j&lt;2;j++)<br />
+		{<br />
+			AsumB_[i][j]=AsumB[j][i];<br />
+			cout &lt;&lt;AsumB_[i][j]&lt;&lt;" ";<br />
+		}<br />
+		cout &lt;&lt;endl;<br />
+	}<br />
+	cout &lt;&lt;endl;</p>
+<p>	cout &lt;&lt;"problem 4."&lt;&lt;endl;<br />
+	for(i=0;i&lt;2;i++)<br />
+	{<br />
+		for(j=0;j&lt;2;j++)<br />
+		{<br />
+			int temp=0;<br />
+			for(x=0;x&lt;3;x++)<br />
+			{<br />
+				AmulC[i][j] = AmulC[i][j] +(A[i][x]*C[x][j]);</p>
+<p>			}<br />
+			cout &lt;&lt;AmulC[i][j]&lt;&lt;" ";<br />
+		}<br />
+		cout &lt;&lt;endl;<br />
+	}<br />
+	cout &lt;&lt;endl;</p>
+<p>	cout &lt;&lt;"problem 5."&lt;&lt;endl;<br />
+	for(i=0;i&lt;2;i++)<br />
+	{<br />
+		for(j=0;j&lt;2;j++)<br />
+		{<br />
+			AmulC_[i][j]=AmulC[j][i];<br />
+			cout &lt;&lt;AmulC_[i][j]&lt;&lt;" ";<br />
+		}<br />
+		cout &lt;&lt;endl;<br />
+	}<br />
+	cout &lt;&lt;endl;</p>
+<p>	return 0;<br />
+}</p>
+<p></textarea></p>
+</div>

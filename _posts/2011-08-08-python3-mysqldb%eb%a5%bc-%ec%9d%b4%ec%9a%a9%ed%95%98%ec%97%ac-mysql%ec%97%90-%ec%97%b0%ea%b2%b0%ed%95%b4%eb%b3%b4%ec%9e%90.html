@@ -1,0 +1,67 @@
+---
+layout: post
+title: python3 MySQLdb를 이용하여 mysql에 연결해보자.
+date: 2011-08-08 09:36:56.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Python
+tags:
+- MySQL
+- MySQLdb
+- Python3
+meta: {}
+author: Hwanseung Lee
+---
+<p><span class="Apple-style-span" style="background-color: transparent;">아직 python3 같은경우 모듈이 많지 않다..</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">그나마 많이 나오긴 했는데</span><br />
+<span class="Apple-style-span" style="background-color: transparent;">mysql에 연결 하는 모듈을 제대로 배포하는 곳이 없다...</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">그나마 한곳을 찾았는데 </span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">&nbsp;</span><a href="https://github.com/davispuh/MySQL-for-Python-3" style="background-color: transparent; ">https://github.com/davispuh/MySQL-for-Python-3</a><span class="Apple-style-span" style="background-color: transparent;">&nbsp;이다.</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">이곳은 기존의 모듈에서 파이썬용으로 바꾸었는데 이사람이 윈도우용으로 만드는 바람에</span><br />
+<span class="Apple-style-span" style="background-color: transparent;">리눅스에서 설치하기 까탈스럽다.</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">물론 우분투에서&nbsp;</span><span class="Apple-style-span" style="color: rgb(68, 68, 68); font-family: 'Bitstream Vera Sans Mono', Courier, monospace; font-size: 11px; line-height: normal; white-space: pre-wrap; background-color: rgb(248, 248, 248); "># apt-get install python-mysqldb </span><span class="Apple-style-span" style="background-color: transparent;">로 써도 되지만...</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">이러면 python2용으로 깔려버리니. 이것 참..ㅋㅋ</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">할수 없이 받아서 컴파일 시켜서 설치 할수 밖에 없다..</span></p>
+<p><span style="font-size: 14pt; background-color: rgb(43, 132, 0);"><font class="Apple-style-span" color="#ffffff">1.파이썬 설치</font></span><br />
+<span class="Apple-style-span" style="background-color: transparent;">$ sudo apt-get install python3<br />
+</span>$ sudo apt-get install python3-dev&nbsp;</p>
+<p><font class="Apple-style-span" color="#ffffff" style="background-color: rgb(43, 132, 0);"><span style="font-size: 14pt; "><span style="font-size: 14pt; ">2.</span></span><span style="font-size: 14pt; "><span style="font-size: 14pt; ">mysql설치</span></span></font>
+<div>
+<span class="Apple-style-span" style="background-color: transparent;">$ sudo apt-get install mysql-server mysql-client</span><br />
+<span class="Apple-style-span" style="background-color: transparent;">비밀번호를 물어보는데 알아서 정하면 되겠다.</span></p>
+<p><span class="Apple-style-span" style="background-color: rgb(43, 132, 0);"><font class="Apple-style-span" color="#ffffff"><span style="font-size: 14pt; ">3.</span><span style="font-size: 14pt; ">distribute 설치</span></font></span>
+<div style="background-color: transparent; ">
+$ sudo apt-get install curl<br />
+$ curl -O http://python-distribute.org/distribute_setup.py</div>
+<div>
+<span class="Apple-style-span" style="background-color: transparent;">$ sudo python3 distribute_setup.py&nbsp;</span></p>
+<p><span style="font-size: 14pt; background-color: rgb(43, 132, 0);"><font class="Apple-style-span" color="#ffffff">4.davispuh-Mysql 설치 (요게 기존 MySQLdb를 python3용으로 곤친거다.)</font></span><br />
+<span class="Apple-style-span" style="background-color: transparent;">&nbsp;다운은&nbsp;</span><a href="https://github.com/davispuh/MySQL-for-Python-3" style="background-color: transparent; ">https://github.com/davispuh/MySQL-for-Python-3</a><span class="Apple-style-span" style="background-color: transparent;">&nbsp;여기서 받으면 되겠다.</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">$ tar -xzvf MySQL-python-1.2.3.tar.gz(받은 파일명)</span></div>
+<div style="background-color: transparent; ">
+$ cd MySQL-python-1.2.3</div>
+<p><span class="Apple-style-span" style="background-color: transparent;">&nbsp;</span></p>
+<div style="background-color: transparent; ">
+$ vim site.cfg&nbsp;<br />
+여기서 하룻동안 삽질 한구역이다.<br />
+원래 이게 윈도우용으로 만드는 바람에 설정에&nbsp;mysql_config이 주석처리가 되어 있는데<br />
+이것을 풀고 정확한&nbsp;mysql_config를 설정해야된다.<br />
+&nbsp;</div>
+<div style="background-color: transparent; ">
+whereis mysql_config로 설정위치를 찾게되면 저의 PC같은경우<br />
+/usr/bin/mysql_config 로 나왔고 이것으로 설정!!!&nbsp;</p>
+<p>$sudo python3 setup.py build<br />
+$sudo python3 setup.py install</p>
+<p>마지막 설치중에&nbsp;<br />
+EnvironmentError: mysql_config not found에 나오면 mysql_config 다시 설정해주시고<br />
+필요시&nbsp;<br />
+$ sudo apt-get install python-setuptools python-dev libmysqlclient15-dev도 필요 합니다.</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile29.uf.2006B8484E3FAE2E244557.png" class="aligncenter" width="662" height="442" alt="" filename="제목 없음.png" filemime="image/jpeg" /></p>
+<p>
+&nbsp;결국은 성공 했다. ㅋㅋ</div>
+</div>
+<p><span class="Apple-style-span" style="background-color: transparent;">&nbsp;</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile21.uf.191931514E4001850A6CE4.png" class="aligncenter" width="507" height="440" alt="" filename="제목 없음.png" filemime="image/jpeg" /></p>
+<p>&nbsp;</span></p>

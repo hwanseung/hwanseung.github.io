@@ -1,0 +1,260 @@
+---
+layout: post
+title: Report5 Jacobi 반복법, Gauss-seided 반복법
+date: 2011-02-06 02:45:49.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/numerical analysis
+tags:
+- Gauss-seided 반복법
+- Jacobi 반복법
+- 수치해석
+meta:
+  _thumbnail_id: '1066'
+author: Hwanseung Lee
+---
+<p><font class="Apple-style-span" color="#333333" face="굴림"><span class="Apple-style-span" style="line-height: 1.5;"><img src="{{ site.baseurl }}/assets/cfile9.uf.15518F5A4D4E0AE2270659.png" class="aligncenter" width="554" height="652" alt="" filename="제목 없음.png" filemime="image/jpeg" /></span></font>
+<div>
+<div>
+<textarea name="code" class="cpp" style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; "><br />
+#include &lt;iostream&gt;</p>
+<p>//	jacobi 반öY복¬©ö법öy<br />
+float A[4][5]={10,-1,2,0,6,<br />
+				-1,11,-1,3,25,<br />
+				2,-1,10,-1,-11,<br />
+				0,3,-1,8,15};<br />
+class function{<br />
+public:<br />
+	float x1;<br />
+	float x2;<br />
+	float x3;<br />
+	float x4;<br />
+	float x5;<br />
+	float x1p;<br />
+	float x2p;<br />
+	float x3p;<br />
+	float x4p;<br />
+	int position;</p>
+<p>	void setfunction(float _x1,float _x2,float _x3,float _x4,float _x5,int _position)<br />
+	{<br />
+		x1=_x1;<br />
+		x2=_x2;<br />
+		x3=_x3;<br />
+		x4=_x4;<br />
+		x5=_x5;<br />
+		position = _position;<br />
+	}</p>
+<p>	float return_Value(float p1,float p2,float p3,float p4)<br />
+	{<br />
+		if(position == 1)<br />
+		{<br />
+			return ((x2*p2+x3*p3+x4*p4)-x5)/x1*(-1);<br />
+		}<br />
+		else if(position == 2)<br />
+		{<br />
+			return ((x1*p1+x3*p3+x4*p4)-x5)/x2*(-1);<br />
+		}<br />
+		else if(position ==3)<br />
+		{<br />
+			return ((x1*p1+x2*p2+x4*p4)-x5)/x3*(-1);<br />
+		}<br />
+		else if(position ==4)<br />
+		{<br />
+			return ((x1*p1+x2*p2+x3*p3)-x5)/x4*(-1);<br />
+		}<br />
+	}<br />
+};</p>
+<p>int main()<br />
+{<br />
+	int inputx=4;<br />
+	int inputy=5;</p>
+<p>	float return_x=0;<br />
+	float return_y=0;<br />
+	float return_z=0;<br />
+	float return_v=0;</p>
+<p>	for(int i=0;i&lt;inputx;i++)<br />
+	{<br />
+		float temp=0;<br />
+		for(int j=0;j&lt;inputy-1;j++)<br />
+		{<br />
+			if(i!=j)<br />
+			{<br />
+				temp+=abs(A[i][j]);<br />
+			}<br />
+		}<br />
+		if(abs(A[i][i])&lt;abs(temp))<br />
+		{<br />
+				printf("강Æ¡©대¥e각Æ¡Ë 행a렬¤A이I 아ú¨¡님¥O.");<br />
+				return 0;<br />
+		}<br />
+	}</p>
+<p>	//강Æ¡©대¥e각Æ¡Ë 행a렬¤A임O 계Æe속ùO 진©ª행a;</p>
+<p>	//한N줄U 식öA을¡í 객Æ¢¥체¨ù화¡© 함O.<br />
+	function fun[4];<br />
+	for(int i=0;i&lt;4;i++)<br />
+	{<br />
+		fun[i].setfunction(A[i][0],A[i][1],A[i][2],A[i][3],A[i][4],i+1);<br />
+	}</p>
+<p>	for(int i=0;i&lt;20;i++)<br />
+	{<br />
+		printf("step %d\n",i+1);<br />
+		float temp1=0;<br />
+		float temp2=0;<br />
+		float temp3=0;<br />
+		float temp4=0;<br />
+		for(int j=0;j&lt;4;j++)<br />
+		{<br />
+			if(j==0)<br />
+			{<br />
+				temp1 = fun[j].return_Value(return_x,return_y,return_z,return_v);<br />
+				printf("x : %f ",temp1);<br />
+			}<br />
+			if(j==1)<br />
+			{<br />
+				temp2 = fun[j].return_Value(return_x,return_y,return_z,return_v);<br />
+				printf("y : %f ",temp2);<br />
+			}<br />
+			if(j==2)<br />
+			{<br />
+				temp3 = fun[j].return_Value(return_x,return_y,return_z,return_v);<br />
+				printf("z : %f ",temp3);<br />
+			}<br />
+			if(j==3)<br />
+			{<br />
+				temp4 = fun[j].return_Value(return_x,return_y,return_z,return_v);<br />
+				printf("v : %f ",temp4);<br />
+			}	</p>
+<p>		}<br />
+		return_x=temp1;<br />
+		return_y=temp2;<br />
+		return_z=temp3;<br />
+		return_v=temp4;<br />
+		printf("\n");<br />
+	}</p>
+<p>	return 0;<br />
+}</p>
+<p></textarea>
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+</div>
+<p>
+</div>
+<p></p>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+<br />
+<img src="{{ site.baseurl }}/assets/cfile29.uf.16518F5A4D4E0AE2283887.png" class="aligncenter" width="501" height="745" alt="" filename="제목 없음1.png" filemime="image/jpeg" />
+</div>
+<div>
+<textarea name="code" class="cpp" style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; "><br />
+#include &lt;iostream&gt;</p>
+<p>//gauss-seided 방ö©¡법öy<br />
+float A[4][5]={10,-1,2,0,6,<br />
+				-1,11,-1,3,25,<br />
+				2,-1,10,-1,-11,<br />
+				0,3,-1,8,15};<br />
+class function{<br />
+public:<br />
+	float x1;<br />
+	float x2;<br />
+	float x3;<br />
+	float x4;<br />
+	float x5;<br />
+	float x1p;<br />
+	float x2p;<br />
+	float x3p;<br />
+	float x4p;<br />
+	int position;</p>
+<p>	void setfunction(float _x1,float _x2,float _x3,float _x4,float _x5,int _position)<br />
+	{<br />
+		x1=_x1;<br />
+		x2=_x2;<br />
+		x3=_x3;<br />
+		x4=_x4;<br />
+		x5=_x5;<br />
+		position = _position;<br />
+	}</p>
+<p>	float return_Value(float p1,float p2,float p3,float p4)<br />
+	{<br />
+		if(position == 1)<br />
+		{<br />
+			return ((x2*p2+x3*p3+x4*p4)-x5)/x1*(-1);<br />
+		}<br />
+		else if(position == 2)<br />
+		{<br />
+			return ((x1*p1+x3*p3+x4*p4)-x5)/x2*(-1);<br />
+		}<br />
+		else if(position ==3)<br />
+		{<br />
+			return ((x1*p1+x2*p2+x4*p4)-x5)/x3*(-1);<br />
+		}<br />
+		else if(position ==4)<br />
+		{<br />
+			return ((x1*p1+x2*p2+x3*p3)-x5)/x4*(-1);<br />
+		}<br />
+	}<br />
+};</p>
+<p>int main()<br />
+{<br />
+	int inputx=4;<br />
+	int inputy=5;</p>
+<p>	float return_x=0;<br />
+	float return_y=0;<br />
+	float return_z=0;<br />
+	float return_v=0;</p>
+<p>	for(int i=0;i&lt;inputx;i++)<br />
+	{<br />
+		float temp=0;<br />
+		for(int j=0;j&lt;inputy-1;j++)<br />
+		{<br />
+			if(i!=j)<br />
+			{<br />
+				temp+=abs(A[i][j]);<br />
+			}<br />
+		}<br />
+		if(abs(A[i][i])&lt;abs(temp))<br />
+		{<br />
+				printf("강Æ¡©대¥e각Æ¡Ë 행a렬¤A이I 아ú¨¡님¥O.");<br />
+				return 0;<br />
+		}<br />
+	}</p>
+<p>	//강Æ¡©대¥e각Æ¡Ë 행a렬¤A임O 계Æe속ùO 진©ª행a;</p>
+<p>	//한N줄U 식öA을¡í 객Æ¢¥체¨ù화¡© 함O.<br />
+	function fun[4];<br />
+	for(int i=0;i&lt;4;i++)<br />
+	{<br />
+		fun[i].setfunction(A[i][0],A[i][1],A[i][2],A[i][3],A[i][4],i+1);<br />
+	}</p>
+<p>	for(int i=0;i&lt;20;i++)<br />
+	{<br />
+		printf("step %d\n",i+1);<br />
+		for(int j=0;j&lt;4;j++)<br />
+		{<br />
+			if(j==0)<br />
+			{<br />
+				return_x = fun[j].return_Value(return_x,return_y,return_z,return_v);<br />
+				printf("x : %f ",return_x);<br />
+			}<br />
+			if(j==1)<br />
+			{<br />
+				return_y = fun[j].return_Value(return_x,return_y,return_z,return_v);<br />
+				printf("y : %f ",return_y);<br />
+			}<br />
+			if(j==2)<br />
+			{<br />
+				return_z = fun[j].return_Value(return_x,return_y,return_z,return_v);<br />
+				printf("z : %f ",return_z);<br />
+			}<br />
+			if(j==3)<br />
+			{<br />
+				return_v = fun[j].return_Value(return_x,return_y,return_z,return_v);<br />
+				printf("v : %f ",return_v);<br />
+			}<br />
+		}<br />
+		printf("\n");<br />
+	}</p>
+<p>	return 0;<br />
+}</p>
+<p></textarea>
+</div>

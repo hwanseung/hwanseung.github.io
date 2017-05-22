@@ -1,0 +1,51 @@
+---
+layout: post
+title: 소스 분석에 유용한 ctags
+date: 2012-03-10 13:33:10.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Linux
+tags:
+- ctegs
+- Linux
+meta:
+  _thumbnail_id: '2166'
+author: Hwanseung Lee
+---
+<p style="margin:0">ctags는 vi나 emacs와 같은 에디터에 소스 분석을 할때 유용한 플러그인 같은 툴입니다.</p>
+<p>일단 설치 하는 방법 알아봅시다.<br />
+<img src="{{ site.baseurl }}/assets/cfile9.uf.167B2F494F5B3B0B16B05A.png" class="aligncenter" width="573" height="90" alt="" filename="제목 없음.png" filemime="image/jpeg" />간단히 설치가 가능하며</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile27.uf.187B2F494F5B3B0C172E6C.png" class="aligncenter" width="439" height="41" alt="" filename="제목 없음1.png" filemime="image/jpeg" />ctags -R을 통해 하위디렉토리까지 돌면서 각 소스의 정보를 수집합니다.<br />
+저는 리눅스 커널 소스에 정보를 수집하게 했으며 시간이 좀 걸립니다.<br />
+다 끝나게되면</p>
+<p>tags라는 파일이 만들어지는게 보일겁니다.&nbsp;</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile10.uf.1517883C4F5B5A262991CD.png" class="aligncenter" width="630" height="165" alt="" filename="제목 없음4.png" filemime="image/jpeg" /></p>
+<p></p>
+<div>
+<p>#vim -t task_struct 하면 task_struct를 찾아 보여주게 됩니다.
+</div>
+<p style="margin:0">
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile2.uf.1777CA344F5B5A37194787.png" class="aligncenter" width="726" height="471" alt="" filename="제목 없음3.png" filemime="image/jpeg" /></p>
+<p>이렇게 말고는&nbsp;<br />
+vi의 명령 모드에서 :ta task_strcut 를 치게되면 동일한 명령이 먹힙니다.&nbsp;</p>
+<p style="margin:0">vi에 설정은 다음과 같이 하시면 됩니다.</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile30.uf.207B2F494F5B3B0D1B3A77.png" class="aligncenter" width="491" height="471" alt="" filename="제목 없음5.png" filemime="image/jpeg" /><br />
+그리고 모르는 구조체나 함수가 있다면 그 곳에가서 &nbsp;ctrl+]를 누르면 정의된 곳으로 갑니다.</p>
+<p>저는 일단 cputime_t라는 타입을 모르겠다고 가정하고&nbsp;ctrl+]를 눌러보면&nbsp;&nbsp;</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile7.uf.117B2F494F5B3B0D1C070A.png" class="aligncenter" width="736" height="471" alt="" filename="제목 없음6.png" filemime="image/jpeg" /></p>
+<p style="margin:0">
+다음과같이 정의된 부분인 곳이 나옵니다. 다시 되돌아갈려면 ctrl+t를 누르면 복귀가 됩니다.<br />
+<img src="{{ site.baseurl }}/assets/cfile7.uf.137B2F494F5B3B0E1DD1A2.png" class="aligncenter" width="725" height="468" alt="" filename="제목 없음7.png" filemime="image/jpeg" /><br />
+정의부분 찾아가고 복귀하고 이런게 스택처럼 저장이 되기때문에 자꾸 자꾸 내려가서 되돌아오고 이런게 가능합니다.</p>
+<p>그리고 손으로 다치다보면 스펠링이 틀릴수도 있는데 ctags를 이용하여 자동완성이 됩니다.<br />
+일단 &nbsp;.vimrc에 다음과 같이 설정을 합니다.</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile2.uf.147B2F494F5B3B0E1EDBEE.png" class="aligncenter" width="532" height="456" alt="" filename="제목 없음8.png" filemime="image/jpeg" /></p>
+<p style="margin:0">
+새파일을 만들어서 테스트를 해보겠습니다.<br />
+#incl만 치고 ctrl+n를 눌렀을경우 자동완성이 될 수 있는 목록이 나옵니다.<br />
+<img src="{{ site.baseurl }}/assets/cfile23.uf.157B2F494F5B3B0E1F892C.png" class="aligncenter" width="414" height="462" alt="" filename="제목 없음9.png" filemime="image/jpeg" /><br />
+그리고 마지막으로 검색속도를 올려주는<br />
+set tagbsearch라는 설정도 있습니다.&nbsp;</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile25.uf.157B2F494F5B3B0F201145.png" class="aligncenter" width="724" height="470" alt="" filename="제목 없음10.png" filemime="image/jpeg" /></p>

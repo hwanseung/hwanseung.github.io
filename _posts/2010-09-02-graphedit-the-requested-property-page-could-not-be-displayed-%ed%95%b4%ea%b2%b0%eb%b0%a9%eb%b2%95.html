@@ -1,0 +1,82 @@
+---
+layout: post
+title: GraphEdit - The requested property page could not be displayed 해결방법
+date: 2010-09-02 03:49:16.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Direct show
+tags:
+- directshow
+- graphedit
+- Pin properties
+meta:
+  _thumbnail_id: '690'
+author: Hwanseung Lee
+---
+<div>
+
+</div>
+<p><a href="http://hwanseung.maru.net/wp-content/uploads/1/cfile23.uf.200403114C7F15C07BB16A.dll" class="aligncenter" filename="proppage.dll" filemime="application/x-dosexec">cfile23.uf.200403114C7F15C07BB16A.dll</a>Direct Show개발 하면서 GraphEdit는 필수 유틸인데
+<div>
+
+</div>
+<div>
+각 필터의 핀의 속성을 볼려고&nbsp;</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile27.uf.13114F104C7F162AC83C1C.png" class="aligncenter" width="216" height="116" alt="" filename="제목 없음.png" filemime="image/jpeg" />다음과 같이 핀에서 오른쪽 클릭 pin Properties...를 누르면</div>
+<div>
+
+</div>
+<div>
+다음과 같은 경고 창이 뜬다.... "The requested property page could not be displayed"</div>
+<div>
+
+</div>
+<p><img src="{{ site.baseurl }}/assets/cfile26.uf.17210D1C4C7F1544BE1F55.jpg" class="aligncenter" width="387" height="124" alt="" filename="제목 없음.jpg" filemime="image/jpeg" />
+<div>
+
+</div>
+<div>
+해결방법은 상단에 첨부한 파일을 레지스트리에 등록을 하면 됨.</div>
+<div>
+
+</div>
+<div>
+일단 받을 파일을 적당한 곳으로 위치 시킨다... 저는(c:\windows\system32)에 위치시켰고</div>
+<div>
+
+</div>
+<div>
+실행창에서 cmd를 쳐서 명령프롬프트를 실행시킨후 위치시킨 곳으로가서&nbsp;</div>
+<div>
+</div>
+<div>
+regsvr32 proppage.dll</div>
+<div>
+</div>
+<div>
+를 쳐서 레지스트리에 등록을 시킵니다.</div>
+<div>
+
+</div>
+<div>
+아래와 같이 하면 됩니다.</div>
+<div>
+
+</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile29.uf.202238304C7F1D3656DF78.png" class="aligncenter" width="528" height="292" alt="" filename="2.png" filemime="image/jpeg" />
+</div>
+<div>
+
+</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile22.uf.115DE8284C7F1E5982EB85.png" class="aligncenter" width="467" height="302" alt="" filename="23.png" filemime="image/jpeg" />잘 등록되었고 속성창이 잘 나오는군요 ㅋ</div>
+<div>
+
+</div>
+<div>
+
+</div>

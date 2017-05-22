@@ -1,0 +1,123 @@
+---
+layout: post
+title: 리스트형식의 클래스 객체를 리소스로 만들어 데이터바인딩 하여 보자
+date: 2009-08-10 08:55:36.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/WPF
+tags:
+- Data Binding
+- wpf
+- 데이터 바인딩
+meta: {}
+author: Hwanseung Lee
+---
+<p>글 제목이 횡설수설한거 같은데</p>
+<div>
+
+</div>
+<div>
+WPF책을 보니 대부분 소스안에 리소스 데이터를 가지고 그걸로 바인딩하는 것만 나와서</div>
+<div>
+
+</div>
+<div>
+글을 쓰게됨(근데 책에 있는데 못찾을 수도 있음.ㅡ_ㅡ;)</div>
+<div>
+
+</div>
+<div>
+먼저 데이터의 원본의 클래스를 만듬.</div>
+<div>
+
+</div>
+<div>
+아래는 내가 만들던 소스의 일부임.</div>
+<div>
+
+</div>
+<div>
+mp3Infos는 mp3Info을 리스트형식으로 만드거임.</div>
+<div>
+
+</div>
+<div>
+그리고 데이터 바인딩을 하려면&nbsp;<span class="Apple-style-span" style="color: rgb(0, 0, 0); font-family: ü; font-size: 13px; line-height: 19px; ">INotifyPropertyChanged 인터페이스를 써서</span></div>
+<div>
+<font class="Apple-style-span" color="#000000" face="ü" size="3"><span class="Apple-style-span" style="font-size: 13px; line-height: 19px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" color="#000000" face="ü" size="3"><span class="Apple-style-span" style="font-size: 13px; line-height: 19px;">데이터가 변경되는것을 알려줘야함.</span></font></div>
+<div>
+<font class="Apple-style-span" color="#565656" face="Tahoma"><span class="Apple-style-span" style="line-height: 16px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="-webkit-monospace"><span class="Apple-style-span" style="white-space: pre;"><font class="Apple-style-span" face="굴림"><span class="Apple-style-span" style="white-space: normal;" /></font></span></font>
+<div class="txc-textbox" style="border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(254, 254, 184); border-right-color: rgb(254, 254, 184); border-bottom-color: rgb(254, 254, 184); border-left-color: rgb(254, 254, 184); background-color: rgb(254, 254, 184); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; ">
+<span style="font-family: ü; font-size: 10pt; color: Black">	</span><span style="font-family: ü; font-size: 10pt; color: Blue">class&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">mp3Info&nbsp;:&nbsp;INotifyPropertyChanged{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">public&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black"></span><span style="font-family: ü; font-size: 10pt; color: Blue">event&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">PropertyChangedEventHandler&nbsp;PropertyChanged;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">protected&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black"></span><span style="font-family: ü; font-size: 10pt; color: Blue">void&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">Notify(</span><span style="font-family: ü; font-size: 10pt; color: Blue">string&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">propName){<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">if</span><span style="font-family: ü; font-size: 10pt; color: Black">(</span><span style="font-family: ü; font-size: 10pt; color: Blue">this</span><span style="font-family: ü; font-size: 10pt; color: Black">.PropertyChanged&nbsp;!=&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">null</span><span style="font-family: ü; font-size: 10pt; color: Black">)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PropertyChanged(</span><span style="font-family: ü; font-size: 10pt; color: Blue">this</span><span style="font-family: ü; font-size: 10pt; color: Black">,&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">new&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">PropertyChangedEventArgs(propName));<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">string&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">path;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">public&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black"></span><span style="font-family: ü; font-size: 10pt; color: Blue">string&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">PATH{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">get&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">{&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">return&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black"></span><span style="font-family: ü; font-size: 10pt; color: Blue">this</span><span style="font-family: ü; font-size: 10pt; color: Black">.path;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">set&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">if&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">(</span><span style="font-family: ü; font-size: 10pt; color: Blue">this</span><span style="font-family: ü; font-size: 10pt; color: Black">.path&nbsp;==&nbsp;value)&nbsp;{&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">return</span><span style="font-family: ü; font-size: 10pt; color: Black">;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">this</span><span style="font-family: ü; font-size: 10pt; color: Black">.path&nbsp;=&nbsp;value;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Notify(</span><span style="font-family: ü; font-size: 10pt; color: DarkRed">"PATH"</span><span style="font-family: ü; font-size: 10pt; color: Black">);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div class="txc-textbox" style="border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(254, 254, 184); border-right-color: rgb(254, 254, 184); border-bottom-color: rgb(254, 254, 184); border-left-color: rgb(254, 254, 184); background-color: rgb(254, 254, 184); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; ">
+<font class="Apple-style-span" color="#000000" face="ü" size="3"><span class="Apple-style-span" style="font-size: 13px; line-height: 19px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .........................................중략</span></font></div>
+<div class="txc-textbox" style="border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(254, 254, 184); border-right-color: rgb(254, 254, 184); border-bottom-color: rgb(254, 254, 184); border-left-color: rgb(254, 254, 184); background-color: rgb(254, 254, 184); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; ">
+<span style="font-family: ü; font-size: 10pt; color: Black"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Blue">class&nbsp;</span><span style="font-family: ü; font-size: 10pt; color: Black">mp3Infos&nbsp;:&nbsp;ObservableCollection&lt;mp3Info&gt;</span><span style="font-family: ü; font-size: 10pt; color: Green">//mp3info<br />
+</span><span style="font-family: ü; font-size: 10pt; color: Black"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</span></div>
+<p>
+</div>
+<div>
+그리고 xaml에 아래의 소스를 추가하여 mp3lnfos클래스를 리소스로 쓰이도록 함.</div>
+<div>
+<div class="txc-textbox" style="border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(254, 254, 184); border-right-color: rgb(254, 254, 184); border-bottom-color: rgb(254, 254, 184); border-left-color: rgb(254, 254, 184); background-color: rgb(254, 254, 184); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; ">
+<div>
+&lt;Window.Resources&gt;</div>
+<div>
+<span class="Apple-tab-span" style="white-space: pre; ">	</span>&lt;WpfMp3TagEdit:mp3Infos x:Key="mp3InfosDS"/&gt;</div>
+<div>
+&lt;/Window.Resources&gt;</div>
+</div>
+<p>
+</div>
+<div>
+<div>
+
+</div>
+<div>
+아래의 소스는 위에 mp3Infos를 리소스를 올렸던것을 찾아 편집할수 있도록 함.</div>
+<div>
+<div class="txc-textbox" style="border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(254, 254, 184); border-right-color: rgb(254, 254, 184); border-bottom-color: rgb(254, 254, 184); border-left-color: rgb(254, 254, 184); background-color: rgb(254, 254, 184); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; ">
+<span style="font-family: ü; font-size: 10pt; color: Black"><br />
+mp3Infos&nbsp;list&nbsp;=&nbsp;(mp3Infos)</span><span style="font-family: ü; font-size: 10pt; color: Blue">this</span><span style="font-family: ü; font-size: 10pt; color: Black">.FindResource(</span><span style="font-family: ü; font-size: 10pt; color: DarkRed">"mp3InfosDS"</span><span style="font-family: ü; font-size: 10pt; color: Black">);<br />
+list.Add(id3v2parse.read(filepaths[i]));</span><span style="font-family: ü; font-size: 10pt; color: Green">//데이터를 리소스에 추가.</span><font class="Apple-style-span" color="#000000" face="ü" size="3"><span class="Apple-style-span" style="font-size: 13px; line-height: 19px;"><br />
+</span></font></div>
+</div>
+<div>
+
+</div>
+<div>
+추가된 리소스로 데이터 바인딩을 하면됨.&nbsp;</div>
+<div>
+
+</div>
+<div>
+
+</div>
+</div>

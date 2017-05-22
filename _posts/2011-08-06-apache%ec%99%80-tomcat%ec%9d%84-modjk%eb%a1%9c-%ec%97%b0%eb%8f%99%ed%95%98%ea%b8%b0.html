@@ -1,0 +1,180 @@
+---
+layout: post
+title: Apache와 Tomcat을 mod_jk로 연동하기
+date: 2011-08-06 18:04:47.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Web
+tags:
+- apache
+- jdk
+- mod_jk
+- tomcat
+- tomcat connectors
+- 아파치
+- 톰켓
+meta: {}
+author: Hwanseung Lee
+---
+<p>매번 연결할때마다 인터넷 검색해서 하다가&nbsp;<br />
+정리가 잘안되어 있어서 이상한것도 있고해서 포스팅하게 되었네요 ㅋ</p>
+<div>
+<span class="Apple-style-span" style="background-color: transparent;" />
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile27.uf.131FBC344E3D83AB12BB90.jpg" class="aligncenter" width="149" height="97" alt="" filename="mod_jk.jpg" filemime="image/jpeg" /></p>
+<p>
+일단&nbsp;<br />
+Apache는 /etc/httpd<br />
+Tomcat은 /etc/tomcat<br />
+&nbsp;에 설치하였으며<br />
+JDK설치 및 자바, 톰켓 환경변수 모두 설치 하였다고 가정하겠습니다.</p>
+<p>아파치와 톰켓을 연동하게 되면<br />
+정적으로 제공될 파일(CSS,JS,이미지 파일... 기타등등.)들은 아파치로 바로 응답하게되고<br />
+동적으로 제공해야될 것들(J2EE로 만들어내는 것 또는 JSP)은 아파치를 거쳐 톰켓에서 생성후 응답하게 됩니다.</p>
+<p>정적과 동적으로 만들어져야 될 것을 분리하여 제공하므로 서로 서로 부담이 좀 줄어들겠죠?ㅋ</p>
+<p style="margin:0"></p>
+<p>
+<span style="font-size: 14pt; background-color: rgb(186, 52, 166);"><font class="Apple-style-span" color="#ffffff">1.mod_jk 설치</font></span><br />
+mod_jk.so 파일을 아파치를 설치한 폴더(/etc/httpd)의 module부분에 넣어야됩니다.</p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><a href="http://tomcat.apache.org/download-connectors.cgi">http://tomcat.apache.org/download-connectors.cgi</a>&nbsp;가시면 받을 수가 있는데요</p>
+<p>또 나중에 추가적은 설정을 필요하시면 여기서 찾아서 설정을 추가하시면 될것 같습니다.ㅋ&nbsp;</span></p>
+<p>&nbsp;tomcat-connectors-1.2.32-src.tar.gz을 받았습니다.</p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><br />
+#tar zxvf&nbsp;tomcat-connectors-1.2.32-src.tar.gz</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+을 실행해 압축을 풀구요</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><br />
+#cd&nbsp;tomcat-connectors-1.2.32-src/native&nbsp;</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+로 폴더 이동</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><br />
+#chmod +x buildconf.sh</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+로 권한 변경</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><br />
+#./buildconf.sh</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+#./configure --with-apxs=/usr/sbin/apxs --with-java-home=$JAVA_HOME</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+저는 redhat liunx기반으로 설치를 하는 바람에</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+apxs 경로를 처음에 잡지 못했는데&nbsp;</span><br />
+<a href="http://it.toolbox.com/blogs/lim/compiling-tomcat-connector-mod_jk-on-redhat-6805" style="background-color: transparent; ">http://it.toolbox.com/blogs/lim/compiling-tomcat-connector-mod_jk-on-redhat-6805&nbsp;</a><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+을 참조하여 설치후 경로를 잡았습니다.</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><br />
+&nbsp;#make install 하시면&nbsp;</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+컴파일이 진행되며</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+tomcat-connectors-1.2.32-src/native 경로에</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+apache-2.0 폴더가 있을 겁니다.</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+&nbsp;거기안에 우리가 원하던 mod_jk.so가 있습니다.</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><br />
+#mv mod_jk.so /etc/httpd/module/mod_jk.so</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+로 mod_jk.so파일을 이동시키며</span></p>
+<p><span style="font-size: 18pt; background-color: rgb(186, 52, 166);"><font class="Apple-style-span" color="#ffffff"><span style="font-size: 14pt; ">2.</span></font></span><span style="font-size: 18pt; "><span style="font-size: 14pt; background-color: rgb(186, 52, 166);"><font class="Apple-style-span" color="#ffffff">httpd.conf 설정 변경</font></span></span><br />
+<span class="Apple-style-span" style="background-color: transparent;">아파치 폴더(/etc/httpd)의 conf폴더의 httpd.conf 아랫 부분에 아래의 것을 추가 해줍니다.</span></p>
+<div class="txc-textbox" style="border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(243, 197, 52); border-right-color: rgb(243, 197, 52); border-bottom-color: rgb(243, 197, 52); border-left-color: rgb(243, 197, 52); background-color: rgb(254, 254, 184); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; ">
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "></p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">
+<div>
+LoadModule jk_module modules/mod_jk.so</div>
+<div>
+
+</div>
+<div>
+JkWorkersFile /etc/httpd/conf/workers.properties</div>
+<div>
+JkLogFile /etc/httpd/mod_jk.log</div>
+<div>
+jkLogLevel error</div>
+<div>
+
+</div>
+<div>
+&lt;VirtualHost *:80&gt;</div>
+<div>
+&nbsp; &nbsp; ServerAdmin rucifer1217@gmail.com #별로 중요치 않음..ㅋ</div>
+<div>
+&nbsp; &nbsp; DocumentRoot /etc/tomcat/webapps #톰켓의 우리가 실행시킬 것의 위치</div>
+<div>
+&nbsp; &nbsp; ServerName xxx.xxx.xxx.xxx #호스트 이름 또는 도메인 이름.</div>
+<div>
+
+</div>
+<div>
+&nbsp; &nbsp; JkMount /*.save worker1 #톰켓과 연결될것의 url 맵핑이라 보면 되겠다.ㅋ</div>
+<div>
+&nbsp; &nbsp; JkMount /saveMoney/*.save worker1&nbsp;#톰켓과 연결될것의 url 맵핑이라 보면 되겠다.ㅋ</div>
+<div>
+&lt;/VirtualHost&gt;</div>
+<div>
+
+</div>
+<div>
+#경로지정.</div>
+<div>
+Alias /saveMoney "/etc/tomcat/webapps/saveMoney"<br />
+&nbsp;</div>
+<div>
+<div>
+&lt;Directory "/etc/tomcat/webapps/saveMoney"&gt;</div>
+<div>
+Options Indexes FollowSymLinks</div>
+<div>
+DirectoryIndex index.html index.htm index.jsp</div>
+<div>
+&lt;/Directory&gt;</div>
+<div>
+<br />
+#해당 폴더는 수정 등 불가하도록</div>
+<div>
+&lt;Location "/saveMoney/WEB-INF/*"&gt;</div>
+<div>
+AllowOverride None</div>
+<div>
+deny from all</div>
+<div>
+&lt;/Location&gt;</div>
+<div>
+<br />
+#해당 폴더는 수정등 불가하도록.</div>
+<div>
+&lt;Location "/saveMoney/META-INF/*"&gt;</div>
+<div>
+AllowOverride None</div>
+<div>
+deny from all</div>
+<div>
+&lt;/Location&gt;</div>
+</div>
+<div>
+
+</div></p>
+</div>
+<p></p>
+<div>
+<font class="Apple-style-span" color="#ffffff"><span style="font-size: 18pt; background-color: rgb(186, 52, 166);"><span style="font-size: 14pt; ">3.</span></span><span style="font-size: 18pt; "><span style="font-size: 14pt; background-color: rgb(186, 52, 166);">workers.properties 작성</span></span></font><br />
+<span class="Apple-style-span" style="background-color: transparent;">아파치 폴더(/etc/httpd)의 conf폴더에&nbsp;workers.properties를 생성후</span></p>
+<div class="txc-textbox" style="border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(121, 165, 228); border-right-color: rgb(121, 165, 228); border-bottom-color: rgb(121, 165, 228); border-left-color: rgb(121, 165, 228); background-color: rgb(219, 232, 251); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; ">
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">workers.CATALINA_HOME=/etc/tomcat</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">workers.java_home=$JAVA_HOME</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "></p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">worker.list=worker1</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">worker.worker1.port=8009</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">worker.worker1.host=localhost</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">worker.worker1.type=ajp13</p></p>
+</div>
+<p><span class="Apple-style-span" style="background-color: transparent;">&nbsp;요로케 연결해주면 됩니다.ㅋ</span></div>
+<p>
+<span class="Apple-style-span" style="background-color: transparent;">이렇케 하면 가장 간단하게 mod_jk를 이용하여 아파치와 톰켓을 연결하여 사용할수 있습니다.</p>
+<p>
+&nbsp;</span><span class="Apple-style-span" style="color: rgb(255, 255, 255); "><span style="font-size: 18pt; "><span style="font-size: 14pt; background-color: rgb(186, 52, 166); ">4.Apach 재시작<br />
+</span></span></span>#service restart를 통해서 재시작을 해보고 잘 연결되었는지 확인을 해보면 됩니다.ㅋ&nbsp;<br />
+인제 포트 8080을 빼버리고 주소창으로 확인을 해보세요 ㅋ&nbsp;</div>

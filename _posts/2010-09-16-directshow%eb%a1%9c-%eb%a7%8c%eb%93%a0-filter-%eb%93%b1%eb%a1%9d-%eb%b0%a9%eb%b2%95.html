@@ -1,0 +1,113 @@
+---
+layout: post
+title: DirectShow로 만든 Filter 등록 방법
+date: 2010-09-16 02:56:56.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Direct show
+tags:
+- directshow
+- Filter
+- 등록
+- 방법
+meta:
+  _thumbnail_id: '719'
+author: Hwanseung Lee
+---
+<div>
+DirectShow로 만든 Filter를 등록하는 방법입니다.</div>
+<div>
+
+</div>
+<div>
+일단 필터를 열심히 만들어야겠죠;</div>
+<div>
+만든것을 빌드합니다.</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile29.uf.114F63274C91892D06739E.png" class="aligncenter" width="373" height="264" alt="" filename="1.png" filemime="image/jpeg" />
+</div>
+<div>
+빌드가 완료되면 프로젝트가 있는 폴더로 갑니다.&nbsp;</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile1.uf.124F63274C91892D077DC9.png" class="aligncenter" width="403" height="378" alt="" filename="2.png" filemime="image/jpeg" /></p>
+</div>
+<div>
+
+</div>
+<div>
+프로젝트 폴더 하위에 자신이 만든 필터가 존재할껍니다.</div>
+<div>
+제가 만든 필터는 BringOnAir_Disadvantage_filter.dll입니다.</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile25.uf.154F63274C91892E09C541.png" class="aligncenter" width="632" height="183" alt="" filename="4.png" filemime="image/jpeg" />
+</div>
+<div>
+이 녀석을 적당한 위치(?)에 옮깁니다.</div>
+<div>
+전 일단 C:에 복사하겠습니다.... 경로가 길어지는게 귀찮아서요...</div>
+<div>
+</div>
+<div>
+자... 원하는 위치에 도착하였고.</div>
+<div>
+<div>
+<font class="Apple-style-span" color="#FFFFFF" size="4"><span class="Apple-style-span" style="font-size: 15px; line-height: 22px; "><b><span class="Apple-style-span" style="color: rgb(51, 51, 51); font-weight: normal; line-height: 18px; font-size: 12px; "><img src="{{ site.baseurl }}/assets/cfile10.uf.134F63274C91892E0A756B.png" class="aligncenter" width="539" height="191" alt="" filename="5.png" filemime="image/jpeg" /></span></b></span></font></div>
+<div>
+<font class="Apple-style-span" color="#FFFFFF" size="4"><span class="Apple-style-span" style="font-size: 15px; line-height: 22px; "><b><span class="Apple-style-span" style="color: rgb(51, 51, 51); font-weight: normal; line-height: 18px; font-size: 12px; "><br />
+</span></b></span></font></div>
+</div>
+<div>
+실행창에 cmd를 실행시킵니다...&nbsp;</div>
+<div>
+
+</div>
+<div>
+<b><span style="font-size: 11pt; "><span class="Apple-style-span" style="background-color: rgb(212, 42, 27);"><font class="Apple-style-span" color="#FFFFFF">windows 7이나 vista분들은 관리자 권한으로 실행을 시켜야됩니다.</font></span></span></b></div>
+<div>
+<font class="Apple-style-span" color="#FFFFFF" size="4"><span class="Apple-style-span" style="font-size: 15px; line-height: 22px;"><b><br />
+</b></span></font></div>
+<div>
+<font class="Apple-style-span" color="#FFFFFF" size="4"><span class="Apple-style-span" style="font-size: 15px; line-height: 22px;"><b><span class="Apple-style-span" style="color: rgb(51, 51, 51); font-weight: normal; line-height: 18px; font-size: 12px; ">cmd창이 열리면 아까 그녀석(dll이나 ax)가 위치한 곳으로 이동합니다.</span></b></span></font></div>
+<div>
+<font class="Apple-style-span" color="#FFFFFF" size="4"><span class="Apple-style-span" style="font-size: 15px; line-height: 22px;"><b><span class="Apple-style-span" style="color: rgb(51, 51, 51); font-weight: normal; line-height: 18px; font-size: 12px; ">저는 아까 귀찮아서 c: 옮겨 놨었죠..</span></b></span></font></div>
+<div>
+<font class="Apple-style-span" color="#FFFFFF" size="4"><span class="Apple-style-span" style="font-size: 15px; line-height: 22px;"><b><span class="Apple-style-span" style="color: rgb(51, 51, 51); font-weight: normal; line-height: 18px; font-size: 12px; "></span></b></span></font></div>
+<div>
+그 위치에 왔다면</div>
+<div>
+
+</div>
+<div>
+regsvr32 필터파일명</div>
+<div>
+을 입력하면 다음과 같이 잘 등록 되었다고 뜹니다.</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile6.uf.144F63274C91892E0B9620.png" class="aligncenter" width="708" height="467" alt="" filename="6.png" filemime="image/jpeg" />
+</div>
+<div>
+
+</div>
+<div>
+필터가 재대로 등록되었는지 확인 해볼까요?</div>
+<div>
+
+</div>
+<div>
+graphedit를 실행시키고</div>
+<div>
+directshow filter 하위에 필터를 찾아봅니다.</div>
+<div>
+제껀 아래 그림</div>
+<div>
+과 같이 등록이 되어있네요 ㅋ</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile6.uf.197C2F244C9188F2102D39.png" class="aligncenter" width="569" height="529" alt="" filename="7.png" filemime="image/jpeg" />
+</div>
+<div>
+</div>
+<div>
+마지막으로 필터를 등록 해제하고 싶을 경우에는&nbsp;</div>
+<div>regsvr32 -u 필터파일명&nbsp;</div>
+<div>로 하시면 됩니다.</div>

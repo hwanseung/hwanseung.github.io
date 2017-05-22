@@ -1,0 +1,37 @@
+---
+layout: post
+title: 리눅스 기본 에디터 vi & vim
+date: 2012-02-26 07:53:38.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Linux
+tags:
+- vi
+- vim
+meta:
+  _thumbnail_id: '2160'
+author: Hwanseung Lee
+---
+<p>vi은 리눅스에 기본으로 설치된 에디터이며 vi보다 약간 더 기능이 향상된 vim이 존재한다.</p>
+<p>일단 vim 부터 설치~</p>
+<p>우분투를 기준으로 설치하는 방법은 </p>
+<p>$apt-get install vim &nbsp;</p>
+<p>이다.</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile23.uf.1109684C4F49E199346F74.png" class="aligncenter" width="726" height="394" alt="" filename="제목 없음.png" filemime="image/jpeg" /><br />
+설치후</p>
+<p>$vim<br />
+을 입력하면</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile1.uf.207704494F49E1F1245E61.png" class="aligncenter" width="724" height="468" alt="" filename="제목 없음.png" filemime="image/jpeg" /></p>
+<p>을 볼 수 있다.</p>
+<p>vi은 두가지 상태가 있습니다.<br />
+에디터에 편집이 가능한 상태([편집모드])와 에디터에 특정 명령을 하는 모드([명령모드])가 존재합니다.</p>
+<p>명령모드에서 i를 눌르면 편집모드, 편집모드에서 &nbsp;esc를 누르면 명령모드로 바뀝니다.</p>
+<p>기본 명령을 알아보겠습니다.<br />
+yy - 한줄복사<br />
+p - 붙여넣기</p>
+<p>:%s/찾을문자/바꿀문자/g - 찾을 문자를 찾아 바꿀문자로 치환<br />
+:w - 저장 &nbsp;ex) w hello.c<br />
+:q - 종료 &nbsp;</p>
+<p></p>

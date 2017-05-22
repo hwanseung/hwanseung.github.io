@@ -1,0 +1,57 @@
+---
+layout: post
+title: Report9
+date: 2011-02-06 03:06:38.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/numerical analysis
+tags:
+- 수치해석
+meta:
+  _thumbnail_id: '1081'
+author: Hwanseung Lee
+---
+<div>
+<img src="{{ site.baseurl }}/assets/cfile5.uf.1532A63F4D4E0F99228DA8.png" class="aligncenter" width="585" height="451" alt="" filename="제목 없음.png" filemime="image/jpeg" />
+</div>
+<div>
+<textarea name="code" class="cpp" style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><br />
+#include &lt;stdio.h&gt;<br />
+#include &lt;math.h&gt;</p>
+<p>double h[7]={0.5,0.1,0.01,0.001,0.0001,0.00001,0.000001};</p>
+<p>double function(double x);<br />
+double function_plus(double x,double h);<br />
+double function_minus(double x,double h);</p>
+<p>int main()<br />
+{<br />
+	double x= 3.5;<br />
+	double derivative1 = 0;<br />
+	double derivative2 = 0;</p>
+<p>	printf("    h    	f(x)'        f(x)''\n");<br />
+	for(int i=0;i&lt;7;i++)<br />
+	{<br />
+		derivative1=(function_plus(x,h[i])-function_minus(x,h[i]))/(2*h[i]);<br />
+		derivative2=(function_plus(x,h[i])-(2*function(x))+function_minus(x,h[i]))/(pow(h[i],2));</p>
+<p>		printf("%lf     %lf     %lf\n",h[i],derivative1,derivative2);<br />
+	}</p>
+<p>	return 0;<br />
+}</p>
+<p>double function(double x)<br />
+{<br />
+	return 1/x;<br />
+}</p>
+<p>double function_plus(double x,double h)<br />
+{<br />
+	return 1/(x+h);<br />
+}</p>
+<p>double function_minus(double x,double h)<br />
+{<br />
+	return 1/(x-h);<br />
+}</p>
+<p></textarea></p>
+<div style="font-size: 9pt; ">
+<font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px;"><b><br />
+</b></span></font></div>
+</div>

@@ -1,0 +1,45 @@
+---
+layout: post
+title: Report1
+date: 2011-02-06 02:25:32.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/numerical analysis
+tags:
+- 수치해석
+meta:
+  _thumbnail_id: '1054'
+author: Hwanseung Lee
+---
+<div>
+<p class="MsoNormal" align="left" style="text-align:left"><span class="Apple-style-span" style="font-size: 19px; line-height: 27px;"><img src="{{ site.baseurl }}/assets/cfile9.uf.12355A4F4D4E0682127ECF.png" class="aligncenter" width="637" height="223" alt="" filename="제목 없음.png" filemime="image/jpeg" /><br />
+</span></p>
+</div>
+<div>
+</div>
+<p><textarea name="code" class="c" style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><br />
+#include &lt;iostream&gt;<br />
+#include &lt;fstream&gt;<br />
+#include &lt;cmath&gt;<br />
+#include &lt;iomanip&gt;<br />
+using namespace std;</p>
+<p>int main(void)<br />
+{<br />
+	 double x;<br />
+	 cout&lt;&lt;"X : ";<br />
+	 cin&gt;&gt;x;<br />
+	 int cound =0;</p>
+<p>	 double value1;<br />
+	 double value2;<br />
+	 cout.setf(ios::fixed);//소수점 고정<br />
+	 cout.precision(20);// 소수점 몇자리 까지;</p>
+<p>	 cout &lt;&lt;setw(3) &lt;&lt;" index "&lt;&lt;setw(25)&lt;&lt;"    value1    " &lt;&lt;setw(25)&lt;&lt;"    value2    "&lt;&lt;setw(25)&lt;&lt;endl;<br />
+	 value1 =  sqrt(x+1)-sqrt(x);<br />
+	 value2 =  1/(sqrt(x+1)+sqrt(x));<br />
+	 cout &lt;&lt;setw(3) &lt;&lt;1&lt;&lt;setw(25)&lt;&lt;value1&lt;&lt;setw(25)&lt;&lt;value2&lt;&lt;setw(25)&lt;&lt;endl;</p>
+<p>	 getc(stdin);</p>
+<p>	 return 0;<br />
+}</p>
+<p></textarea></p>

@@ -1,0 +1,31 @@
+---
+layout: post
+title: Apache 재시작 명령어 및 tomcat 재시작
+date: 2011-06-28 19:35:20.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Linux
+tags:
+- apache
+- restart
+- tomcat
+meta: {}
+author: Hwanseung Lee
+---
+<p><span style="font-size: 18pt; background-color: rgb(186, 52, 166);"><font class="Apple-style-span" color="#ffffff">Apache 재시작</font></span><br />
+<span class="Apple-style-span" style="background-color: transparent;">아파치 설정을 바꾼후 적용하려고 재시작을 하게되는데&nbsp;</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">&gt;&gt;service httpd restart</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">재시작안하고 적용할려면 다음과 같이 하면된다.</span><br />
+<span class="Apple-style-span" style="background-color: transparent; border-collapse: collapse; color: rgb(61, 68, 68); font-family: 돋움; font-size: 13px; line-height: 19px; ">&gt;&gt;apachectl -k graceful<br />
+&gt;&gt;service httpd graceful
+<div class="autosourcing-stub-extra" style="position: absolute; opacity: 0; line-height: 1.5; ">
+<p style="margin-top: 11px; margin-right: 0px; margin-bottom: 7px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; line-height: 1.5; font-size: 12px; font-family: Dotum; font-style: normal; font-weight: normal; "><strong style="padding-top: 0px; padding-right: 7px; padding-bottom: 0px; padding-left: 0px; ">[출처]</strong>&nbsp;<a href="http://blog.naver.com/thisplus5731/60125357859" target="_blank" style="text-decoration: none; ">service httpd restart 아파치 서비스 재시작</a><span style="padding-top: 0px; padding-right: 7px; padding-bottom: 0px; padding-left: 5px; ">|</span><strong style="padding-top: 0px; padding-right: 7px; padding-bottom: 0px; padding-left: 0px; ">작성자</strong>&nbsp;<a href="http://blog.naver.com/thisplus5731" target="_blank" style="text-decoration: none; ">나알자</a></p>
+</div>
+<p></span></p>
+<p>
+<span style="font-size: 18pt; background-color: rgb(186, 52, 166);"><font class="Apple-style-span" color="#ffffff">Tomcat 재시작</font></span><br />
+<span class="Apple-style-span" style="background-color: transparent;">Tomcat폴더안의 bin폴더가 있는데 거기에 startup.sh와 shutdown.sh가 존재하여&nbsp;</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">shutdown 후 startup하면 된다.</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">요런건 머리가 안좋아서 자주 안쓰면 까먹는단 말이지...&nbsp;</span></p>

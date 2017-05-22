@@ -1,0 +1,104 @@
+---
+layout: post
+title: id3v2.3 parser 작업 (mp3 tag 구조 파악)
+date: 2009-07-13 15:10:04.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/etc
+tags:
+- bit mask
+- id3
+- ID3v2
+- mp3 Tag
+- mp3 구조 파악
+- 비트 마스크
+meta:
+  _thumbnail_id: '185'
+  _edit_last: '1'
+author: Hwanseung Lee
+---
+<div>
+오랜만에 콘솔로 작업중이다.</div>
+<div>
+코딩을 하는거는 09년도 들어서 처음인거 같다. ㅡ_ㅡ;</div>
+<div>
+
+</div>
+<div>
+콘솔로 파악하고 있지만 c# 콘솔응용프로그램으로 하고 있는거라&nbsp;</div>
+<div>
+기분이 색다르다. 예전엔 c밖에 몰라서 c로만 했었는데;;</div>
+<div>
+나름 클래스를 써서 객체지향적으로하 고 있다고 생각하는데&nbsp;</div>
+<div>
+제대로 하고 있는지 모르곘다.</div>
+<div>
+
+</div>
+<div>
+준비하는게 있어서 id3v2를 파악할려고 하는데 시간이 좀 걸렸다.</div>
+<div>
+한글로 구조를 파악해논걸 못봐서 영어로 보고 있다. (검색실력이 떨어지는가 ㅡ_ㅡ;)</div>
+<div>
+어째든 안되는 영어 실력으로 <a href="http://www.id3.org" target="_blank" title="[http://www.id3.org]로 이동합니다.">www.id3.org</a>&nbsp;여기서 보면서 열라 파고 있다.</div>
+<div>
+
+</div>
+<div>
+이틀째 작업중인데 인제 어느정도 무슨 정보가 담겨있는지 나오기 시작하고 있다.</div>
+<div>
+빅뱅의 rember을 돌려봤는데;</div>
+<p><img src="{{ site.baseurl }}/assets/cfile4.uf.1166F70B4A5B49F49E3B93.jpg" class="aligncenter" width="538" height="962" alt="" filename="무제-2.jpg" filemime="image/jpeg" />첫줄 True는 id3v2 태그가 맞는지 확인 파악하는거고
+<div>
+두번째줄은 id3v2의 버전이 얼마인지</div>
+<div>
+세번쨰는 flag값인데 패쓰;</div>
+<div>
+네번째는 id3v2 태그의 크기&nbsp;</div>
+<div>
+이거 구하는데 좀 시간 걸렸다.</div>
+<div>
+02 01이 왜 257바이트가 되는지를 우선몰랐고</div>
+<div>
+생각해보니 비트값으로 계산해야되는거 였고</div>
+<div>
+그러니 당연히 07년도 C언어 수업에 살짝배운 bit mask로&nbsp;</div>
+<div>
+풀어야 되는거라..</div>
+<div>
+&nbsp;bit mask로 판단한거랑 bit mask 이용해서 크기구하는것도 살짝 시간이 소모됬다.</div>
+<div>
+
+</div>
+<div>
+그리고 내가 텍스트 인코딩에 대하여 (unicode ,&nbsp;UTF7,ASCII)&nbsp;</div>
+<div>
+모르고 있었기 때문에</div>
+<div>
+한글도 안나오고 영어로 된것들도 영어 한자쓰고 띄어 쓰여지고 하는거 때문에</div>
+<div>
+골치를 썩고 있었는데 그게 그문제인줄 몰랐던 것이다.</div>
+<div>
+
+</div>
+<div>
+인제 대충은 tag 정보를 끌어 올수 있겠는데</div>
+<div>
+다시 저장하는게 문제인데</div>
+<div>
+tag정보가 앞에 있어서</div>
+<div>
+tag정보가 수정되면 크기도 바뀌므로</div>
+<div>
+뒤에있던 음악정보들이 다 당겨지거나</div>
+<div>
+미루어져야 되느데 그게 시간이 좀 오래걸릴것 같은데</div>
+<div>
+좀 문제다 원래 그러케 하는건가? ㅡ_ㅡ'</div>
+<div>
+
+</div>
+<div>
+해결책아시는분은 댓글점 주세요;</div>

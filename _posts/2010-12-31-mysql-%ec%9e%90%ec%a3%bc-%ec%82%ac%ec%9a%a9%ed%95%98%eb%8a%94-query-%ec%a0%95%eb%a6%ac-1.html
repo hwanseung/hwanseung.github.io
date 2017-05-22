@@ -1,0 +1,62 @@
+---
+layout: post
+title: Mysql 자주 사용하는 Query 정리 -
+date: 2010-12-31 10:52:46.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Web
+tags:
+- MySQL
+- query
+meta:
+  _thumbnail_id: '1004'
+author: Hwanseung Lee
+---
+<p><span style="font-size: 18pt; line-height: 1.5; ">&nbsp;mysql &nbsp;접속</span>
+<div style="font-size: 9pt; line-height: 1.5; ">
+&gt;mysql -u id -p</div>
+<div style="font-size: 9pt; line-height: 1.5; ">ex) mysql -u root -p</div>
+<div style="font-size: 9pt; line-height: 1.5; "><img src="{{ site.baseurl }}/assets/cfile9.uf.151CCA4F4D1DB0DC1EA77F.png" class="aligncenter" width="636" height="259" alt="" filename="1.png" filemime="image/jpeg" />
+</div>
+<div style="font-size: 9pt; line-height: 1.5; ">
+</div>
+<div style="font-size: 9pt; line-height: 1.5; "><span style="font-size: 18pt; ">Database 보기</span></div>
+<div><font class="Apple-style-span" size="5"><span class="Apple-style-span" style="line-height: 36px;"><span style="font-size: 9pt; ">&gt;show databases;</span></span></font></div>
+<div><span class="Apple-style-span" style="line-height: 36px; "><img src="{{ site.baseurl }}/assets/cfile25.uf.164F7E554D1DB35B31C10F.png" class="aligncenter" width="636" height="231" alt="" filename="2.png" filemime="image/jpeg" /></span></div>
+<div><span class="Apple-style-span" style="line-height: 36px; "><br />
+</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><span style="font-size: 18pt; ">Database 생성</span></span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;">&gt;create database dbname;</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;">ex)create database rowdb;</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><br />
+</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><span class="Apple-style-span" style="line-height: 18px; " /></span>
+<div>
+<span class="Apple-style-span" style="line-height: 36px; "><span style="font-size: 18pt; ">Database 삭제</span></span></div>
+<div><span class="Apple-style-span" style="line-height: 36px; ">&gt;dorp database dbname;</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px; ">ex)drop database rowdb;</span></div>
+</div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><img src="{{ site.baseurl }}/assets/cfile6.uf.152EC74C4D1DB4891C110F.png" class="aligncenter" width="636" height="237" alt="" filename="4.png" filemime="image/jpeg" /><br />
+</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><span class="Apple-style-span" style="line-height: 18px; " /></span>
+<div>
+<span class="Apple-style-span" style="line-height: 36px; "><span style="font-size: 18pt; ">Database 이용</span></span></div>
+<div><span class="Apple-style-span" style="line-height: 36px; ">&gt;use DB이름;</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px; ">ex)ues rowdb;</span></div>
+</div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><span style="font-size: 18pt; ">상태확인</span></span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;">&gt;status</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><img src="{{ site.baseurl }}/assets/cfile22.uf.125180504D1DB3CB10748D.png" class="aligncenter" width="645" height="345" alt="" filename="3.png" filemime="image/jpeg" /><br />
+</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><span style="font-size: 18pt; ">아이디 생성</span></span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;">&gt;GRANT all privileges On &nbsp;DB이름.* TO '아이디'@'%' with grant option indentified by'비밀번호';</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><br />
+</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><br />
+</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><br />
+</span></div>
+<div><span class="Apple-style-span" style="line-height: 36px;"><br />
+</span></div>

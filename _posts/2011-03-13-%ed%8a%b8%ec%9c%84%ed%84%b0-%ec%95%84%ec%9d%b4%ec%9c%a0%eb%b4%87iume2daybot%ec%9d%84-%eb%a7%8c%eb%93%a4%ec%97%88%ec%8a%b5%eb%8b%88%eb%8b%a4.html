@@ -1,0 +1,151 @@
+---
+layout: post
+title: 파이썬으로 트위터 아이유봇(@IU_me2Day_bot)을 만들었습니다.
+date: 2011-03-13 14:21:18.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Python
+tags:
+- IU_me2Day_bot
+- ME2DAY
+- OAuth
+- python
+- twitter
+- 미투데이
+- 아이유
+- 아이유봇
+- 엄마코딩봇
+- 트위터
+- 트위터 봇
+- 파이썬
+meta:
+  _thumbnail_id: '1446'
+author: Hwanseung Lee
+---
+<p><font class="Apple-style-span" color="#333333" style="font-family: 굴림; line-height: 1.5; ">트위터 아이유봇(@IU_me2Day_bot)을 만들었습니다.</font>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+이&nbsp;아이유봇(@IU_me2Day_bot)이 탄생된 배경은 참 잉여롭습니다.</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+프로그래밍을 공부하는 저와 주위의 형들과 함께 최근 부터 프로그래밍 실력으로 잉여로운 배틀이 시작되었습니다..</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+벌써 2회를 맞이 하는데요 ㅋ 첫회는 "로또"라는 주제로 잉여 배틀을 하였구요</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+이번엔 형들과 저는 모두 "아이유"를 좋아하기 때문에 주제를 "아이유"로 정했습니다.</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+이 배틀은 주제에 대한 자유로운 결과물을 짧은 시간안에 내어야 됩니다.ㅋ</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+아이유라는 주제가 나왔을때 어떤것을 만들면 좋을까 많이 고민을 하였습니다.</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+처음 생각난게 아이유양의 미투데이와 트위터를 한곳으로 모아주는 그러한 것을 만들어 보자는 생각을 했습니다.</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+트위터에 들어가보니 폐쇄되었더군요 알고 보니 몇일전에 팔로워하는 그 아이디는 사칭아이디였던 것입니다.</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+저 같은 사람들은 트위터는 하는데 미투데이는 하지 않고 굳이 미투데이를 하면 번거롭다는 생각이 들어서</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+엄마코딩봇(@umma_coding_bot)은 것을 만들어 아이유 양이 미투데이에 글을 쓰면 트위터로 그 내용을</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+전언하는 트위터봇을 만들어 보자는 생각이 떠올랐습니다.</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; line-height: 1.5; ">
+
+</div>
+<div style="font-family: 굴림; line-height: 1.5; ">
+<font class="Apple-style-span" color="#333333">그래서 사전조사를 조금 해봤는데 네이버에서 미투데이 API를 제공하는데 알리미</font>기능은&nbsp;<span class="Apple-style-span" style="font-family: dotum; line-height: 20px; ">'STOMP'형식을 제공하기에</span></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;">저는 모르는 생소한 것이라 페이지를 파싱하기로 했습니다.</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;">그 파싱한 내용를 가지고 트위터로 보내자는 생각이었습니다.</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;">트위터에 글을 쓸려면 OAUTH 인증 방식을 거쳐야 되었고 그 방식은 이해하지 않은 채로 배틀에 참여했다가</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;">타임 오버로 미완성을 해버렸습니다......</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;">그 배틀을 끝내고 다시 돌아와 계속 작업을 하여 완성하였습니다.</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;">OAUTH 인증 방식을 한번도 해보지 않아서 많이 허둥지둥 했었네요 ㅋ</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;">드디어 저의 Python의 처녀작입니다.&nbsp;</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><img src="{{ site.baseurl }}/assets/cfile10.uf.147A6C384D7CD0FE02D75B.png" class="aligncenter" width="484" height="162" alt="" filename="제목 없음.png" filemime="image/jpeg" /><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><span class="Apple-style-span" style="border-collapse: collapse; color: rgb(80, 80, 80); font-family: 굴림; line-height: 19px; "><a target="_blank" href="http://s.ppomppu.co.kr/?idno=freeboard_985352&amp;target=http://twitter.com/IU_me2Day_bot" style="text-decoration: none; color: rgb(0, 0, 0); ">http://twitter.com/IU_me2Day_bot</a>&nbsp;이구요</span></span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><span class="Apple-style-span" style="border-collapse: collapse; color: rgb(80, 80, 80); font-family: 굴림; line-height: 19px; "><br />
+</span></span></font></div>
+<div>
+<font class="Apple-style-span" color="#505050" face="굴림"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 19px;"><span class="Apple-style-span" style="color: rgb(68, 68, 68); font-family: 'Helvetica Neue', Arial, Helvetica, 'Liberation Sans', FreeSans, sans-serif; font-size: 18px; font-weight: bold; line-height: 22px; border-collapse: separate; ">@IU_me2Day_bot&nbsp;</span></span></font><span class="Apple-style-span" style="border-collapse: collapse; color: rgb(80, 80, 80); font-family: 굴림; line-height: 19px; ">으로 팔로워 추가하시면 됩니다.</span></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;">아이유양의 미투데이에 올리는 글을 저 트위터 봇으로 인하여 트친들이게 아이유양의 이야기를 전해줄 수</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;">있어서 많이 기쁩니다.ㅋㅋ&nbsp;</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="dotum"><span class="Apple-style-span" style="line-height: 20px;"><br />
+</span></font></div>

@@ -1,0 +1,29 @@
+---
+layout: post
+title: 구조체에 대한 고찰1(구조체의 시작주소는?)
+date: 2008-07-07 13:50:36.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/C
+tags:
+- C언어
+- 구조체
+- 구조체에 대한 고찰?
+meta: {}
+author: Hwanseung Lee
+---
+<p>음.. 갑자기 이런 궁금증을 가져봤다;;</p>
+<p><font color="#cc9900">만약 arr[128]이란 배열이있다면 배열의 시작주소(arr의 주소)는 arr[0]이랑 같다.<br /></font><br />그렇다면<font color="#ff3399"> struct이란 구조체의 시작 주소(struct의 주소)는 무엇일까?<br /></font><br />내 예상은 구조체의 첫번째 멤버(?)가 아닐까 싶었는데</p>
+<p>간단히 오랜만에 C코드를 짜봤다.;</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>typedef struct Test_Struct{<br />&nbsp;int x;<br />&nbsp;int y;<br />}TestStruct;</p>
+<p>TestStruct TS={100,200};</p>
+<p>int main()<br />{</p>
+<p>&nbsp;printf("%d",TS);</p>
+<p>&nbsp;return 0;<br />}</p>
+<p>실행결과 100</p>
+<p>역시 맞아떨여졌다.</p>
+<p><font color="#008000">결론;;<br />&nbsp;struct_test이란 구조체의 시작 주소(struct의 주소)는 구조체의 첫번째 멤버이다.<br />ex)<br />struct struct_test{<br />int x;<br />int y;<br />}<br />struct_test ST={100,200}이 있다면</p>
+<p>ST의 주소값은 ST.x와 같다.<br />ST==&amp;ST.x가 될것이다.</font></p>

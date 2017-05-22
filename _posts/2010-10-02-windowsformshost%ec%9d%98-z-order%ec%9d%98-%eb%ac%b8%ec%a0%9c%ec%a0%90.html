@@ -1,0 +1,70 @@
+---
+layout: post
+title: WindowsFormsHost의 Z-order의 문제점....
+date: 2010-10-02 05:00:19.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/WPF
+tags:
+- Direct Show .Net
+- GDI
+- WFP
+- WindowsFormsHost
+- WinForm
+- Z-order
+meta:
+  _thumbnail_id: '739'
+author: Hwanseung Lee
+---
+<p>이번에 프로젝트를 진행하면서
+<div>
+</div>
+<div>WPF와 Direct Show를 접목 시키면서 Direct Show .Net Libarary를 사용하게 되었는데</div>
+<div>
+</div>
+<div>
+그때 WPF에서 WinForm의 컨트롤을 사용하기 위해서 WindowsFormsHost를 사용하였는데</div>
+<div>
+</div>
+<div>
+이게 Z-or<span style="font-family: Gulim; ">der에 문제점이 있는 것이였다...</span></div>
+<div>
+</div>
+<div>
+<span style="font-family: Gulim; ">WPF는&nbsp;</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); font-family: 'Malgun Gothic', dotum, 'Trebuchet MS', 'Lucida Grande', Tahoma, Helvetica, Arial, sans-serif; border-collapse: collapse; "><span style="font-family: Gulim; ">GDI객체를 사용해서 화면에 뿌리지 않는 모양인데;;</span></span></div>
+<div><span class="Apple-style-span" style="color: rgb(0, 0, 0); font-family: 'Malgun Gothic', dotum, 'Trebuchet MS', 'Lucida Grande', Tahoma, Helvetica, Arial, sans-serif; border-collapse: collapse; "><span style="font-family: Gulim; "><br />
+</span></span></div>
+<div><font class="Apple-style-span" color="#000000" face="Gulim"><span class="Apple-style-span" style="border-collapse: collapse;">WinForm 컨트롤을 쓰면서 GDI도 같이 뿌리게 되면서</span></font></div>
+<div><font class="Apple-style-span" color="#000000" face="Gulim"><span class="Apple-style-span" style="border-collapse: collapse;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#000000" face="Gulim"><span class="Apple-style-span" style="border-collapse: collapse;">Z-order과 상관없이.. WFP를 먼저 뿌리고 마지막으로 GDI를 뿌리는 듯 하네요;;</span></font></div>
+<div><font class="Apple-style-span" color="#000000" face="Gulim"><span class="Apple-style-span" style="border-collapse: collapse;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#000000" face="Gulim"><span class="Apple-style-span" style="border-collapse: collapse;">이런..................</span></font></div>
+<div><font class="Apple-style-span" color="#000000" face="Gulim"><span class="Apple-style-span" style="border-collapse: collapse;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#000000" face="Gulim"><span class="Apple-style-span" style="border-collapse: collapse;"><img src="{{ site.baseurl }}/assets/cfile6.uf.194662114CA6BBBC2CCE6C.png" class="aligncenter" width="274" height="230" alt="" filename="2.png" filemime="image/jpeg" /><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#000000" face="'Malgun Gothic', dotum, 'Trebuchet MS', 'Lucida Grande', Tahoma, Helvetica, Arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;">Z-order을 분명히 흰 사각형으로 먼저 올렸음에도 불구하고;;;</span></font></div>
+<div><font class="Apple-style-span" color="#000000" face="'Malgun Gothic', dotum, 'Trebuchet MS', 'Lucida Grande', Tahoma, Helvetica, Arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;"><br />
+</span></font></div>
+<div><img src="{{ site.baseurl }}/assets/cfile25.uf.204662114CA6BBBC2D95A9.png" class="aligncenter" width="548" height="380" alt="" filename="제목 없음.png" filemime="image/jpeg" /></div>
+<div>다음 화면과 같이 뒤에 와보리는 상황이 되어벼렸네요;;</div>
+<div>
+</div>
+<div>
+원래... 프로젝트 계획에는 상관이 없지만..</div>
+<div>
+</div>
+<div>
+동영상위에 레이어를 띄어서 무언가를 해볼 생각이 있었는데</div>
+<div>
+</div>
+<div>
+물거품이 되어버렸네요;;</div>
+<div>
+</div>
+<div>
+그냥 프로젝트 시작계획대로 &nbsp;해야겠어요;;&nbsp;</div>

@@ -1,0 +1,215 @@
+---
+layout: post
+title: Report7 Lagrange 보간법, Newton 보간법, Cubic spline
+date: 2011-02-06 02:57:31.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/numerical analysis
+tags:
+- Cubic spline
+- Lagrange 보간법
+- Newton 보간법
+- 수치해석
+meta:
+  _thumbnail_id: '1075'
+author: Hwanseung Lee
+---
+<p><font class="Apple-style-span" color="#333333" face="굴림"><span class="Apple-style-span" style="font-size: 9pt; line-height: 1.5;"><img src="{{ site.baseurl }}/assets/cfile4.uf.155C565A4D4E0DA616BDEF.png" class="aligncenter" width="557" height="439" alt="" filename="제목 없음.png" filemime="image/jpeg" /></span></font>
+<div>
+<div>
+<textarea name="code" class="cpp" style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><br />
+ #include <stdio.h><br />
+#include<br />
+<math.h>
+<p>#define PI 3.14159265</p>
+<p>float xarr[6]={0.15,2.3,3.15,4.85,6.25,7.95};<br />
+float yarr[6]={4.79867,4.49013,4.2243,3.47313,2.66674,1.51909};</p>
+<p>float want_x[14]={0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7};<br />
+float want_y[14]={0,};</p>
+<p>float funtion(float x);</p>
+<p>int main(void)<br />
+{<br />
+	for(int x=0;x<14;x++)<br />
+	{<br />
+		want_y[x]=0;<br />
+		for(int i=0;i<5;i++)<br />
+		{<br />
+			float temp = 1;<br />
+			for(int j=0;j<5;j++)<br />
+			{<br />
+				if(j!=i)<br />
+				{<br />
+					temp*=(want_x[x]-xarr[j])/(xarr[i]-xarr[j]);<br />
+					printf("*");<br />
+				}<br />
+			}<br />
+			want_y[x]+=temp*yarr[i];<br />
+			printf("%d^^%f//%f\n",i,want_y[x],temp);<br />
+		}<br />
+		printf("\n");<br />
+	}<br />
+	for(int i=0;i<14;i++)<br />
+	{<br />
+		printf("x = %f    y = %f     f(x) = %f  f(x)-y = %f  \n",want_x[i],want_y[i],funtion(want_x[i]),funtion(want_x[i])-want_y[i]);<br />
+	}</p>
+<p>	return 0;<br />
+}</p>
+<p>float funtion(float x)<br />
+{</p>
+<p>	return 4.8*cos(PI/20*x);<br />
+}</p>
+</math.h></stdio.h></textarea>
+</div>
+<div style="font-size: 9pt; ">
+<font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px;"><b><br />
+</b></span></font></div>
+<p>
+</div>
+<p><img src="{{ site.baseurl }}/assets/cfile5.uf.165C565A4D4E0DA6174F45.png" class="aligncenter" width="571" height="459" alt="" filename="제목 없음1.png" filemime="image/jpeg" /></p>
+<div>
+<textarea name="code" class="cpp" style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><br />
+#include <stdio.h><br />
+#include<br />
+<math.h>
+<p>#define PI 3.14159265</p>
+<p>float xarr[6]={0.15,2.3,3.15,4.85,6.25,7.95};<br />
+float yarr[6]={4.79867,4.49013,4.2243,3.47313,2.66674,1.51909};</p>
+<p>float want_x[14]={0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7};<br />
+float want_y[14]={0,};</p>
+<p>float d[6][6]={0,};</p>
+<p>float funtion(float x);</p>
+<p>int main(void)<br />
+{</p>
+<p>	 for (int i=0; i<6; i++)<br />
+    {<br />
+        d[0][i]=yarr[i];<br />
+    }<br />
+	  for (int k=1; k<=6-1; k++)<br />
+       for (int i=0; i<=6-1-k; i++)<br />
+          d[k][i]=(d[k-1][i+1]-d[k-1][i])/(xarr[k+i]-xarr[i]);</p>
+<p>	 for (int i=1; i<6; i++)<br />
+    {<br />
+        printf("%f ",d[i][0]);<br />
+    }</p>
+<p>	 for(int x=0;x<14;x++)<br />
+	 {<br />
+		 want_y[x]=0;<br />
+		 for(int i=0;i<6;i++)<br />
+		 {<br />
+			 float temp=d[i][0];<br />
+			 printf("%f\n",temp);<br />
+			 for(int j=0;j<6;j++)<br />
+			 {</p>
+<p>				 if(i==j)<br />
+					 break;<br />
+				 else<br />
+				 {<br />
+					 temp*=(want_x[x]-want_x[j]);<br />
+				 }<br />
+			 }<br />
+			 want_y[x]+=temp;<br />
+			 printf("%d^^%f//%f\n",i,want_y[x],temp);<br />
+		 }<br />
+		 printf("\n");<br />
+	 }</p>
+<p>	for(int i=0;i<14;i++)<br />
+	{<br />
+		printf("x = %f    y = %f     f(x) = %f  f(x)-y = %f  \n",want_x[i],want_y[i],funtion(want_x[i]),funtion(want_x[i])-want_y[i]);<br />
+	}</p>
+<p>	return 0;<br />
+}</p>
+<p>float funtion(float x)<br />
+{</p>
+<p>	return 4.8*cos(PI/20*x);<br />
+}</p>
+</math.h></stdio.h></textarea>
+</div>
+<p><img src="{{ site.baseurl }}/assets/cfile6.uf.185C565A4D4E0DA7184727.png" class="aligncenter" width="555" height="439" alt="" filename="제목 없음2.png" filemime="image/jpeg" /></p>
+<div>
+<textarea name="code" class="cpp" style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><br />
+#include <stdio.h><br />
+#include<br />
+<math.h>
+<p>#define PI 3.14159265</p>
+<p>float xarr[6]={0.15,2.3,3.15,4.85,6.25,7.95};<br />
+float yarr[6]={4.79867,4.49013,4.2243,3.47313,2.66674,1.51909};</p>
+<p>float want_x[14]={0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7};<br />
+float want_y[14]={0,};</p>
+<p>float d[6][6]={0,};</p>
+<p>float funtion(float x);<br />
+double CSpline(int n, double data);</p>
+<p>int main(void)<br />
+{<br />
+	 for (int i = 0; i < 14; i++)<br />
+    {<br />
+      printf("x = %f  y = %f  f(x) = %f f(x)-y = %f \n",want_x[i],CSpline(6,want_x[i]),funtion(want_x[i]),funtion(want_x[i])-CSpline(6,want_x[i]));<br />
+    }</p>
+<p>	return 0;<br />
+}</p>
+<p>double CSpline(int n, double data)<br />
+{<br />
+     int k;<br />
+     double e[100],f[100],g[100],r[100],w[100];<br />
+     double A[100], B[100], C[100], D[100];<br />
+     double intPol;</p>
+<p>     //form the tridiagonal system<br />
+     e[0]=0.;<br />
+     e[1]=0.;<br />
+     f[0]=0.;<br />
+     g[0]=0.;<br />
+     r[0]=0.;<br />
+     g[n-2]=0.;<br />
+     for (k = 1; k <= n-2; k++)<br />
+     {<br />
+         e[k+1] = xarr[k+1] - xarr[k];<br />
+         f[k] = 2.*(xarr[k+1] - xarr[k-1]);<br />
+         g[k] = xarr[k+1] - xarr[k];<br />
+         r[k] = 6.*((yarr[k+1] - yarr[k]) / (xarr[k+1] - xarr[k])<br />
+                   + (yarr[k-1] - yarr[k]) / (xarr[k] - xarr[k-1]));<br />
+     }</p>
+<p>     w[0] = 0.;<br />
+     w[n-1] = 0.;<br />
+     for (k = 2; k <= n-2; k++)<br />
+     {<br />
+         e[k] = e[k] / f[k-1];<br />
+         f[k] = f[k] - e[k]*g[k-1];<br />
+     }    </p>
+<p>     for (k = 2; k <= n-2; k++)<br />
+     {<br />
+         r[k] = r[k] - e[k]*r[k-1];<br />
+     }    </p>
+<p>     w[n-2] = r[n-2] / f[n-2];<br />
+     for (k = n-3; k >= 1; k--)<br />
+     {<br />
+         w[k] = (r[k] - g[k]*w[k+1]) / f[k];<br />
+     }</p>
+<p>     for (k = 1; k <= n-1; k++)<br />
+     {<br />
+         A[k] = w[k-1] / (6.*(xarr[k] - xarr[k-1]));<br />
+         B[k] = w[k] / (6.*(xarr[k] - xarr[k-1]));<br />
+         C[k] = yarr[k-1] / (xarr[k] - xarr[k-1])<br />
+                - w[k-1] / 6.*(xarr[k] - xarr[k-1]);<br />
+         D[k] = yarr[k] / (xarr[k] - xarr[k-1])<br />
+                - w[k] / 6.*(xarr[k] - xarr[k-1]);<br />
+     }        </p>
+<p>     //보¬¢¬간Æ¡Ì값Æ¨£ 계Æe산íe<br />
+     for (k = 1; k <= n-1; k++)<br />
+     {<br />
+         if(data >= xarr[k-1] && data <= xarr[k])<br />
+         {<br />
+                 intPol = A[k] * pow(xarr[k] - data, 3)<br />
+                        + B[k] * pow(data - xarr[k-1], 3)<br />
+                        + C[k] * (xarr[k] - data)<br />
+                        + D[k] * (data - xarr[k-1]);<br />
+         }<br />
+     }<br />
+     return(intPol);<br />
+}</p>
+<p>float funtion(float x)<br />
+{</p>
+<p>	return 4.8*cos(PI/20*x);<br />
+}</p>
+</math.h></stdio.h></textarea>
+</div>

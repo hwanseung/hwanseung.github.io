@@ -1,0 +1,688 @@
+---
+layout: post
+title: CLCD + 키메트릭스 조합
+date: 2011-12-20 01:58:49.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Junior/Embedded System
+tags:
+- 임베디드 시스템
+meta:
+  _thumbnail_id: '2061'
+author: Hwanseung Lee
+---
+<p><span style="color:black; font-family:맑은 고딕; font-size:16pt"><strong>1.Make<br />
+</strong></span></p>
+<p><img src="{{ site.baseurl }}/assets/cfile6.uf.2005DF344EEFEBDA03352C.png" /><span style="color:black; font-family:맑은 고딕; font-size:16pt"><strong><br />
+			</strong></span></p>
+<p>
+&nbsp;</p>
+<p><span style="font-family:맑은 고딕; font-size:16pt"><strong>2.comfile_led<br />
+</strong></span></p>
+<p><img src="{{ site.baseurl }}/assets/cfile5.uf.1575E6334EEFEBDA34E7B7.png" /><span style="font-family:맑은 고딕; font-size:16pt"><strong><br />
+			</strong></span></p>
+<p>
+&nbsp;</p>
+<p><span style="font-family:맑은 고딕; font-size:16pt"><strong>3.</strong></span><br />
+		<span style="font-family:맑은 고딕; font-size:16pt"><strong>run<br />
+</strong></span></p>
+<p><img src="{{ site.baseurl }}/assets/cfile29.uf.18577F424EEFEBDB0A67F5.png" /><span style="font-family:맑은 고딕; font-size:16pt"><strong><br />
+			</strong></span></p>
+<p>
+&nbsp;</p>
+<p><span style="font-family:맑은 고딕; font-size:16pt"><strong>4.</strong></span><br />
+		<span style="font-family:맑은 고딕; font-size:16pt"><strong>소스코드<br />
+</strong></span></p>
+<p><span style="font-family:맑은 고딕; font-size:16pt"><strong>Makefile<br />
+</strong></span></p>
+<div>
+<table style="border-collapse:collapse" border="0">
+<colgroup>
+<col style="width:615px" /></colgroup>
+<tbody valign="top">
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top:  solid 0.5pt; border-left:  solid 0.5pt; border-bottom:  solid 0.5pt; border-right:  solid 0.5pt">
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>KDIR&nbsp;&nbsp;&nbsp;&nbsp;:= /home/hwanseung/270/kernel/linux-2.6.11-h270-tku_v1.1-app<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>obj-m&nbsp;&nbsp;&nbsp;&nbsp;:= clcd_key.o<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>build:<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;make -C $(KDIR) SUBDIRS=$(PWD) modules<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>clean:<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;rm -rf *.o *.ko *.mod.c<br />
+</strong></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span style="font-family:맑은 고딕; font-size:16pt"><strong>Clcd_key.c<br />
+</strong></span></p>
+<div>
+<table style="border-collapse:collapse" border="0">
+<colgroup>
+<col style="width:615px" /></colgroup>
+<tbody valign="top">
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top:  solid 0.5pt; border-left:  solid 0.5pt; border-bottom:  solid 0.5pt; border-right:  solid 0.5pt">
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;linux/module.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;linux/kernel.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;linux/sched.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;linux/init.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;linux/fs.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;linux/delay.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;linux/poll.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;asm/uaccess.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;asm/hardware.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;asm/io.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define CLCD_MAJOR           238<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define CLCD_NAME           "CLCD"<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define FPGA_CLCD_WR_ADD&nbsp;&nbsp;&nbsp;&nbsp;(0x12300000)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define FPGA_CLCD_RS_ADD&nbsp;&nbsp;&nbsp;&nbsp;(0x12380000)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define CLCD_CMD_ADDR &nbsp;&nbsp;&nbsp;&nbsp;(*((volatile unsigned char *)(mem_base_wr)))<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define CLCD_DATA_ADDR &nbsp;&nbsp;&nbsp;&nbsp;(*((volatile unsigned char *)(mem_base_rs)))<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static void *mem_base_wr, *mem_base_rs;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static unsigned long mem_addr_wr, mem_addr_rs, mem_len;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define KEY_MAJOR           233<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define KEY_NAME            "KEY"<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define SCAN_NUM&nbsp;&nbsp;&nbsp;&nbsp;       4<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define FPGA_KEY_OUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0x11D00000)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define FPGA_KEY_IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0x11E00000)<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define KEYOUT    &nbsp;&nbsp;&nbsp;&nbsp;(*(volatile unsigned char *)mem_key_out)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define KEYIN   &nbsp;&nbsp;&nbsp;&nbsp;(*(volatile unsigned char *)mem_key_in)<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static void *mem_key_out, *mem_key_in;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>//전역변수 선언<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static struct timer_list key_timer_str;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static unsigned char key_data;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static pid_t id;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static int n = 1;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static void lcd_init(void)         // LCD 초기화<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  CLCD_CMD_ADDR = 0x38;    // 8-비트, 2 라인, 5x8&nbsp;&nbsp;&nbsp;&nbsp;iounmap(mem_base_wr);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  mdelay(300);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  CLCD_CMD_ADDR = 0x0e;    // LCD 디스플레이 ON, 커서 ON<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  mdelay(100);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  CLCD_CMD_ADDR = 0x02;    // 커서를 홈으로 이동<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  mdelay(100);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  CLCD_CMD_ADDR = 0x01;    // 화면 정리<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  mdelay(100);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static void string_out(char *str)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  char *s;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  int i=0;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  printk("%s\n", str);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  lcd_init();<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  for (s=str; *s; s++) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    CLCD_DATA_ADDR = *s;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    if(i == 15) {                  // 출력할 문자가 0 ~ 15열을 초과하므로<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>      udelay(100);               // 2번 행에 문자를 출력<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>      CLCD_CMD_ADDR = 0xC0;    // D7=1, D6=1, D5 ~ D0는 모두 1<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    }<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    udelay(100);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    i++;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  }<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>int clcd_open (struct inode *inode, struct file *filp)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  return 0;                   // success<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>int clcd_release (struct inode *inode, struct file *filp)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  return 0;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>ssize_t clcd_write (struct file *filp, const char *buf, size_t count, loff_t *f_pos)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  char data[32];<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  memset(data, 0 , 32);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  copy_from_user(data, buf, count);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  string_out(data);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  return 0;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>struct file_operations clcd_fops = {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  .owner &nbsp;&nbsp;&nbsp;&nbsp;= THIS_MODULE,<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  .write&nbsp;&nbsp;&nbsp;&nbsp;= clcd_write,<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  .open&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= clcd_open,<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  .release&nbsp;&nbsp;&nbsp;&nbsp;= clcd_release,<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>};<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>int key_open (struct inode *inode, struct file *filp)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  return 0;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>int key_release (struct inode *inode, struct file *filp)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  del_timer(&amp;key_timer_str);                // 타이머 리스트에서 타이머 제거<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  return 0;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>ssize_t key_read (struct file *filp, char *buf, size_t count, loff_t *f_pos)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  copy_to_user(buf, &amp;key_data, sizeof(key_data));  // 커널 영역에서 사용자 영역으로<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  return 0;                                        // 복사<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>void timer_function(unsigned long data)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  unsigned int i, in, out;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  for(i=0;i&lt;4;i++){<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    out = (1 &lt;&lt; i);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    KEYOUT = out;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    in = ((KEYIN) &amp; (0x0F));<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    out =((out) &lt;&lt; 4);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    if (in != 0) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>      key_data = ((out) | (in));<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>      kill_proc(id, SIGUSR1, 1);     // 커널에서 시그널을 응용프로그램에게 전달<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    }<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  }<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>   /* if (n &gt; SCAN_NUM)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>      n = 1;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    else<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    n++; */<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  key_timer_str.expires = jiffies + (HZ/100);  // 타이머의 만기 기간 설정<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  add_timer(&amp;key_timer_str);&nbsp;&nbsp;&nbsp;&nbsp;             // 타이머를 타이머 리스트에 추가<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>ssize_t key_write (struct file *filp, const char *buf, size_t count, loff_t *f_pos)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  get_user(id,(int*)buf);                          // user id 값 저장<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  init_timer(&amp;key_timer_str);                     // 타이머 초기화<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  key_timer_str.expires = jiffies + (HZ/100);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  key_timer_str.data = (unsigned long)n;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  key_timer_str.function = &amp;timer_function;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  add_timer(&amp;key_timer_str);                    // 타이머를 타이머 리스트에 추가<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  return 0;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>struct file_operations key_fops = {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  .owner&nbsp;&nbsp;&nbsp;&nbsp;= THIS_MODULE,<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  .read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= key_read,<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  .write&nbsp;&nbsp;&nbsp;&nbsp;= key_write,<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  .open&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= key_open,<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  .release&nbsp;&nbsp;&nbsp;&nbsp;= key_release,<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>};<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static int clcd_key_init(void)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  int result;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  result = register_chrdev(CLCD_MAJOR, CLCD_NAME, &amp;clcd_fops);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  if (result &lt; 0) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>        printk(KERN_WARNING " can't get major \n");<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>        return result;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  }<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  mem_addr_wr =  FPGA_CLCD_WR_ADD;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  mem_addr_rs =  FPGA_CLCD_RS_ADD;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  mem_len  =  0x1000;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  mem_base_wr = ioremap_nocache ( mem_addr_wr, mem_len);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  if( !mem_base_wr) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>        printk("Error mapping clcd_wr memery");<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>        return -EBUSY;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  }<br />
+</strong></span></p>
+<p style="text-align: justify">&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  mem_base_rs = ioremap_nocache ( mem_addr_rs, mem_len);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  if( !mem_base_rs) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>        printk("Error mapping clcd_rs memery");<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>        return -EBUSY;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  }<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  printk("FPGA %s MAJOR %d\n",CLCD_NAME, result);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  return 0;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  unsigned long mem_addr_out, mem_addr_in, mem_len;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  result = register_chrdev(KEY_MAJOR, KEY_NAME, &amp;key_fops);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  if (result &lt; 0) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    printk(KERN_WARNING"Failed to register the driver. \n");<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    return result;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  }<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  mem_addr_out =  FPGA_KEY_OUT;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;mem_addr_in  =  FPGA_KEY_IN;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;mem_len&nbsp;&nbsp;&nbsp;&nbsp;= 0x1000;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;mem_key_out = ioremap_nocache (mem_addr_out, mem_len);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;if(!mem_key_out) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printk(" Error mapping key_out memory\n");<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return -EBUSY;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;mem_key_in = ioremap_nocache (mem_addr_in, mem_len);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;if(!mem_key_in) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printk(" Error mapping key_in memory\n");<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return -EBUSY;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  printk("FPGA %s MAJOR %d\n", KEY_NAME, KEY_MAJOR);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  return 0;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static void clcd_key_exit(void)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  unregister_chrdev(CLCD_MAJOR, CLCD_NAME);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  iounmap(mem_base_wr);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  iounmap(mem_base_rs);<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  unregister_chrdev (KEY_MAJOR, KEY_NAME);<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>MODULE_LICENSE("GPL");<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>module_init(clcd_key_init);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>module_exit(clcd_key_exit);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:맑은 고딕; font-size:16pt"><strong><br />
+								</strong></span>&nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span style="font-family:맑은 고딕; font-size:16pt"><strong>Test_clcd_key.c<br />
+</strong></span></p>
+<div>
+<table style="border-collapse:collapse" border="0">
+<colgroup>
+<col style="width:615px" /></colgroup>
+<tbody valign="top">
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top:  solid 0.5pt; border-left:  solid 0.5pt; border-bottom:  solid 0.5pt; border-right:  solid 0.5pt">
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;stdio.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;stdlib.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;signal.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;unistd.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;sys/types.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;sys/stat.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;fcntl.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#include &lt;linux/delay.h&gt;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static int dev;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static unsigned char vkey;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static char lcdDev[] = "/dev/CLCD";<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>static int  lcdFd = -1;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>#define     MAXCHR  32<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-size:10pt"><strong><span style="font-family:나눔고딕코딩">void keysignal(int sig)                       // ½</span><span style="font-family:바탕">Ã</span><span style="font-family:나눔고딕코딩">±×³</span><span style="font-family:바탕">ÎÀ</span><span style="font-family:나눔고딕코딩">» ¹Þ¾</span><span style="font-family:바탕">ÒÀ</span><span style="font-family:나눔고딕코딩">» ¶§ ½</span><span style="font-family:바탕">ÇÇàµÉ</span><span style="font-family:나눔고딕코딩"><br />
+									</span><span style="font-family:바탕">ÇÔ</span><span style="font-family:나눔고딕코딩">¼</span><span style="font-family:바탕">ö</span><span style="font-family:나눔고딕코딩"><br />
+									</span></strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  read(dev, &amp;vkey, 1);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  printf("SIGNAL occur!!!!\n");<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>int main(void)<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>{<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  pid_t id;<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  int n;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  char buf[MAXCHR];<br />
+</strong></span></p>
+<p style="text-align: justify">&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  if ((dev = open("/dev/KEY", O_RDWR)) &lt; 0) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    printf("return Value is %d\n",dev);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    perror("open failed /dev/KEY");<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    close(dev);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    exit(-1);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  }<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  lcdFd = open(lcdDev, O_RDWR);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  if (lcdFd &lt; 0) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    fprintf(stderr, "cannot open CLCD (%d)", lcdFd);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    exit(2);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  }<br />
+</strong></span></p>
+<p style="text-align: justify">
+&nbsp;</p>
+<p style="text-align: justify"><span style="font-size:10pt"><strong><span style="font-family:나눔고딕코딩">   (void) signal (SIGUSR1, keysignal);     // keysignal </span><span style="font-family:바탕">ÇÔ</span><span style="font-family:나눔고딕코딩">¼</span><span style="font-family:바탕">ö</span><span style="font-family:나눔고딕코딩">¸</span><span style="font-family:바탕">¦</span><span style="font-family:나눔고딕코딩"><br />
+									</span><span style="font-family:바탕">Ä</span><span style="font-family:나눔고딕코딩">¿³</span><span style="font-family:바탕">Î</span><span style="font-family:나눔고딕코딩">¿¡ </span><span style="font-family:바탕">µî</span><span style="font-family:나눔고딕코딩">·</span><span style="font-family:바탕">Ï</span><span style="font-family:나눔고딕코딩"><br />
+									</span></strong></span></p>
+<p style="text-align: justify"><span style="font-size:10pt"><strong><span style="font-family:나눔고딕코딩">   id = getpid();                          // </span><span style="font-family:바탕">µ</span><span style="font-family:나눔고딕코딩">ð¹</span><span style="font-family:바탕">ÙÀÌ</span><span style="font-family:나눔고딕코딩">½º </span><span style="font-family:바탕">µå</span><span style="font-family:나눔고딕코딩">¶</span><span style="font-family:바탕">óÀÌ</span><span style="font-family:나눔고딕코딩">¹</span><span style="font-family:바탕">ö</span><span style="font-family:나눔고딕코딩">¿¡°</span><span style="font-family:바탕">Ô</span><span style="font-family:나눔고딕코딩"><br />
+									</span><span style="font-family:바탕">ÀÀ</span><span style="font-family:나눔고딕코딩">¿</span><span style="font-family:바탕">ë</span><span style="font-family:나눔고딕코딩"><br />
+									</span><span style="font-family:바탕">ÇÁ</span><span style="font-family:나눔고딕코딩">·</span><span style="font-family:바탕">Î</span><span style="font-family:나눔고딕코딩">±×·</span><span style="font-family:바탕">¥ÀÇ</span><span style="font-family:나눔고딕코딩"><br />
+									</span></strong></span></p>
+<p style="text-align: justify"><span style="font-size:10pt"><strong><span style="font-family:나눔고딕코딩">   write(dev, &amp;id, 4);                     // </span><span style="font-family:바탕">ÇÁ</span><span style="font-family:나눔고딕코딩">·</span><span style="font-family:바탕">Î</span><span style="font-family:나눔고딕코딩">¼¼¼</span><span style="font-family:바탕">­</span><span style="font-family:나눔고딕코딩"> ID¸</span><span style="font-family:바탕">¦</span><span style="font-family:나눔고딕코딩"><br />
+									</span><span style="font-family:바탕">Àü</span><span style="font-family:나눔고딕코딩">´Þ<br />
+</span></strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>   printf("press the push button!\n");<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong> (void) signal (SIGUSR1, keysignal);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>   while(1) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>    if(vkey != 0) {<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>&nbsp;&nbsp;&nbsp;&nbsp;sprintf(buf,"vkey is 0x%x\n", vkey);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>        write(lcdFd, buf, MAXCHR);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>        vkey=0;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>     }<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  }<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  close(dev);<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>  return 0;<br />
+</strong></span></p>
+<p style="text-align: justify"><span style="font-family:나눔고딕코딩; font-size:10pt"><strong>}</strong></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+&nbsp;</p>
+<p><span style="font-family:맑은 고딕; font-size:16pt"><strong>5.</strong></span><br />
+		<span style="font-family:맑은 고딕; font-size:16pt"><strong>결과물<br />
+</strong></span></p>
+<p>
+&nbsp;</p>
+<p><img src="{{ site.baseurl }}/assets/cfile25.uf.17425F464EEFEBDB0D10B0.jpg" /><img src="{{ site.baseurl }}/assets/cfile23.uf.142C6C384EEFEBDC027275.jpg" /><img src="{{ site.baseurl }}/assets/cfile9.uf.17260B364EEFEBDC07750B.jpg" /><span style="font-family:맑은 고딕; font-size:16pt"><strong><br />
+			</strong></span></p>

@@ -1,0 +1,80 @@
+---
+layout: post
+title: ctags의 부족함을 채워주는 cscope
+date: 2012-03-10 14:38:34.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Linux
+tags:
+- cscope
+- Linux
+- vim
+meta:
+  _thumbnail_id: '2180'
+author: Hwanseung Lee
+---
+<p>ctags도 소규모 프로젝트일 경우 부족함이 없지만&nbsp;<br />
+c언어 말고 다른 언어로 작성된 프로젝트라든지<br />
+지역변수나 전역변수로 사용된 것도 찾아주는 cscope툴을 소개합니다.</p>
+<p>일단 설치부터 다음과 같이 간단히 가능합니다.</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile10.uf.164909414F5B67A21B5079.png" class="aligncenter" width="736" height="439" alt="" filename="제목 없음.png" filemime="image/jpeg" /></p>
+<p></p>
+<p style="margin:0">
+그리고 분석하고 싶은 프로젝트로 가서&nbsp;<br />
+#find ./ -name *.[chS] -print &gt; cscope.files<br />
+명령어를 치면 cscope.files가 생깁니다.<br />
+이 파일은 find 명령어를 가지고 분석할 소스를 cscope.files로 출력시키는거죠ㅋ</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile25.uf.1543A33D4F5B67B114963A.png" class="aligncenter" width="738" height="173" alt="" filename="제목 없음1.png" filemime="image/jpeg" /></p></p>
+<div>
+그런 다음 다음과 같이 명령어를 칩니다.</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile25.uf.127068434F5B67C22019A6.png" class="aligncenter" width="481" height="129" alt="" filename="제목 없음2.png" filemime="image/jpeg" /></p>
+<p>
+그럼 아래와 같이 cscope.files를 가지고 데이터베이스를 만듭니다.&nbsp;&nbsp;</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile29.uf.1258C2424F5B67CE29F800.png" class="aligncenter" width="736" height="472" alt="" filename="제목 없음3.png" filemime="image/jpeg" /></p>
+<p>
+여기서 나갈때는 ctrl+D를 누르시면 됩니다.&nbsp;</p>
+<p>
+파일리스트를 보면 cscope.out이 생겼습니다.</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile6.uf.1444FB3D4F5B67D912B910.png" class="aligncenter" width="739" height="157" alt="" filename="제목 없음4.png" filemime="image/jpeg" /></p>
+<p>
+</div>
+<div>
+<br />
+&nbsp;vim에서 cscope를 사용할 수 있도록 설정을 합니다.</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile3.uf.1756454B4F5B62C316C4BD.png" class="aligncenter" width="508" height="193" alt="" filename="제목 없음5.png" filemime="image/jpeg" /></div>
+<p style="margin:0"></p>
+<p style="margin:0">인제 사용법을 알아 봅시다.&nbsp;</p>
+<p style="margin:0"><a href="http://hwanseung.maru.net/wp-content/uploads/1/"></a><br />
+vi의 명령 모드에서 사용할수 있는데<br />
+사용법은<br />
+:cs find (질의 종류) (심벌)&nbsp;</p>
+<p class="MsoNormal" align="left" style="text-align:left;mso-pagination:widow-orphan;<br />
+text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"><span lang="EN-US" style="font-size: 12pt; "><span style="font-size: 9pt; ">*cscope </span></span><span style="font-size: 12pt; "><span style="font-size: 9pt; ">검색유형</span><span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoNormal" align="left" style="text-align:left;mso-pagination:widow-orphan;<br />
+text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"><span lang="EN-US" style="font-size: 12pt; "><span style="font-size: 9pt; ">- 0 (s) : C </span></span><span style="font-size: 12pt; "><span style="font-size: 9pt; ">심볼을 검색</span><span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoNormal" align="left" style="text-align:left;mso-pagination:widow-orphan;<br />
+text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"><span lang="EN-US" style="font-size: 12pt; "><span style="font-size: 9pt; ">- 1 (g) : </span></span><span style="font-size: 12pt; "><span style="font-size: 9pt; ">정의 </span><span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoNormal" align="left" style="text-align:left;mso-pagination:widow-orphan;<br />
+text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"><span lang="EN-US" style="font-size: 12pt; "><span style="font-size: 9pt; ">- 2 (d) : </span></span><span style="font-size: 12pt; "><span style="font-size: 9pt; ">이 함수에 의해 호출되는 함수 검색</span><span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoNormal" align="left" style="text-align:left;mso-pagination:widow-orphan;<br />
+text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"><span lang="EN-US" style="font-size: 12pt; "><span style="font-size: 9pt; ">- 3 (c) : </span></span><span style="font-size: 12pt; "><span style="font-size: 9pt; ">이 함수를 호출하는 함수 검색</span><span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoNormal" align="left" style="text-align:left;mso-pagination:widow-orphan;<br />
+text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"><span lang="EN-US" style="font-size: 12pt; "><span style="font-size: 9pt; ">- 4 (t) : </span></span><span style="font-size: 12pt; "><span style="font-size: 9pt; ">텍스트 문자열 검색</span><span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoNormal" align="left" style="text-align:left;mso-pagination:widow-orphan;<br />
+text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"><span lang="EN-US" style="font-size: 12pt; "><span style="font-size: 9pt; ">- 5 (e) : </span></span><span style="font-size: 12pt; "><span style="font-size: 9pt; ">확장 정규식 사용해서 검색</span></span></p>
+<p class="MsoNormal" align="left" style="text-align:left;mso-pagination:widow-orphan;<br />
+text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"><span lang="EN-US" style="font-size: 12pt; "><span style="font-size: 9pt; ">- 7(f) : </span></span><span style="font-size: 12pt; "><span style="font-size: 9pt; ">파일 이름 검색</span><span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoNormal" align="left" style="text-align:left;mso-pagination:widow-orphan;<br />
+text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"><span lang="EN-US" style="font-size: 12pt; "><span style="font-size: 9pt; ">- 8(i) : </span></span><span style="font-size: 12pt; "><span style="font-size: 9pt; ">이 파일을</span><span lang="EN-US"><span style="font-size: 9pt; "> include<br />
+</span></span><span style="font-size: 9pt; ">하는 파일 검색</span><span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoNormal" align="left" style="text-align:left;mso-pagination:widow-orphan;<br />
+text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"><span lang="EN-US" style="font-size: 12pt; "><o:p><span style="font-size: 9pt; ">&nbsp;<br />
+ex) &nbsp;</span></o:p></span><span style="font-size: 9pt; ">:cs find 0 task_struct</p>
+<p>&nbsp;</span>cs find 0 task_struct를 쳐봅시다.</p>
+<p><a href="http://hwanseung.maru.net/wp-content/uploads/1/"></a>이렇게 많은 곳에서 발견했다고 어디로 가고 싶냐고 묻습니다. 저는 1번 ㅋ</p>
+<p><img src="{{ site.baseurl }}/assets/cfile10.uf.1904624D4F5B63AF25ABEC.png" class="aligncenter" width="727" height="469" alt="" filename="제목 없음9.png" filemime="image/jpeg" /></p>
+<p style="margin:0">해당 되는 곳으로 왔습니다. ㅋ</p>
+<p style="margin:0"></p>

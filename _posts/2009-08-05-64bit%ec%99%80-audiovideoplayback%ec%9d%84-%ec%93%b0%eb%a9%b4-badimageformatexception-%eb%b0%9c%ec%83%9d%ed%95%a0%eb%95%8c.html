@@ -1,0 +1,93 @@
+---
+layout: post
+title: 64bit와 AudioVideoPlayBack을 쓰면 BadImageFormatException 발생할때.
+date: 2009-08-05 12:16:16.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/etc
+tags:
+- 64bit
+- AudioVideoPlayBack
+- BadImageFormatException
+- x64
+meta:
+  _thumbnail_id: '190'
+  _edit_last: '1'
+author: Hwanseung Lee
+---
+<p><font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"> AudioVideoPlayBack을 쓸대 BadImageFormatException 발생할때는</span></font>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">64비트를 써서 그렇다고 한다.</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">이런망할... 국내에선 검색결과 안나오던데</span></font></div>
+<div><font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">구글님하께 물어보니</span></font></div>
+<div><font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">그렇다고 이야기를 해주시나 영어로 나와있어 대충 이해만.....ㅠ_ㅠ;</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">그래서 visual studio 2008에서 디버그 방법을  32비트로 바꾸면 되는데;;</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">하는 방법은 이러하다</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">visual stidio 2008 상단중간부분에 디버그 바로 할수 있는 키가 다음과 같이 있을것이다.</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><img src="{{ site.baseurl }}/assets/cfile24.uf.2055BB0B4A7976B8013C2F.jpg" class="aligncenter" width="278" height="30" alt="" filename="1.jpg" filemime="image/jpeg" /><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">Any cpu 옆 역삼각형을 눌러보면 구성관리자가 있는데 그걸누르고</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><img src="{{ site.baseurl }}/assets/cfile25.uf.1155BB0B4A7976B8024337.jpg" class="aligncenter" width="286" height="64" alt="" filename="2.jpg" filemime="image/jpeg" /><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">새창이 뜨는데 거기에 다음과 같이 활성솔루션 플레폼에 편집을 누른다.</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><img src="{{ site.baseurl }}/assets/cfile21.uf.1255BB0B4A7976B8030059.jpg" class="aligncenter" width="663" height="411" alt="" filename="3.jpg" filemime="image/jpeg" /><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">다음과 같이 32비트를 나타내는 x86을 누르고</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">&lt;비어있음을 눌러&gt; 확인을 하고 위의 창을(구성관리자 창) 닫는다.</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><img src="{{ site.baseurl }}/assets/cfile22.uf.1455BB0B4A7976B904013B.jpg" class="aligncenter" width="368" height="246" alt="" filename="4.jpg" filemime="image/jpeg" /><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">그리고 신나게 디버깅을 한다.</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></p>
+<p>
+</div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre; "><br />
+</span></font></div>

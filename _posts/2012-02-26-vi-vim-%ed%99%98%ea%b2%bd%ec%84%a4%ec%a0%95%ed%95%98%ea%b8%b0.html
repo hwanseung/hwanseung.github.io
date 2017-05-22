@@ -1,0 +1,52 @@
+---
+layout: post
+title: vi & vim 환경설정하기.
+date: 2012-02-26 08:13:50.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Linux
+tags:
+- vi
+- vim
+meta:
+  _thumbnail_id: '2163'
+author: Hwanseung Lee
+---
+<p>vi를 환경설정을 하시면 더 편리한 vi을 만날 수 있습니다.</p>
+<p>설정하는 방법은</p>
+<p>$vi /root/.vimrc 입니다</p>
+<p>root대신에 사용자계정명을 넣으셔야됩니다.</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile29.uf.160D4B384F49E95E1BD21A.png" class="aligncenter" width="726" height="466" alt="" filename="제목 없음.png" filemime="image/jpeg" /></p>
+<div>
+<textarea name="code" class="c" style="margin-left: 2px; margin-right: 2px; width: 691px; margin-top: 2px; margin-bottom: 2px; height: 307px; "><br />
+set tabstop=4 "탭 간격을 4칸으로 설정<br />
+set shiftwidth=4 "shift 간격 4<br />
+set expandtab "탭 문자를 공백문자로 변환<br />
+set softtabstop=4 "탭문자를 공백문자로 변환하면 삭제할때 탭간격만큼 삭제하지안하<br />
+고 탭문자를 삭제하는 것 처럼 삭제<br />
+set visualbell "사용자 실수를 할때 비프음 대신 화면을 한번 빤짝<br />
+set nobackup "백업 파일을 생성하지 않음.<br />
+set cindent "c언어 스타일의 들여쓰기 작성<br />
+set autoindent "자동 들여쓰기<br />
+set smartindent<br />
+set incsearch</p>
+<p>syntax on "구문 강조<br />
+filetype on " 파일 종류에 따라 강조<br />
+set backspace=eol,start,indent<br />
+set history=1000 "편집기록 저장 1000개 까지<br />
+set hlsearch "검색어 강조<br />
+set ignorecase "검색시 대,소문자 구별안함.<br />
+set showmatch "매칭 되는 괄호 표현<br />
+set number "옆에 코드라인 표시<br />
+</textarea></p>
+<div>
+<font color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span style="line-height: 14px;"><b><br />
+</b></span></font></div>
+</div>
+<p>
+이것을 저장하신 후<br />
+vi 실행하시면 변경된 모습을 보실수 있습니다.</p>
+<p>이것 외에 인터넷에 수많은 설정법이 있으므로&nbsp;<br />
+검색하셔서 찾아보시길 바랄께요~</p>

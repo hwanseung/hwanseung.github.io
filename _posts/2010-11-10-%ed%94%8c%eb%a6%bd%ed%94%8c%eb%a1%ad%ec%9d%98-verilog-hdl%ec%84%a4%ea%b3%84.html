@@ -1,0 +1,148 @@
+---
+layout: post
+title: 플립플롭의 verilog HDL설계
+date: 2010-11-10 17:32:16.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/verilog HDL
+tags:
+- D F/F
+- flipflop
+- JK F/F
+- T F/F
+- verilog HDL
+- 플립플롭
+meta: {}
+author: Hwanseung Lee
+---
+<p><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; font-size: 9pt; ">다음에 주어진 대로 VHDL로 설계하시오<br />
+1. JK플립플롭을 설계하고, 입출력파형이 정상임을 확인한다.<br />
+2. JK플립플롭을 부품으로하여 D플립플롭을 설계하고, 입출력파형이 정상임을 확인한다.<br />
+3. JK플립플롭을 부품으로하여 T플립플롭을 설계하고, 입출력파형이 정상임을 확인한다.</span>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; ">
+<span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; "><br />
+</span></div>
+<div>
+<div>
+<font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">// Functional description of JK flip-flop</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">module JK_FF (J,K,CLK,Qjk,Qjknot);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; output Qjk,Qjknot;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; input &nbsp;J,K,CLK;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; reg &nbsp;Qjk;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; assign Qjknot = ~ Qjk ;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; always @ (posedge CLK)&nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case ({J,K})</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2'b00: Qjk = Qjk;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2'b01: Qjk = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2'b10: Qjk = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2'b11: Qjk = ~ Qjk;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; endcase</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">endmodule</span></font></div>
+</div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; ">
+<span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; "><br />
+</span></div>
+<div>
+<div>
+<font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">// Functional description of D flip-flop</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">module D_FF (D,CLK,Qd,Qdnot);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; output Qd,Qdnot;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; input &nbsp;D,CLK;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; wire Dnot;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; assign Dnot = ~ D ;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; JK_FF D1 (D,Dnot,CLK,Qd,Qdnot);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">endmodule</span></font></div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>
+</div>
+<div>
+<div>
+<font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">// Functional description of T flip-flop</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">module T_FF (T,CLK,Qt,Qtnot);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; output Qt,Qtnot;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; input &nbsp;T,CLK;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; wire Tw;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; assign Tw = T ;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; JK_FF T1 (T,Tw,CLK,Qt,Qtnot);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">endmodule</span></font></div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>
+</div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>
+<div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">//*******************************************</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">//test 모듈</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">//*******************************************</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">`timescale 1ps / 1ps</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">module test;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;wire Qjk,Qjknot,Qt,Qtnot,Qd,Qdnot; &nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;reg CLK; &nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;reg J;&nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;reg K;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;reg T;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;reg D;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;JK_FF jkff(J,K,CLK,Qjk,Qjknot);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;T_FF tff(T,CLK,Qt,Qtnot);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;D_FF dff(D,CLK,Qd,Qdnot);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">initial</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;begin</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;J= 1'b0; K=1'b0; D=1'b0; T=1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;J= 1'b0; K=1'b0; D=1'b0; T=1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;J= 1'b0; K=1'b0; D=1'b1; T=1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;J= 1'b0; K=1'b0; D=1'b1; T=1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;J= 1'b0; K=1'b1; D=1'b0; T=1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b1; J= 1'b0; K=1'b1; D=1'b0; T=1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b0; J= 1'b0; K=1'b1; D=1'b1; T=1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b1; J= 1'b0; K=1'b1; D=1'b1; T=1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b0; J= 1'b1; K=1'b0; D=1'b0; T=1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b1; J= 1'b1; K=1'b0; D=1'b0; T=1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b0; J= 1'b1; K=1'b0; D=1'b1; T=1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b1; J= 1'b1; K=1'b0; D=1'b1; T=1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b0; J= 1'b1; K=1'b1; D=1'b0; T=1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b1; J= 1'b1; K=1'b1; D=1'b0; T=1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b0; J= 1'b1; K=1'b1; D=1'b1; T=1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;CLK= 1'b1; J= 1'b1; K=1'b1; D=1'b1; T=1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;$finish;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;end</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">endmodule</span></font></div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>
+</div>

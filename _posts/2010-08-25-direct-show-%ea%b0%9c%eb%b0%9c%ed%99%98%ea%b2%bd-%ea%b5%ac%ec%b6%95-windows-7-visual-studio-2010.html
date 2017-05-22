@@ -1,0 +1,207 @@
+---
+layout: post
+title: Direct Show 개발환경 구축 ( Windows 7 & visual studio 2010 )
+date: 2010-08-25 17:24:28.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Direct show
+tags:
+- ".NET"
+- baseclasses
+- directshow
+- DirectX
+- dshow
+- platform SDK
+- Visual Studio 2010
+- Windows 7
+- Windows SDK
+meta:
+  _thumbnail_id: '684'
+author: Hwanseung Lee
+---
+<p>저는 windows 7과 visual studio 2010의 개발 환경을 가지고 있습니다.
+<div>
+<div>
+
+</div>
+<div>
+Direct show 같은 경우 꽤 오래전에 나온 것이라 국내 유일의 dshow책 신화선씨의 책에만 봐도</div>
+<div>
+
+</div>
+<div>
+visual studio 6.0에서 개발하는 환경으로 책이 되어있죠..</div>
+<div>
+
+</div>
+<div>
+바야흐로 visual studio 2010이 흥하는 시대... 시대의 흐름에 몸을 담고 있는 개발자(?)로써</div>
+<div>
+
+</div>
+<div>
+visual studio 6.0으로는 개발을 할 수 없죠;</div>
+<div>
+
+</div>
+<div>
+개인적으로 개발 툴은 최신것으로 써야된다는 생각을 가지고 있어요 ㅋ</div>
+<div>
+
+</div>
+<div>
+본격적으로 Windwos 7과 visual studio 2010에서의 Direct Show 개발 환경을 만들도록 하겠습니다.</div>
+<div>
+
+</div>
+<div>
+일단 DirectShow는 처음에는 DirectX에 포함되었습니다.</div>
+<div>
+
+</div>
+<div>
+어느 순간 Direct X 버전이 10부터인가 9부터인가 DirectShow가 빠져 버렸습니다.</div>
+<div>
+
+</div>
+<div>
+그러면서 Windows® Server 2003 SP1 Platform SDK으로 넘어 가버렸습니다.</div>
+<div>
+
+</div>
+<div>
+&nbsp;다른 블로그에서는&nbsp;&nbsp;Windows® Server 2003 SP1 Platform SDK으로 Directshow개발 환경을 만든게 많은데</div>
+<div>
+
+</div>
+<div>
+이것은 windows xp나 하여튼 vista 이전 버전에서 visual studio 2008에서는 잘됩니다.;</div>
+<div>
+
+</div>
+<div>
+windows 7에서는 샘플 돌리는 거나 그런것은 잘 되는데 필터를 만들때 Baseclasses필요한데요</div>
+<div>
+
+</div>
+<div>
+Directshow 개발 환경을 구축할때 Baseclass를 컴파일 해놔야 하는데&nbsp;&nbsp;windows 7에서는 안되더군요;;</div>
+<div><font class="Apple-style-span" face="'맑은 고딕'"><br />
+</font></div>
+<div><font class="Apple-style-span" face="'맑은 고딕'">(<span class="Apple-style-span" style="font-family: 굴림; ">Windows server 2003 Platform SDK</span>에서는&nbsp;</font><span class="Apple-style-span" style="font-family: '맑은 고딕'; ">nmake 이용하여 빌드를 해야되는데 windows7에서는 안되더군요)</span></div>
+<div>
+
+</div>
+<div>
+삽질을 좀 했엇는데&nbsp;</div>
+<div>
+
+</div>
+<div>
+Windows® Server 2003 SP1 Platform SDK의 최신 버젼인</div>
+<div>
+
+</div>
+<div>
+&nbsp;Windows SDK for Windows 7(Windows SDK 7.1)에도 포함이 되어있다는 사실을 알아 냈습니다.</div>
+<div>
+
+</div>
+</div>
+<div>
+이름 햇갈리게 처음부터&nbsp;Windows® Server 2003 SP1 Platform SDK을&nbsp;Windows SDK for&nbsp;Windows® Server 2003</div>
+<div>
+
+</div>
+<div>
+이라 했으면 삽질을 안했겠지요;;;;</div>
+<div>
+
+</div>
+<div>
+잡소리가 길어졌네요</div>
+<div>
+
+</div>
+<div>
+Visual studio 2010이 이미 깔려있다는 전제하에</div>
+<div>
+
+</div>
+<div>
+<span style="font-size: 14pt; "><span style="font-size: 18pt; "><span style="font-size: 14pt; "><b><span class="Apple-style-span" style="background-color: rgb(43, 132, 0);"><font class="Apple-style-span" color="#FFFFFF">1.&nbsp;Microsoft Windows SDK for Windows 7 and .NET Framework 4&nbsp;설치</font></span></b></span></span></span></div>
+<div>
+<span style="font-size: 14pt; "></span>
+</div>
+<div>
+<a href="http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;FamilyID=35aeda01-421d-4ba5-b44b-543dc8c33a20#filelist">http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;FamilyID=35aeda01-421d-4ba5-b44b-543dc8c33a20#filelist</a></div>
+<div>
+
+</div>
+<div>
+위의 링크사이트로가서&nbsp;Microsoft Windows SDK for Windows 7 and&nbsp;.NET Framework 4를 다운 받아 설치합니다.</div>
+<div>
+
+</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile27.uf.177F501D4C754382010CC7.png" class="aligncenter" width="731" height="419" alt="" filename="2.png" filemime="image/jpeg" />
+</div>
+<div>
+
+</div>
+<div>
+<span style="font-size: 18pt; "><span style="font-size: 14pt; "><b><font class="Apple-style-span" color="#FFFFFF"><span class="Apple-style-span" style="background-color: rgb(43, 132, 0);">2.&nbsp;Baseclasses 컴파일하기.</span></font></b></span></span></div>
+<p>C:\Program Files\Microsoft SDKs\Windows\v7.1\Samples\multimedia\directshow\baseclasses\baseclasses.sin
+<div>
+이라는&nbsp;프로젝트 파일이 있습니다.</p>
+<div>
+(이전에는 이 프로젝트 파일의 부재로 다른 방법(<span class="Apple-style-span" style="font-family: '맑은 고딕'; ">nmake 이용</span>)으로 컴파일을 해야 되었는데 다행이 생겼네요)</div>
+<div>
+프로젝트 파일이 visual studio 2008기준으로 되어있어 2010으로 변환 뒤 일괄 빌드를 해줍니다.</div>
+<div>
+
+</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile10.uf.135229264C754EFC0AA464.png" class="aligncenter" width="482" height="398" alt="" filename="6.png" filemime="image/jpeg" /><img src="{{ site.baseurl }}/assets/cfile25.uf.145229264C754EFC0B4C79.png" class="aligncenter" width="716" height="415" alt="" filename="4.png" filemime="image/jpeg" />모두 체크뒤 빌드를 해줍니다.</div>
+<div>
+
+</div>
+<div>
+<img src="{{ site.baseurl }}/assets/cfile30.uf.207384324C754FFA2F6567.png" class="aligncenter" width="484" height="111" alt="" filename="5.png" filemime="image/jpeg" />없었던 폴더들이 생겼죠 ㅋ</div>
+<div>
+
+</div>
+<div>
+각 폴더 마다 strmbasd.lib가 생겼습니다.</div>
+<div>
+
+</div>
+<div>
+인제 Directshow로 개발할 때 프로젝트에 링커만 위에서 생성된 폴더를 걸어주면 될것입니다.</div>
+<div>
+</div>
+<div>
+<span style="font-family: Gulim; ">아까전에도 Windows server 2003 Platform SDK에서는&nbsp;</span><span class="Apple-style-span" style="font-family: '맑은 고딕'; "><span style="font-family: Gulim; ">nmake로 빌드를 했었는데 Windows 7에서는 안되서</span></span></div>
+<div><span class="Apple-style-span" style="font-family: '맑은 고딕'; "><br />
+</span></div>
+<div><span class="Apple-style-span" style="font-family: '맑은 고딕'; "><span style="font-family: Gulim; ">프로젝트파일을 다 넣어주었나 봅니다.</span></span></div>
+<div>
+<div>
+
+</div>
+<div>
+
+</div>
+<div>
+
+</div>
+<div>
+
+</div>
+<div>
+
+</div>
+</div>
+</div>

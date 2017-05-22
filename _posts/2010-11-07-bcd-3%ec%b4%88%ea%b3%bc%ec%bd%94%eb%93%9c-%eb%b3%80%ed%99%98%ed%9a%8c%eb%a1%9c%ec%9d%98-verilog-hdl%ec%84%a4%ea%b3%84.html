@@ -1,0 +1,124 @@
+---
+layout: post
+title: BCD-3초과코드 변환회로의 verilog HDL설계
+date: 2010-11-07 18:47:54.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/verilog HDL
+tags:
+- BCD 3초과코드
+- verilog HDL
+- 변환회로
+meta:
+  _thumbnail_id: '792'
+author: Hwanseung Lee
+---
+<p><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; ">BCD코드를 3초과코드로 변환하는 회로를 VHDL로 설계하고,<br />
+진리치표대로 동작함을 확인하시오</span><img src="{{ site.baseurl }}/assets/cfile30.uf.165FEF1E4CD6F41108C252.jpg" class="aligncenter" width="750" height="450" alt="" filename="BCD_3초과변환회로.jpg" filemime="image/jpeg" /></p>
+<div>
+<div>
+//Stimulus for simple circuit</div>
+<div>
+module stimcrct;</div>
+<div>
+reg D,C,B,A;</div>
+<div>
+wire W,X,Y,Z;</div>
+<div>
+BCDto3 bcd2three(A,B,C,D,W,X,Y,Z);</div>
+<div>
+initial</div>
+<div>
+&nbsp;&nbsp; begin</div>
+<div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;D = 1'b0; C = 1'b0; B = 1'b0; A = 1'b0;&nbsp;</div>
+<div>
+&nbsp;&nbsp; &nbsp; #100</div>
+<div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;D = 1'b0; C = 1'b0; B = 1'b0; A = 1'b1;&nbsp;</div>
+<div>
+&nbsp;&nbsp; &nbsp; #100</div>
+<div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;D = 1'b0; C = 1'b0; B = 1'b1; A = 1'b0;&nbsp;</div>
+<div>
+&nbsp;&nbsp; &nbsp; #100</div>
+<div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;D = 1'b0; C = 1'b0; B = 1'b1; A = 1'b1;&nbsp;</div>
+<div>
+&nbsp;&nbsp; &nbsp; #100</div>
+<div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;D = 1'b0; C = 1'b1; B = 1'b0; A = 1'b0;&nbsp;</div>
+<div>
+&nbsp;&nbsp; &nbsp; #100</div>
+<div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;D = 1'b0; C = 1'b1; B = 1'b0; A = 1'b1;&nbsp;</div>
+<div>
+&nbsp;&nbsp; &nbsp; #100</div>
+<div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;D = 1'b0; C = 1'b1; B = 1'b1; A = 1'b0;&nbsp;</div>
+<div>
+&nbsp;&nbsp; &nbsp; #100</div>
+<div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;D = 1'b0; C = 1'b1; B = 1'b1; A = 1'b1;&nbsp;</div>
+<div>
+&nbsp;&nbsp; &nbsp; #100</div>
+<div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;D = 1'b1; C = 1'b0; B = 1'b0; A = 1'b0;&nbsp;</div>
+<div>
+&nbsp;&nbsp; &nbsp; #100</div>
+<div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;D = 1'b1; C = 1'b0; B = 1'b0; A = 1'b1;&nbsp;</div>
+<div>
+&nbsp;&nbsp; &nbsp; #100</div>
+<div>
+
+</div>
+<div>
+&nbsp;&nbsp; &nbsp; $finish;&nbsp;</div>
+<div>
+&nbsp;&nbsp; end</div>
+<div>
+endmodule</div>
+<div>
+
+</div>
+<div>
+
+</div>
+<div>
+//Description of circuit with delay&nbsp;</div>
+<div>
+module BCDto3 (A,B,C,D,W,X,Y,Z);</div>
+<div>
+&nbsp;&nbsp; input A,B,C,D;</div>
+<div>
+&nbsp;&nbsp; output W,X,Y,Z;</div>
+<div>
+&nbsp;&nbsp; wire x,y,z;</div>
+<div>
+
+</div>
+<div>
+&nbsp;&nbsp; or g1(W,D,x);</div>
+<div>
+&nbsp;&nbsp; and g2(x,C,y);</div>
+<div>
+&nbsp;&nbsp; or g3(y,B,A);</div>
+<div>
+&nbsp;&nbsp; xor g4(X,C,y);</div>
+<div>
+&nbsp;&nbsp; xor g5(z,B,A);</div>
+<div>
+&nbsp;&nbsp; not g6(Y,z);</div>
+<div>
+&nbsp;&nbsp; not g7(Z,A);</div>
+<div>
+endmodule</div>
+<div>
+&nbsp;</div>
+<div>
+
+</div>
+</div>

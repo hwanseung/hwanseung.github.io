@@ -1,0 +1,81 @@
+---
+layout: post
+title: 반가산기 전가산기 병렬가산기의 Verilog HDL설계
+date: 2010-11-07 18:44:53.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/verilog HDL
+tags:
+- Verilog
+- verilog HDL
+- 반가산기
+- 병렬가산기
+- 전가산기
+meta: {}
+author: Hwanseung Lee
+---
+<div>
+<div><b />
+<div>
+<font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-weight: normal; line-height: 16px; white-space: normal; border-collapse: collapse; ">반가산기 및 전가산기를 부품으로 하여 병렬가산기를 설계하시오</span></span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-weight: normal; line-height: 16px; white-space: normal; border-collapse: collapse; "><br />
+</span></span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">//** half Adder ************************</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">module halfadder(sum, c_out, x, y);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;output sum, c_out;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;input x, y;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;wire a, b, c;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;xor (sum, x, y);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;&nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;and (c_out, x, y);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">endmodule</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">//** Full Adder ************************</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">module fulladder(sum, c_out, x, y, c_in);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;output sum, c_out;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;input x, y, c_in;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;wire a, b, c;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;halfadder ha1(a, b, x, y);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;halfadder ha2(sum, c, a, c_in);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;or (c_out,c,b);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">endmodule</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">//** 4-Bit Adder *****************************&nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">module FourBitAdder(sum, c_out, x, y, c_in);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;output [3:0] sum;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;output c_out;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;input &nbsp;[3:0] x, y;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;input c_in;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;wire c1, c2, c3;</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;fulladder fa0(sum[0], c1, x[0], y[0], c_in);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;fulladder fa1(sum[1], c2, x[1], y[1], c1);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;fulladder fa2(sum[2], c3, x[2], y[2], c2);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;&nbsp;fulladder fa3(sum[3], c_out, x[3], y[3], c3);</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">endmodule</span></font></div>
+<div><font class="Apple-style-span" color="#006699" face="Consolas, 'Courier New', Courier, mono, serif"><span class="Apple-style-span" style="line-height: 14px; white-space: pre-wrap;">&nbsp;</span></font></div>
+<div style="font-size: 9pt; color: rgb(0, 102, 153); font-family: Consolas, 'Courier New', Courier, mono, serif; line-height: 14px; white-space: pre-wrap; ">
+</div>
+</div>
+</div>

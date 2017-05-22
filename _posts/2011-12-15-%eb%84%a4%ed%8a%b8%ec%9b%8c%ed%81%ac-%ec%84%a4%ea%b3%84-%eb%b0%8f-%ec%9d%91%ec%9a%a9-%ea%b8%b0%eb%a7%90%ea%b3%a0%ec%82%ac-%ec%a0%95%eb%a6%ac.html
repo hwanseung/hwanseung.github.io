@@ -1,0 +1,1104 @@
+---
+layout: post
+title: 네트워크 설계 및 응용 기말고사 정리
+date: 2011-12-15 08:56:23.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Junior
+tags: []
+meta: {}
+author: Hwanseung Lee
+---
+<p class="MsoTitle" align="left" style="margin:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US" style="font-size:24.0pt;<br />
+mso-bidi-font-size:16.0pt">Logical network design<o:p></o:p></span></p>
+<h1 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">Lesson1 overview of the logical Design<br />
+phase<o:p></o:p></span></h1>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">1.Establishing Design goal(</span>디자인목표 수립<span lang="EN-US">)<o:p></o:p></span></h2>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal">네트워크목표는 조직에 따라 천자만별<span lang="EN-US"> =&gt; </span>요구사항명세서의<br />
+요구사항을 총족해야함<span lang="EN-US">.<o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">1) Design Factors and Tradeoffs<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal">설계요소간 상충되는 점이 있으므로 우선 순위<br />
+및<span lang="EN-US"> tradeoffs</span>를 결정해야 함<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:40.0pt;line-height:normal"><span lang="EN-US">1) Cost<br />
+vs. Performance<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) paying Now vs. paying later (</span>일회성 구현 비용<span lang="EN-US"> vs. </span>장기 운영 비용<span lang="EN-US">)<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3) Initial cost Estimates : </span>초기의 소요 예산 초과 가능성<span lang="EN-US"><o:p></o:p></span></p>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">2.Evaluating Network services(</span>네트워크 서비스<br />
+평가<span lang="EN-US">)<o:p></o:p></span></h2>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal">기술선택전<span lang="EN-US">, </span>네트워크가 제공해야하는<br />
+서비스 고려<span lang="EN-US">=&gt;</span>네트워크 용도 결정<span lang="EN-US">,</span>어떻게 구축할것인가<span lang="EN-US">?<o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">1) Network Management<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-top:0cm;margin-right:0cm;<br />
+margin-bottom:0cm;margin-left:10.0pt;margin-bottom:.0001pt;mso-para-margin-top:<br />
+0cm;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:<br />
+1.0gd;mso-para-margin-bottom:.0001pt;text-align:left;text-indent:9.75pt;<br />
+line-height:normal"><span lang="EN-US">1) </span>네트워크 관리에 필요한 내용<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-top:0cm;margin-right:0cm;<br />
+margin-bottom:0cm;margin-left:10.0pt;margin-bottom:.0001pt;mso-para-margin-top:<br />
+0cm;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:<br />
+1.0gd;mso-para-margin-bottom:.0001pt;text-align:left;text-indent:9.75pt;<br />
+line-height:normal"><span lang="EN-US">2) Troubleshooting – </span>문제가 발생시 어떻게 처리할<br />
+것인가<span lang="EN-US">?<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-top:0cm;margin-right:0cm;<br />
+margin-bottom:0cm;margin-left:10.0pt;margin-bottom:.0001pt;mso-para-margin-top:<br />
+0cm;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:<br />
+1.0gd;mso-para-margin-bottom:.0001pt;text-align:left;text-indent:9.75pt;<br />
+line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp; </span>소규모<br />
+네트워크<span lang="EN-US"> : NOS</span>에서 제공되는 툴<span lang="EN-US"> + </span>개별제품<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-top:0cm;margin-right:0cm;<br />
+margin-bottom:0cm;margin-left:10.0pt;margin-bottom:.0001pt;mso-para-margin-top:<br />
+0cm;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:<br />
+1.0gd;mso-para-margin-bottom:.0001pt;text-align:left;text-indent:9.75pt;<br />
+line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp; </span>대규모<br />
+네트워크<span lang="EN-US"> : </span>원격<span lang="EN-US"> troubleshooting</span>을 지원하는<br />
+보다 정교한 제품 <span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-top:0cm;margin-right:0cm;<br />
+margin-bottom:0cm;margin-left:10.0pt;margin-bottom:.0001pt;mso-para-margin-top:<br />
+0cm;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:<br />
+1.0gd;mso-para-margin-bottom:.0001pt;text-align:left;text-indent:9.75pt;<br />
+line-height:normal"><span lang="EN-US">3) Configuration and Reconfiguration<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-top:0cm;margin-right:0cm;<br />
+margin-bottom:0cm;margin-left:10.0pt;margin-bottom:.0001pt;mso-para-margin-top:<br />
+0cm;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:<br />
+1.0gd;mso-para-margin-bottom:.0001pt;text-align:left;text-indent:40.0pt;<br />
+line-height:normal">개별<span lang="EN-US"> desktop</span>이나<span lang="EN-US"> os</span>나<br />
+어플리케이션을 수작업으로 업그레이드 하는 것은 시간이 많이 걸림<span lang="EN-US">.<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-top:0cm;margin-right:0cm;<br />
+margin-bottom:0cm;margin-left:10.0pt;margin-bottom:.0001pt;mso-para-margin-top:<br />
+0cm;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:<br />
+1.0gd;mso-para-margin-bottom:.0001pt;text-align:left;text-indent:9.75pt;<br />
+line-height:normal;tab-stops:51.75pt"><span lang="EN-US">4) Monitoring<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal;tab-stops:51.75pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>네트워크 규모와 복잡도에<br />
+따라 모니터링 요구<span lang="EN-US"> =&gt;</span>모니터링만으로 문제점 및 잠재적 문제 파악<span lang="EN-US">.<o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">2) Network Security<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">1)<br />
+identifying system that need protection<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>중요한 시스템을 위협하는 잠재적이 네트워크 취약점 식별<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:40.0pt;line-height:normal">집중적으로 강화해야하는 부분 파악<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">2)<br />
+conduct a Risk analysis<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>무단침입자나 권한을 가지지 않는 사용자에게 주용한 정보나 자원에<br />
+대한 엑세스권을 제공하는 등 보안 취약점에 대한 조직 차원의 지침 작성<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">3) Keep<br />
+it simple<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>비용지출에 비해 상대적으로 보안 미흡<span lang="EN-US"> : </span>물리적 보안이 저비용으로 쉽게 달성<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>조직회사의 최적 보안 수준 결정<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>보안 계획에는 조직의 업무 구조 및 문화와 호환<span lang="EN-US"><o:p></o:p></span></p>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">3. Evaluate Technology Options<o:p></o:p></span></h2>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">1) Broadcast<br />
+Traffic = Background traffic : Administrative Overhead<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>브리지나 스위치가 전송하는<span lang="EN-US"><br />
+ARP</span>프레임<span lang="EN-US">,</span>서버와 라우터 및 프린터에서 발생하는 라우팅과서비스광고패킷 <span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">2)<br />
+Connection type<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Connectionless &amp; Connection-oriented<br />
+</span>프로토콜간의<span lang="EN-US"> TradeOff<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Connectionless </span>프로토콜<span lang="EN-US">(IP): </span>가상회선없이패킷을 간단히 전송하지만<span lang="EN-US">,</span>정보를 전송하는데 더<br />
+많은오버해드<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Connection-oriented</span>프로토콜<span lang="EN-US">(ATM): point</span>연결 설정에 시간이 소요되지만<span lang="EN-US">, </span>한번 설정된 컨넥션상<br />
+효과적인 정보전달 가능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>대량의정보를 고속으로 전송일 경우<span lang="EN-US"> Connection-oriented</span>프로토콜<span lang="EN-US">, </span>소량의 다발적일경우<span lang="EN-US"> Connectionless<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">3)<br />
+Scalability<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>네트워크나 어플리케이션이 쉽게 확장할 수 있도록 조직의 현재<br />
+및 미래의 대역폭을 모두 고려<span lang="EN-US"><o:p></o:p></span></p>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">4. making Technology Choices<o:p></o:p></span></h2>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">1)Alternative<br />
+Designs<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;text-indent:9.75pt;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>좋은 디자인<span lang="EN-US"> : </span>고객에게<br />
+선택할 수 있는 다수의 설계방안 제시<span lang="EN-US"> =&gt;</span>제시시 혼란을 주지 않도록 간결하게<span lang="EN-US"><o:p></o:p></span></p>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">5.Summery<o:p></o:p></span></h2>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trandoff, </span>네트워크 설계시 고려해야하는<span lang="EN-US"> 3</span>가지<span lang="EN-US"><o:p></o:p></span></p>
+<h1 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">Lesson2 Pysical Layer Considerations<o:p></o:p></span></h1>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">1.Using the Requirements and Traffic<br />
+Spacification as a Guide<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">1)Growth and Scalability<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>물리계층 기술이<span lang="EN-US"> Lan</span>과<span lang="EN-US"> Wan </span>양쪽에 앞으로 확장을 고려한 충분한 용량을제공할것인가<span lang="EN-US">?<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>토폴로지도 중요한 결정 요소<span lang="EN-US"> : </span>토폴로지에 따른 다른<br />
+전송 매체 사용<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">2)Response time, BandWidth, and DataRate<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>실제 요구되는 용량이상으로 구축하는 것이 비용적으로 낭비지만 여분의 용량이 필요함<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">3) Reliablitiy, Avalilvability, and<br />
+Recoverablity<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>물리적 전송 매체는 항시 이용가능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAN</span>과<span lang="EN-US"> LAN</span>간 접속<span lang="EN-US">,LAN</span>내에 다른 접속 경로가 필요한가<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">4) Security<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>물리계층의 보안<span lang="EN-US"> : </span>권한을 갖지 않는 전송 매체<br />
+엑세스<span lang="EN-US"> -&gt; </span>전송 상태 모니터링 하기위한 케이블태핑<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>전송 매체에 따라 다른 보안 기능 보유<span lang="EN-US"> : </span>광케이블이<br />
+가장 아전<span lang="EN-US">,UTP</span>나 동충케이블은 태핑 용이<span lang="EN-US">,<o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">5)Remote Access -Remote Access</span>에 대한 물리<br />
+계층 기술은 속도와 이동성 <span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">6)Economy and Cost<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>사용중인 케이블이나<span lang="EN-US"> NIC</span>를 그대로 쓸 것인가<span lang="EN-US">, </span>자체설치 할 것인가 특정 업에체 맡길것인가<span lang="EN-US">?<o:p></o:p></span></p>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">2.Mapping Requirements to Physical media<br />
+Characteristics<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">1)Physical Media<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Physical media Comparison matrix: </span>네트워크를 배선할 때 고려해야할<br />
+중요 요소<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>전송 매체 선택은<span lang="EN-US"> Mac</span>프로토콜에 의존<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">2)Network Interface Cards(NICs)<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -NIC</span>역시 네트워크 설계 시 중요 사항<span lang="EN-US"> : </span>전송<br />
+매체<span lang="EN-US">, </span>토폴로지<span lang="EN-US">, mac</span>프로토콜과 호환성 여부<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -NIC charateristics Table&nbsp;<br />
+: NIC</span>를 선택할 때 고려할 특성<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">3)Summery<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>전송 매체가 안전성 비교<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>확장에 필요한 대역폭의 크기 결정 방법<span lang="EN-US"><o:p></o:p></span></p>
+<h1 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">Lesson3 Internatwokring Device Considerations<o:p></o:p></span></h1>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">1.Designing Networks with Switches and<br />
+routers<o:p></o:p></span></h2>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal">스위치와 라우터<span lang="EN-US"> : </span>단일<span lang="EN-US"> LAN</span>으로 네트워크를 구축할 수 없는 범위까지의 확장을 지원하는 네트워크 장비<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">1) Segmentation with Switches &amp;<br />
+Routers<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>스위치<span lang="EN-US"> (Layer2) : </span>대역폭을 효과적으로 사용할<br />
+목적으로 네트워크 분할<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>라우터<span lang="EN-US"> (Layer3) : broadcast traffic</span>를<br />
+제한하고 개별 <span lang="EN-US">broadcast domain</span>간<span lang="EN-US"> security,<br />
+control ,redundancy</span>를 제공할 목적으로 네트워크 분할<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">2) Workgroup Environments<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>워크그룹은 컴퓨팅 자원들의 공유하는 사용자집합<span lang="EN-US"> : </span>동일한<br />
+빌딩내의 소규모 또는 대규모<span lang="EN-US">,</span>캠퍼스내에 그룹<span lang="EN-US">,<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Typical Hub Workgroup Diagram : </span>내트워크 접속 장비를 설치하기 전에<br />
+워크 그룹 환경<span lang="EN-US"> =&gt; 2</span>대의 허브 구성<span lang="EN-US">, </span>실제 워크<br />
+그룹은<span lang="EN-US"> 200</span>명 이상의 사용자를 지원하는<span lang="EN-US"> 10~20</span>대의 허브로<br />
+구성<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>네트워크 관리자의 역할<span lang="EN-US"> : </span>서버르 ㄹ이요하는 대역폭<br />
+최대화<span lang="EN-US">, </span>개별 클라이언트 컴퓨터들의 작은 충돌 도메인으로 분할<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">3)Rounting Solution<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Rounter Implementation Diagram : </span>네트워크 관리자가 라우터를 선택한<br />
+경우<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>라우터에 의한 해법<span lang="EN-US"> : </span>큰 브로드케스트<span lang="EN-US">/</span>충돌 도메인을 작은 브로드케스트<span lang="EN-US">/</span>충돌 도메인으로 분할 개인별 도메인<br />
+내에서 트래픽 성능 향상<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>서버들에 스위치의 고속 포트 제공<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>라우터 선택이 최적 해법이 아닌<span lang="EN-US"> 2</span>가지 이유<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.</span>라우터는 스위치보다 고가이다<span lang="EN-US"> 2.</span>라우터는 필요이상<br />
+복잡<span lang="EN-US">- </span>구성하기가 어렵다<span lang="EN-US">.<o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">4)Switching solution<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>하나의 브로드케스트 도메인이<span lang="EN-US"> 4</span>개의<span lang="EN-US"> 10mbps </span>충돌도메인으로 분할<span lang="EN-US"> : <o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>서버들에 스위치의 고속포트 제공<span lang="EN-US"> : </span>병목현상 제거<br />
+<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>스위치 해법이 더나은 이유<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) </span>스위치가 라우터에 비해 저렴<span lang="EN-US">. <o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-top:0cm;margin-right:0cm;<br />
+margin-bottom:0cm;margin-left:40.0pt;margin-bottom:.0001pt;text-align:left;<br />
+text-indent:40.0pt;line-height:normal"><span lang="EN-US">2)</span>스위치가 라우터보다 고속<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3)</span>스위치는 라우터보다 설정이 간편하다<span lang="EN-US">.<o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">4)Departmental Workgroups<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Departmental workgroup : </span>몇몇 작은 워크그룹으로 구성된 큰 규모의 워크그룹<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>스위치로 구성된 소규모 워크그룹은 또다시 몇 개의 충돌 도메인으로 분할<span lang="EN-US">, </span>로컬서버는 전용 인터페이스로 접속<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">5) Broadcast Traffic Concerns<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>고성능을 제공하는 스위치의 문제점은 브로드캐스트<span lang="EN-US">,</span>멀티캐스트<br />
+트래픽 해소 불가<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>특정스위치는 <span lang="EN-US">“ Broardcast Throttle”</span>기능<br />
+보유<span lang="EN-US"> : </span>정해진 시간내에서 브로드케스트나 멀티케스트가 임계치 초과시 다음 간격까지 트래픽 차단<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">6)Physical Segmentation<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - physical Segmentation Diagram : </span>라우터에 의해 물리적으로한 네트워크를<br />
+브로드케스트 도메인으로 분할방법<span lang="EN-US"> =&gt;</span>네트워크 전체를 다운시킬수있는 브로드케스트 스톰을 대비해 네트워크<br />
+관리자가 설치<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>라우터는 부서별 또는 워크그룹별스위치에 대한 전용 인터페이스 제공<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>제한된 양의 트래픽만 라우터를 경우하므로 라우터의 비중이 적어짐<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">7)Logical Segmentation<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>한 네트워크를 다수의 브로드케스트 도메인으로 분할 하는 보다 유연한 방법<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - VLAN </span>형태<span lang="EN-US"> : </span>물리적인 네트워크와 관계없이<br />
+개별 워크스테이션의 논리적인 그룹을 근거로 워크그룹정의<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Routing and VLAN Diagram : </span>스위치의 각 포트번호로<span lang="EN-US">&nbsp; VLAN1, VLAN2 </span>식별<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>브로드캐스트나 멀티캐스트 트래필 발생하면 해당<span lang="EN-US"> VLAN</span>내<br />
+전달<span lang="EN-US"> : </span>라우터는 보안 및 트래픽 관리 수행<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">8)Backbone Implementation<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Collapsed backbone </span>구조가 주류<span lang="EN-US"> : </span>대량의<br />
+데이터는 중앙에 위치한 고성능 백본 장비를 통해 전송<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Collapsed Backbone</span>의 이점<span lang="EN-US"> : </span>중앙집중화<span lang="EN-US">,</span>성능향상<span lang="EN-US">,</span>비용저하<span lang="EN-US">, server<br />
+Farm </span>형태<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Collapsed Backbone</span>의 제한사항<span lang="EN-US"> : </span>병목현상발생<br />
+가능성<span lang="EN-US">,</span>고장에 의한 네트워크 전체 미치는 영향<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">* </span>라우터<span lang="EN-US">/</span>스위치 선택 정리<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>스위치나 라우터 모두 단일<span lang="EN-US"> LAN</span>을 분할하여 대역폭을<br />
+효과적으로 이용하는 장비<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>라우터 선택<span lang="EN-US"> : </span>여분의 전송경로 지원<span lang="EN-US">, </span>지능적인 패킷전달<span lang="EN-US">,WAN</span>액세스<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>스위치 선택<span lang="EN-US"> : </span>트래픽 병목 현상에 대한 대역폭향상만<br />
+요구<span lang="EN-US"> =&gt; </span>라우터에 비해 낮은 비용<span lang="EN-US"><o:p></o:p></span></p>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left;<br />
+line-height:normal"><span lang="EN-US">3.Optimizing LAN Performance with Switches<o:p></o:p></span></h2>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>대역폭을 고려하여 대부분 스위치를 사용하여<span lang="EN-US"> LAN </span>하부<br />
+구조 설계<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">1)Switching at the Edge of a Lan<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>캠퍼스 네트워크의<span lang="EN-US"> Edge</span>에서 브로드캐스트와 멀티캐스트<br />
+트래픽의 다발적인 생성에 의한 네트우커ㅡ 용량 부족이 중요문제<span lang="EN-US"> : <o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Edge Switch</span>가 제공해야 되는 기능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.Qos </span>제어<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.</span>어떠한 트래픽이라도 지원할수 있는 경제적이고 유연성을 가진 단순한 접속<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. </span>대역폭은 단순한<span lang="EN-US"> Layer2 </span>스위치로<br />
+관리<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt;<br />
+line-height:normal"><span lang="EN-US">2)Intelligent Switching at a Lan Core<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>네트워크 코어는 전체 컴퓨팅 커뮤니티에 다양한 서비스 제공<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>코어 스위치는 복원력이 강해야함<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>코어에 위치하는<span lang="EN-US"> Intelligent<br />
+Switch(high- function switch)</span>가 대규모 스위치 환경지원하기위한 제공기능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. High Bandwidth <o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Edge swich</span>에 접속되어 있는 사용자들이 인트라넷을<br />
+통해 다양한 자원들을 네트워크 성능 영향받지 않고 엑세스 할수 있는 충분한 대역폭제공<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. High port Density<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>코어에서 스위치접속은 높은 포트 밀도 제공<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>코어는<span lang="EN-US"> VLAN,</span>네트워크<br />
+세그먼트<span lang="EN-US">, </span>네트워크 관리를 제어하는곳이므로<span lang="EN-US">, </span>높은 포트밀도로<br />
+네트워크 확장성 향상 및 효율적인 트래픽 분리와 브로드캐스트 도메인 정의<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Bandwidth Management<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>코어에서<br />
+트래픽을 제어하는 기능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Intelligent Switch : ASIC + RISC </span>구조<span lang="EN-US">, </span>대역폭 관리 기능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>라우팅 기능<span lang="EN-US"> : </span>트래픽<br />
+분리와 브로트캐스트도메인 정의<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - policy-based VLANs : </span>물리적인 위치와<br />
+상관없이 사용자들을 논리적으로 구릅<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Advanced network management : </span>스위치로<br />
+구성된 네트워크 환경의 모니터링과 관리단순화<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -AutoCast VLANS : IP </span>멀티캐스트 트래픽을<br />
+효율적 전달<span lang="EN-US"> IGMP(internet Group Mangement Protocol)a</span>메시지를 등록된<br />
+사용자들의 포트에만 전달<span lang="EN-US">.<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Broadcast firewalls: </span>특정한 비율로 브로드캐스트<br />
+전파를 제한 하기위해 필터나 사용자가 정의한 설정에 의해 브로드케스트 스톰 방지<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - User-defined packet filter : </span>특정한<br />
+패킷 속성에 따라 패킷을 핉터 하는 기능<span lang="EN-US"> =&gt; </span>최적 트래픽관리를 위한 포트<span lang="EN-US">, </span>포트 그룹<span lang="EN-US">, Mac</span>주소 그룹등<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>대역폭 보다 더 중요한 다른 설계 고려 사항도 참작하여<br />
+대역폭에 대한 관리를 수행하는게 타당 <span lang="EN-US"><o:p></o:p></span></p>
+<h1 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">Lesson4 Optimizing Wan performance<o:p></o:p></span></h1>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">1.WAN as the Network Bottleneck<o:p></o:p></span></h2>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">WAN </span>인터페이스<span lang="EN-US"> : </span>기업<br />
+인트라넷에서의 병목현상 발생 지점 <span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">WAN Bottleneck Diagram<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">LAN/WAN </span>인터페이스를 구성하는 네트워크 접속 장비의 역할<span lang="EN-US"> : </span>부족한<span lang="EN-US"> WAN</span>대역폭에 대한 엑세스 관리<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>불필요한<br />
+트래픽 차단<span lang="EN-US"> , </span>네트워크프로토콜의 트래픽 오버헤드 감소<span lang="EN-US">,WAN</span>대역폭<br />
+할당과 이용을 관리<span lang="EN-US"><o:p></o:p></span></p>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">2.Conserving WAN BandWidth with Router Software Features<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">1)LAN</span>과<span lang="EN-US">&nbsp;<br />
+WAN</span>간의 인터페이스 장비인<span lang="EN-US"> Router<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>불필요한<br />
+트래픽이<span lang="EN-US"> WAN link</span>로 전달 되지 않도록<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>모든<br />
+패킷을 조사하여<span lang="EN-US"> LAN/WAN </span>인터페이스를 통한 제어<span lang="EN-US">,</span>큐잉<span lang="EN-US">,</span>우선 순서화<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>네트워크상의<br />
+문제점이 인트라넷 내부로 전파되는 것을 방지<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">2)</span>많은 라우터 소프트웨어가<span lang="EN-US"> WAN </span>대역폭을 효율적인 사용을 위해 중요한<br />
+역할을 함<span lang="EN-US">.<o:p></o:p></span></h3>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">3.Link State Routing Protocols<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">1)</span>라우터는 동적라우팅프로토콜을 사용 하여 다른 라우터와 정보를 교환 최신의 라우팅 테이블을 자동으로 유지<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">2)</span>대표적인 라우팅프로토콜<span lang="EN-US"> : WAN link</span>상에 최소한의 라우팅 정보교환<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Distance-Vetctor Routing Protocol : </span>주기적으로 자신의 라우팅 테이블 전체를 이웃라우팅에게 전달<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt;<br />
+RIP(Routing Information Protocol):Hop count</span>에 의한 최단 경로 선정<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Link State Routing Protocol :</span>토폴로지 변경이 있을때만 라우팅 테이블의 수정된 내용을 변경 <span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt;<br />
+OSPF(Open Shortest Path First)<o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">3)Link State Protocols Converge Faster<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>네트워크 내 모든 라우터가 특정 토폴로지사엥서의 모든 라우팅 테이블을 업데이트하고 동기화 시키는 처리가 중요<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Distance-Vector Routing Protocol</span>을 사용하는 경우 토폴로지 변경에 연이은 업데이트 트래픽발생<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Link State Routing Protocol</span>을 사용하면 네트워크 링크에 문제가 발생한 경우 라우터는 토폴로지를 재계산하여 변경<span lang="EN-US">, </span>변경된 내용만 다른 라우터에 전달<span lang="EN-US">. Distance-Vector<br />
+Routing Protocol</span>보다 빠른 전송가능<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">4)Link State Protocols Support Hierarchical Routing<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Link State Rouing Protocol</span>에서는 네트워크 다수의 서브도메인인 <span lang="EN-US">“Aera”</span>로<br />
+분할하여 관리<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>특정<span lang="EN-US"> Area</span>내의 라우터는 동일<span lang="EN-US"> Area</span>내의 다른 라우터들과만 라우팅 정보교환<span lang="EN-US">: </span>각 라우터가 유지할 정보 최소화 <span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>라우터<br />
+정보는 정적<span lang="EN-US"> : </span>한<span lang="EN-US"> Area</span>내의 토폴로지 변경이 다른<span lang="EN-US"> Area</span>내의 토폴로지 재계산을 야기하지 않으<span lang="EN-US"><o:p></o:p></span></p>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">4.Demand Circuits<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">1)Dial-up circuit</span>의 중요한 역할<span lang="EN-US"> : WAN</span>의 비용 절감과<br />
+신뢰성 있는 백업회선 제공<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">2)Demand Circuit</span>의<span lang="EN-US"> 3</span>가지 사용 방식<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -DoD(Dial<br />
+on Demand): DoD mode</span>로 동작하는<span lang="EN-US"> dial-up link</span>는 링크상의 트래픽유형에<br />
+따라 유지또는 단절<span lang="EN-US">=&gt; </span>요구가 높으면 링크는 계속유지되고<span lang="EN-US">, </span>요구가<br />
+낮아지면 링크종료<span lang="EN-US"> : WAN</span>과 라우터 연결에 전화선을 사용 경제적<span lang="EN-US">&nbsp;&nbsp;&nbsp; <o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -BoD(BandWidth<br />
+on Demand): primary WAN </span>컨넥션이 혼잡할떄<span lang="EN-US">, </span>부가적인 대역폭을 제공하기<br />
+위해<span lang="EN-US"> Secondary dial-up line</span>을 라우터가 자동 가동<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Disaster<br />
+recovery : </span>라우터가<span lang="EN-US"> Primary WAN </span>컨넥션의 장애를 검출하면<span lang="EN-US">, </span>자동적으로 백업 컨넥션 가동<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">3)Compression<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1)Data<br />
+Compression: </span>대역폭이 좁은<span lang="EN-US"> WAN link</span>의 대역폭을 보다 효과적으로 이용하는<br />
+방법 중 하나<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2)</span>인트라넷<br />
+환경에서의 대표적인 압축 방법<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -History-based<br />
+Compression : </span>다수의 패킷에서 반복되는 패턴을 찾아<span lang="EN-US">, </span>보다 짧은 코드를 가진<br />
+패턴으로 대체하는 방법<span lang="EN-US">=&gt; </span>송수신측 양쪽에 패턴과 코드의 테이블<span lang="EN-US">(Dictoranry)<br />
+</span>유지<span lang="EN-US"> : encode/decode</span>필요<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>또한<br />
+압축데이터와 함께<span lang="EN-US"> history </span>정보를 전송하기 때문에 신뢰성있는 데이터링크요구<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -per-packet<br />
+Compression : </span>패킷별로 반복되는 데이터 패턴<span lang="EN-US"> =&gt; </span>짧은 코드를 가진 패턴으로<br />
+대체<span lang="EN-US"> =&gt; </span>송수신측에서 패킷 간에<span lang="EN-US"> history</span>를 유지않으므로<br />
+신뢰성잇는 데이터링크가 불필요<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">4)BandWidth Aggregation<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>특성상<br />
+데이터 통신 트래픽은<span lang="EN-US"> Bursty</span><span class="apple-style-span"><span lang="EN-US" style="font-size:9.0pt;line-height:115%;color:black">(</span></span><span class="apple-style-span"><span style="font-size:9.0pt;line-height:115%;<br />
+color:black">데이터가 갑자기 집중적으로 한번씩 소규모로 발송됨을 가리킴<span lang="EN-US">)</span></span></span><span lang="EN-US"> : </span>서버와 브라우저간의<span lang="EN-US"> Web</span>페이지 전송<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>네트워크 설계자의 주요한 결정 사항 중 하나<span lang="EN-US"> : Bursty traffic</span>을 처리할 수<br />
+있는<span lang="EN-US"> WAN pipe</span>의<span lang="EN-US"> size<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Size</span>가 너무 큰경우 조직에서 부담하는 비용 증가 <span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Size</span>가 작은 경우 긴 전송 큐가 만들어져<span lang="EN-US"> latency </span>불피료한 재전송 프레임<span lang="EN-US">,</span>패킷손실<span lang="EN-US">,</span>응답시간<span lang="EN-US">,</span>성능저하<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Bandwidth Aggregation : </span>네트워크관리자에게 링크 전송 속도를 정의하는데 상당한 융통성 부여 <span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Multilink<br />
+PPP(point to point) : </span>다중전송 경로를 통해 패킷들을 분배하고 재결합<span lang="EN-US">,</span>순서화하는<br />
+정의방법<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Bandwidth<br />
+Aggregation : </span>하부의 가용한<span lang="EN-US"> dial-up </span>자원들에 의해서만 제한되는<span lang="EN-US"> BoD</span>의 확장 간주<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Threshold<br />
+mechanism : </span>부하크기에 따라<span lang="EN-US"> WAN </span>컨넥션의 논리적인<span lang="EN-US"> pipe size</span>를 변경하여구성<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">5) Data Prioritization<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>혼잡한 네트워크에서 우선 순위가 높은 트래픽이 필요할 때 신속하게<span lang="EN-US"> WAN</span>를 통해 전송못함<br />
+<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt;<br />
+</span>시간에 민감한트래픽<span lang="EN-US">(</span>터미널 입력<span lang="EN-US">)</span>과 배치트래픽<span lang="EN-US">(</span>파일 전송<span lang="EN-US">)</span>혼재 되어 있으므로<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>해결책<span lang="EN-US"> :&nbsp; </span>압축에<br />
+의해 보다 많은 대역폭을 확보하고 제한된 대역폭을 효과적으로 공유하는 방법강구<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>우선순위 부여<span lang="EN-US"> : WAN </span>전송 큐에서 시간에 민감한 트래픽에 높은 우선 순위 부여 <span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>라우팅<br />
+프로토콜 같은 네트워크에 중요한 트래픽은 자동적으로<span lang="EN-US"> urgent</span>로 할당<span lang="EN-US"> : </span>다른 트래픽 보다 우선적으로 전달<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">6)Protocol Reservation<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>특별히 중요한 어플리케이션은<span lang="EN-US"> WAN </span>대역폭의 일정 부분 요구도<span lang="EN-US">&nbsp; </span>가능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Protocol Reservation : </span>네트워크 관리자가 특정 프로토콜이나 어플리케이션<span lang="EN-US"> Wan<br />
+link</span>대역폭의 일부를 보장<span lang="EN-US"> , </span>데이터 우선순위와 다른 방식으로<span lang="EN-US"> interactive &amp; transaction-oriented network application</span>에대한<br />
+서비스제공<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -WAN<br />
+link</span>상 동작하는 특정 프로토콜 마다 정적으로 대역폭의 최소값 설정도 가능<span lang="EN-US"> : HTTP</span>트래픽에<br />
+대액폭<span lang="EN-US"> 10% </span>할당<span lang="EN-US">.<o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">7)Session Fairness<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Protocol<br />
+Reservation </span>기법을 향상시킨 방법<span lang="EN-US"> : </span>특정 사용자가<span lang="EN-US"> WAN</span>대역폭을 독점하지 않도록 모든 사용자에게 공평하게 트래픽이 전달되는 것을 보장<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Session Fairness : </span>사용자 커뮤니티에 대해 평균 응답시간을 보장하는 도구<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>인터넷을 엑세스하는<span lang="EN-US"> WAN link</span>에서<span lang="EN-US"> Session<br />
+Fairness</span>가 적용되지 않는 경우는 특정 사용자가<span lang="EN-US"> HTTP</span>프로토콜<span lang="EN-US"> reservation</span>의 모든 데역폭을 사용하여 다른 사용자들의<span lang="EN-US"> Block<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Session Fairness</span>을 적용한 경우<span lang="EN-US"> HTTP</span>프로토콜용으로 예약된 대역폭을 모든<br />
+사용자들이 공평하게 나누어 사용<span lang="EN-US"><o:p></o:p></span></p>
+<h1 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">Lesson5 Network management with SNMP and RMON<o:p></o:p></span></h1>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">1.Limitations to SNMP Manger / Agent Communication<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">1)SNMP : </span>최근 분산된 네트워크장비들을 관리하는 주된 매커니즘<span lang="EN-US"><br />
+&lt;=NETCONF<o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">2)Manager and Agent Communication Diargram=&gt; SNMP</span>는 각네트워크 장비내에내장된<span lang="EN-US">agent </span>소프트웨어를 이요하여 네트워크 장보와 장비 관련 통계정보 획특<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">3)Agent</span>가 수행하는 일<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>지속적으로<br />
+통계 정보<span lang="EN-US">(</span>수신 패킷 수<span lang="EN-US">) </span>수집<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>이들<br />
+정보를 각 장비의<span lang="EN-US"> MIB(Management Information Base)</span>에 저장<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -NMS(Network<br />
+managerment station)</span>의<span lang="EN-US"> polling</span>에 의한 각<span lang="EN-US"> agent</span>의<span lang="EN-US"> MIB </span>정보 요구에 대응<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">4)NMS</span>가 수행하는 일<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>주기적으로<br />
+각<span lang="EN-US"> SNMP agent</span>를 폴링<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>네트워크<br />
+성능 평가<span lang="EN-US"> : </span>최대 용량에 근접하거나 상당한 손상 트래픽을 발생시키는 세그먼크 구분<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">5)</span>대규모 기업 인트라넷 환경에서의<span lang="EN-US"> SNMP</span>모델의 제한사항<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>정규적인<span lang="EN-US"> NMS polling </span>발생<span lang="EN-US"> : </span>관리 트래픽이 혼잡을 증가시켜<span lang="EN-US"> gridblock </span>발생<span lang="EN-US"> =&gt; </span>특히 대역폭 제한된<span lang="EN-US"> WAN&nbsp; link</span>인 경우 심각<span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <o:p></o:p></span></p>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">2.Remote Monitoring(RMON)<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">1)SNMP</span>표준의<span lang="EN-US"> basic set</span>에 대한 가장 중요한 발전의 결과물<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">2)IETF(Internet Engineeing Task Force)</span>에 의해 개발<span lang="EN-US"> : SNMP </span>제한 사항 극복 및 대규모 분산 네트워크의 효율적인 관리 허용<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">3)Client/Server architecture : RMON<o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">4)RMON agent : </span>수집한 통계 데이터의 이력을 유지하는 서버기능 수행<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt;MNS</span>에<br />
+의한 정규적인<span lang="EN-US"> polling</span>제거<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">5)NMS</span>와 분산된<span lang="EN-US"> RMON probe</span>들간 통신<span lang="EN-US">&nbsp; : SNMP</span>로 수행<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">6)SNMP</span>와 비교한<span lang="EN-US"> RMON</span>의 이점<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>네트워크<br />
+관리 트래픽 양의 급격한 감소<span lang="EN-US"> : </span>부족한<span lang="EN-US"> WAN</span>대역폭의 유요한<br />
+이용<span lang="EN-US">&nbsp;&nbsp; <o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>전체<br />
+인트라넷에 관한 정보 제공<span lang="EN-US"> : </span>모든 네트워크 접속 장비<span lang="EN-US">,</span>서버어플리케이션<span lang="EN-US">,</span>사용자들간의 트래픽<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">7) RMON MIB , RMON MIB2<o:p></o:p></span></h3>
+<h1 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">Lesson6 TCP/IP Addressing considerations<o:p></o:p></span></h1>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">1.Review of internet Addressing<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">1)IP </span>주소<span lang="EN-US"> : 32</span>비트 주소를<span lang="EN-US"> 2</span>부분으로<br />
+구분<span lang="EN-US"> -&gt; </span>네트워크 식별<span lang="EN-US"> + </span>호스트 식별<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">2)Dotted Decimal Notation<o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp; -32bit</span>주소를 간략화<span lang="EN-US"> ,8bit</span>단위로 구분 사이에<span lang="EN-US"> .(dot)</span>을 넣어 표현 <span lang="EN-US"><o:p></o:p></span></h3>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">2.Classic IP subnetting<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">1)</span>서브네트 주소 설정<span lang="EN-US"> : </span>단일 인터넷주소를 다수의 물리적인 네트워크<br />
+분할사용<span lang="EN-US">,classD</span>는 안됨<span lang="EN-US">.<o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">2)</span>서브네트를 가진 주소는<span lang="EN-US"> 3</span>부분으로 구성<span lang="EN-US"> : </span>네트워크<span lang="EN-US">+</span>서브네트<span lang="EN-US">+</span>호스트<br />
+주소<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">3)subnet Mask : 32bit</span>로 구성 호스트나 라우터에 서브네트 주소와 호스트 주소를 구별<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">4)1=&gt; IP</span>주소의 네트우커<span lang="EN-US">,</span>서브네트번호로 대응<span lang="EN-US">, 0=&gt;</span>호스트 번호로 간주<span lang="EN-US"><o:p></o:p></span></h3>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">3.Classless InterDomain Routing(CIDR)<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">1)</span>인터넷에 연결된 네트워크인 경우<span lang="EN-US"> IP</span>주소 부족과 라우터 테이블 용량<br />
+문제와 직면<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt;<br />
+Classic IP</span>주소 설정 방법보다 효과적인<span lang="EN-US"> IP</span>주소 할당 방법 제공<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">2)Class B IP</span>주소인 경우<span lang="EN-US"> : </span>기업기관에서 거의 사용 못함<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">3)</span>단지<span lang="EN-US"> 100</span>개 이내<span lang="EN-US"> IP</span>주소가<br />
+필요한 경우에도<span lang="EN-US"> Class C IP</span>주소 할당 <span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">4)IP</span>네트워크 식별자로<span lang="EN-US"> 8,16,24</span>라는 고정된 숫자를 사용하지않고<span lang="EN-US"> 13~27</span>범위<span lang="EN-US"> prefix</span>사용<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">5)CIDR </span>주소 표현 방법<span lang="EN-US"> : 32bit IP</span>주소<span lang="EN-US">+network prefix</span>로 사용되는 비트수<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ex)<br />
+205.169.85.0/26 </span>여기서<span lang="EN-US"> 26</span>은 네트워크 식별자 나머지<span lang="EN-US"> 6</span>이 호스트 식별자<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">6)</span>현재<span lang="EN-US"> CIDR</span>주소와<span lang="EN-US"><br />
+ClassA,B,C</span>주소 혼용<span lang="EN-US"><o:p></o:p></span></h3>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">4.Variable-length Subnetting<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">1)class </span>구분에 의해 서브네트를 구성한 네트워크에서는 다른 서브네트워크 허용 불가<span lang="EN-US">: </span>각 서브네트워크에 특정수의 비트 할당<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">2)</span>네트워크 주소 공간 사용의 비효율성 초래<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">3)</span>가변길이 서브네트워크 구성<span lang="EN-US">: </span>단일 네트워크 내에 다수의 서브 네트마스크<br />
+허용하는 표준 기반 접근 방식<span lang="EN-US">=&gt;</span>서브네트 크기 가변<span lang="EN-US">..<o:p></o:p></span></h3>
+<h1 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">Lesson9 Development a logical Design Document<o:p></o:p></span></h1>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">1.preparing the Data<o:p></o:p></span></h2>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">1)</span>논리적 설계단계에서는<span lang="EN-US"> raw<br />
+data</span>를 가지고 심도 있는 결과 산출<span lang="EN-US"> : </span>새로운 네트워크에 대한 다양한 기술을 선택하는데<br />
+필요한 장비규격<span lang="EN-US">,</span>팜플렛<span lang="EN-US">,</span>업체 입찰 정보<span lang="EN-US">,</span>네트워크 표준등<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">2)Logical Design Document</span>에는 이들 정보중 일부만<br />
+포함하지만 획득한 모든 데이터들은 차후 이용을 위해 보간<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">3)</span>네트워크 시뮬레이션 어플리케이션에 의한 시뮬레이션결과도 저장<span lang="EN-US"><o:p></o:p></span></p>
+<h2 align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:left"><span lang="EN-US">2.Components of a logical Design<o:p></o:p></span></h2>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">1). Executive Overview<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>관리자에게<br />
+간략한 프로젝트 개요 설명 <span lang="EN-US">: </span>프로젝트에 대한 간략한 기술<span lang="EN-US">, </span>설계과정<br />
+나열<span lang="EN-US">,</span>완료진행 단계<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">2) Logical Design Discussion<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+Traffic specification</span>에 나열된 개별 설계 목표 중심으로 기술적인 해결방안 제시<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state<br />
+the problem or goal : </span>필요하면 문제점을 지젹해주는 주요데이터<span lang="EN-US"> review<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;tab-stops:40.0pt 80.0pt 120.0pt 160.0pt 218.25pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; propose a<br />
+solution : <o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;tab-stops:29.75pt 40.0pt 80.0pt 120.0pt 160.0pt 218.25pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>문제점<br />
+해결이나 비즈니스 요구를 충족하도록 설계 목표를 달성하는 방법제안<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;tab-stops:29.75pt 40.0pt 80.0pt 120.0pt 160.0pt 218.25pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>해결방안에<br />
+현재 기술 재사용<span lang="EN-US">,</span>새로운 장비구입 여부<span lang="EN-US">:<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left;tab-stops:29.75pt 40.0pt 80.0pt 120.0pt 160.0pt 218.25pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>네트워크<br />
+구성도<span lang="EN-US">,</span>테이블<span lang="EN-US">,</span>그래프를 사용하여 간략하게 표현<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Estimate<br />
+Costs<o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>가능하면<br />
+각 방안에 필요한 기술 비용 추정<span lang="EN-US"> <o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>정확한 전체 비용산정은 물리적인 설계가 완료되어야 가능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>부분적인 비용 추정은 제안된 해결방안이 예산범위에서 너무 벗어나지 판단<span lang="EN-US">.<o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">3)New Logical Diagram<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Logical<br />
+Design</span>에 새롭게 네트워크에 제안된 구성제시<span lang="EN-US"> : </span>새롭게 도입된 장비<span lang="EN-US">,</span>링크<span lang="EN-US">,</span>보안 계층<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>네트워크<br />
+설계자의 권고에 따라 몇단계에 결처서 개발할것인가 제시<span lang="EN-US">&nbsp;&nbsp; <o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>현재구성요소와 다른점을 분명히 제시<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">4)overall Cost Estimate<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>각 해결 방안의 개별적인 비용 추정을 통합하여 새로운 기술에 대해 전체적인 비용산정<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>일시적인 비용과 지속적인 비용 구분하여 산정<span lang="EN-US"> : </span>필요하면 신규 훈련 비용<span lang="EN-US">, </span>컨설팅 서비스비용<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>제안한 방안이 예산을 초과하였다면 비즈니스 이점 설명 및 예산 충족하는 대안 제시<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>예산 범위이내이면 예산 삭감을 서두르지 말고 설치비용까지 고려하여 판단<span lang="EN-US">.<o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">5)Approval Section<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Logical<br />
+design</span>에서<span lang="EN-US"> physical Design </span>단계로 진행하기 전에 주요인사에게 동의 혹득<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>관리자에<br />
+의한 네트워크의 기능적인 전체 그림에 대한 수용과 추천된 기술에 대한 동의<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>네트워크<br />
+설계팀장과 관리자가 서명해야할 여백 마련<span lang="EN-US"><o:p></o:p></span></p>
+<h3 align="left" style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;<br />
+margin-left:34.0pt;margin-bottom:.0001pt;text-align:left;text-indent:-24.0pt"><span lang="EN-US">6)Revising the Logical Design<o:p></o:p></span></h3>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>논리적 설계에는 기능과 비용면에서 많은 트레이드 오프가 있음<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>관리자의 동의 절차를 밝기전에 몇번에 걸친 논리적 설계문서 수정가능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" align="left" style="margin-bottom:0cm;margin-bottom:.0001pt;<br />
+text-align:left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />
+</span>수정이 가해질때마다 이전 문서까지 보존 및 문서 버전 관리까지 해야됨<span lang="EN-US">.<o:p></o:p></span></p>
+<p class="MsoTitle" align="left" style="margin:0cm;margin-bottom:.0001pt;<br />
+text-align:left;line-height:normal"><span lang="EN-US" style="font-size:24.0pt;<br />
+mso-bidi-font-size:16.0pt">Physical Network design<o:p></o:p></span></p>
+<h1 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">Lession1.<br />
+Overview of a structured Cable Plant<o:p></o:p></span></h1>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">1.Structed<br />
+Wiring System<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1)</span>구조화<br />
+배선 시스템<span lang="EN-US"> : </span>빌딩을 구축하거나 리모델링 할 때 벽<span lang="EN-US">, </span>천정<span lang="EN-US">,</span>마루에 통해 배선하는것보다 설치가 효과적<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">2)</span>네트워크<br />
+유형과 상관없이 케이블이 먼저 설치시<span lang="EN-US"> Universal Wiring System</span>에 대한 가이드라인제공<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">3)Universal<br />
+wiring <o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1)cable Convergence<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>케이블<br />
+설비를 미리 설치할때는 모든 주요<span lang="EN-US"> LAN</span>기술들이 다음<span lang="EN-US"> 3</span>가지<br />
+유형을 지원<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.STP(shielded<br />
+Twisted pair)<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.UTP<br />
+(Unshileded Twisted pair)<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.Optical<br />
+Filber<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>단거리에서<br />
+중거리까지 세그먼트들로 구성된 주요<span lang="EN-US"> LAN </span>기술에게<span lang="EN-US"> STP</span>와<span lang="EN-US"> UTP</span>사용<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Optical<br />
+Fiber</span>는 장거리 백본 접속이나 전자기적인 간섭을 원치 않는 어플리케이션과장소에사용<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2)Hub-based<br />
+Distributed Star Tobplogy<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>허브는<br />
+컹퓨팅장비들을 통합하는 주요 네트워크 접속장비<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>유연한<br />
+확장성 제공<span lang="EN-US">,</span>컴퓨팅장비들을 상호 접속하는 배선<span lang="EN-US">,</span>유지<span lang="EN-US">,</span>고장 분리를 수행하는 중추<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>백본<br />
+세그먼트들 서로 연결하는데 사용<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>모든<br />
+허브 제품들은<span lang="EN-US"> 3</span>가지 케이블 유형에 대한 인터페이스 제공<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3)Industry-wide<br />
+Standards<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>주요업체들은<br />
+구조화 배선의 주요성을 인식<span lang="EN-US"><o:p></o:p></span></p>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">2.<br />
+Structured Wiring Subsystem.<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1) Building<br />
+Entrance<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>빌딩에서 모든 전기통신<br />
+회선들<span lang="EN-US">(</span>전화선<span lang="EN-US">,</span>다른건물에서오는 데이터백본<span lang="EN-US">,</span>다른<span lang="EN-US"> WAN</span>전송설비<span lang="EN-US">) </span>인입과인출되는<br />
+지점<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>별도의 벽장이나 방<span lang="EN-US">,</span>공용장비실로 일부로 제공<span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>빌딩 인입부에는<span lang="EN-US"> Cross-connect Device</span>를 두어 간 결하고 체계적인 방법으로 장비들간 상호접속 지원<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Cross-Connect<br />
+Device<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1)punch-down<br />
+Blocks<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>전화선의<br />
+연결점을 제공하기 위해 개발<span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>빌딩에<br />
+들어오고 나가는 케이블에 대한 단일 종단점 역할을하여 배선 설치 간략화<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -TP</span>선의<br />
+개별 가닥은 반영구적으로 채널에 고정<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Patch<br />
+cable</span>들은 뒤에 허브<span lang="EN-US">,Lan </span>케이블<span lang="EN-US">,PBX</span>와<br />
+같은 장비들의 포트 연결<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2)patch<br />
+Panels<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>장비들을<br />
+상호접속할두 있는 많은 포트를 가지고 있어<span lang="EN-US">, </span>재구성이 최대한 용이하게<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>일반적으로<br />
+랙내에 설비<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">2)Equipment<br />
+Room<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>규모가 큰 오피스 빌딩은<span lang="EN-US"> PBX,</span>모뎀<span lang="EN-US">,</span>서브<span lang="EN-US">,</span>허브와<br />
+같은 장비들을 넣어두는 중앙집중화 된 장비실<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>구조화<span lang="EN-US"> LAN</span>배선 시스템의 장비실에는 주요 <span lang="EN-US">Cross-Connet </span>장비인<span lang="EN-US"> MDF </span>설비<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - MDF(main<br />
+Distribution Frame) : </span>네트워크 배선의 중 추가되는 상호 접속점<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">3)Vertical<br />
+Backbone<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>백본 케이블링을 보통<span lang="EN-US"> Vertical Cabling </span>이라고 함<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>빌딩 장비실에서 각 층의<br />
+배선실까지의 배선<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>보통 백본케이블링에<span lang="EN-US"> UTP, STP, Optical Fiber </span>사용<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">4) Wiring<br />
+Closets<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>빌딩의 각 층마다 위치<span lang="EN-US"> : </span>허브 넣어두는 곳<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>허브에서 해당 층의 컴퓨팅<br />
+장비들을 연결하는 곳<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">5)Horizontal<br />
+Wiring<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-indent:<br />
+34.0pt"><span lang="EN-US">- </span>배전실에서 각 사용자의 컴퓨팅 장비가 있는 부근의 벽면까지 연결하는 배선<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">6)Work Area<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>벽면에서 사용자의 컴퓨팅<br />
+장비간을 연결하는 케이블과 다른 장비들<span lang="EN-US">(NIC)</span>로 구성 주로<span lang="EN-US">UTP,STP</span>구성<span lang="EN-US"><o:p></o:p></span></p>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">3.Universal<br />
+Wiring SubSystems<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1)</span>주로<span lang="EN-US"> Horizontal Wiring Subsystem</span>과<span lang="EN-US"> Backbone<br />
+Cabling Subsystem</span>으로 구성<span lang="EN-US"><o:p></o:p></span></h3>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">4.Cabling<br />
+Distances<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1)</span>장비 서브시스템과<br />
+케이블유형에 따라 최대 전송거리 권고<span lang="EN-US"><o:p></o:p></span></h3>
+<h1 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">Lesson 4<br />
+Wireless LANs (WLANs)<o:p></o:p></span></h1>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">1.Radio-based<br />
+Wireless LAN<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1) </span>현재<br />
+오피스에서 사용되는<span lang="EN-US"> Wireless LAN </span>기술은 두가지<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Radio-based<br />
+LANs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Infrared LANs<o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">2)Radio-based<br />
+WLAN : </span>라디오 신호를 사용하여 데이터 전송하는<span lang="EN-US"> LAN<o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">3)Radio-based<br />
+WLAN</span>의 구분<span lang="EN-US"> : </span>라이선스 유무<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-indent:<br />
+34.0pt"><span lang="EN-US">-Licensed WLAN&nbsp;&nbsp;&nbsp;&nbsp;<br />
+Nonlicensed WLAN<o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">4)Licensed<br />
+Radio-based LANs : Microwave<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Microwave Lan</span>이라고<br />
+불림<span lang="EN-US">. </span>전용 주파수 및 비교적 높은 전송 속도<span lang="EN-US">(5.7Mbps)</span>를<br />
+제공<span lang="EN-US">, </span>벽등 차폐물통과<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>주요 단점<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>사용자들간에<br />
+제한된 가용 대역폭이 할당되도록 라이센스요구<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>마이크로웨이브에<br />
+노출될 경우 건강위험<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>전자오븐과<br />
+같은 전자기적 간섭<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>비교적<br />
+고가 및 전략량 요구<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>중장거리 전송을 위한<span lang="EN-US"> P2P</span>전송 기술로 주로사용<span lang="EN-US"> : </span>가시거리내에 있는 빌딩간의 통신<span lang="EN-US">, </span>기존<span lang="EN-US"> LAN</span>의 보다는<span lang="EN-US"> WAN</span>기술에<br />
+더 적합<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">5)<br />
+Nonlicensed Radio-based LANs : Spread Spectrum(SS)<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -FCC</span>의 라이선스의 받지<br />
+않고 구현된<span lang="EN-US"> Radio-based Lans<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>군용으로 실용화<span lang="EN-US"> : </span>고도의 보안성 제공<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>데이터송수신에 라디오 주파수를<br />
+사용하는 것은 동일<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>각 스테이션 트랜시버를<br />
+장착하고 다른 무선스테이션과의 통신에 안테나 사용<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Spread Spectrum </span>기법<span lang="EN-US"> : </span>원래신호를 넓은 범위의 주파수 상에 <span lang="EN-US">“Spread” =&gt; </span>수신<br />
+스테이션 이외의 스테이션에서는 이신호를 백그라운드 잡음으로 간주<span lang="EN-US">,</span>수신스테이션만 공유 대역폭에서 데이터<br />
+추출가능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>더 많은 사용자들이 동일한<br />
+주파수 대역을 공유하도록 허용하는 기법<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Spread Spectrum</span>의<br />
+두가지 방식<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Frequency<br />
+Hopping(FH) : </span>사용되고 있지 않는 주파수간의 신속한 절환에 의한 전송<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Direct<br />
+Sequence(DS) : </span>부호화된 비트 패턴 단위로 단일광대역신호 전송<span lang="EN-US">=&gt;</span>수신스테이션에서<br />
+인지할수 있는 비트패턴이면 백그라운드 잡음에서 데이터 추출하여 수신<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>대표적인<span lang="EN-US"> Spred spectrum </span>시스템은 무선 네트워크 어뎁터 보유<span lang="EN-US"> : </span>트랜시버<span lang="EN-US">,</span>안테나<span lang="EN-US">,<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>유선<span lang="EN-US"> LAN</span>과 인터페이스에는<span lang="EN-US"> AP</span>사용<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Spread spectrum<br />
+Diagram : 10Base-T Hub</span>에 연결된<span lang="EN-US"> Spread Spectrum segment</span>의<br />
+예<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -SS </span>시스템으로 다룬<span lang="EN-US"> Room</span>에 위치하는 워크그룹간의 연속적인 통신 수행<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>다소 느린 데이터 전송<br />
+속도<span lang="EN-US"><o:p></o:p></span></p>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">2.Nonradio<br />
+LANs : Infraed<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1)</span>최근 적외선<br />
+무선<span lang="EN-US"> LAN</span>시스템의 사용이 감소<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">2)</span>오피스<br />
+환경 전체를 적외선<span lang="EN-US"> LAN</span>으로 구축의 단점<span lang="EN-US"><o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>벽등 차폐물을 통과 할<br />
+수 없음<span lang="EN-US">. </span>고가이며 많은 전력량을 필요함<span lang="EN-US">. </span>망막손상 가능성<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">3)</span>단거리<span lang="EN-US"> P2P</span>로 주변장치 연결하는 용도에는 경쟁력 보유 <span lang="EN-US"><o:p></o:p></span></h3>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">3.Wireless<br />
+LAN Comparison<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1)Spread<br />
+Spectrum </span>기술만이 경쟁력 보유<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">2)</span>네트워크<br />
+설계목표와 요구사항을 충족하는 제품의 기능에 대한 신중한 고려 중요<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">3) Radio<br />
+(Sprad Spectrum) : </span>벽등 통과 가능 하지만 낮은 전송 속도 <span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp; NoRadio(infrared Point-and-Shoot) : </span>높은<br />
+속도<span lang="EN-US">, </span>하지만 짧은 거리 <span lang="EN-US"><o:p></o:p></span></h3>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">4.Wireless<br />
+Protocols<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1)WLANs</span>이<br />
+나머지<span lang="EN-US"> LAN</span>시스템과 인터페이스하는 방법<span lang="EN-US"> <o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>데이터 링크 프로토콜을<br />
+사용한 물리계층의 무선화<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>독자적인 프로토콜을 사용한<br />
+데이터링크 계층의 무선화<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">2) Wireless<br />
+at the physical Layer<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>새로운 물리계층채널을 단순히<br />
+제공하는 무선 기술채널은 이더넷과 같은 표준 데이터 링크 프로토콜<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt;</span>사용중인<span lang="EN-US"> LAN</span>장빕와 고도의 상호 운용성<span lang="EN-US"> : </span>모든장비가 동일<span lang="EN-US"> , </span>고속<span lang="EN-US">, </span>저렴 적은 전력량<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">3)Wireless<br />
+at the Data Link Layer<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>데이터 링크 계층 무선<br />
+기술은 데이터 링크와 물리 계층 양쪽에 대해 독자적인 프로토콜과 하드웨어요구<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>물리계층의 무선화에 의한<br />
+방식보다 복잡하고 고가이니 장비 생산<span lang="EN-US"><o:p></o:p></span></p>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">5.Wireless<br />
+Standards<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1)IEEE<br />
+802.11b/a,g,n </span>위원회 표준안 제정<span lang="EN-US"><o:p></o:p></span></h3>
+<h1 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">Lesson 5.<br />
+Devleoping a physical Design Document<o:p></o:p></span></h1>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">1.Componets<br />
+of a physical Design Document<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1)</span>물리적인<br />
+설계문서에는 새로운 설치 방안은 물론<span lang="EN-US">, </span>케이블 배선과 접속방법 가이드 제시<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">2)</span>간결하고<br />
+명료한 표현<span lang="EN-US">, </span>고도의 정확성과 완전성 보유<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">3)Physical<br />
+Design Diagram<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>요구사항 수집 단계에서<br />
+주로 요구사항들이 목록이 주요 결과물이였으나<span lang="EN-US">, </span>물리적설계단계에서는 주요 결과물은<span lang="EN-US"> Diagram<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>구축하려는 네트워크의 쳥사진이<br />
+될 상세한 규모의 도면 제시<span lang="EN-US"> : </span>설치에 소요되는 케이블랴으 세그먼트의 범위등 <span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>네트워크 다이어그램은 실제<br />
+오피스 환경의 규모 반영<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>빌딩 도면이 간명하면 청사진의<br />
+복사 용지에 직접 케이블과 컨넥터 표시 가능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span>건물도면이 너무 복잡하면<br />
+네트워크만에 적합하 ㄴ새롭고 단순한 다이어그램 사용이 효과적<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">4)Notes and<br />
+Comment<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>제시한 도면이 난해 하지<br />
+않도록 하기 위해 장비들이 연결되는 방법과 설치되는 장소등 설명하는 기록물로 도면 보충<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>이들 기록물에는 사용될<br />
+케이블 유형<span lang="EN-US">, </span>적용할 구조화 배선<span lang="EN-US">, </span>물리적인 보안 등 네트워크<br />
+설치 방법을 설명하는 다른 정보제시<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">5)Asset List<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>새로운 네트워크 설치에<br />
+필요한 하드웨어와 소프트웨어의 상세한 목록도 중요한 구성요소<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>새로이 구입되는 모든 아이템<span lang="EN-US">, </span>새로운 네트워크에서 재사용될 목록<span lang="EN-US">,</span>사용하지 않을 장비 목록<span lang="EN-US"><o:p></o:p></span></p>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">6)Final Cost<br />
+Estimate<o:p></o:p></span></h3>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>물리적 설계 완료 시점에서<br />
+구축할 네트워크에 요구되는 하드웨어의 규모를 정확하게 산정<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>네트워크 설치업자들의 입찰<br />
+정보를 수집하기 위해 사전 승인된 설계 되면 사용가능<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -</span>새로 구축될 네트워크의<br />
+전체적인 최종 비용 산정에 노임도 포함<span lang="EN-US"><o:p></o:p></span></p>
+<h2 style="margin-bottom:0cm;margin-bottom:.0001pt"><span lang="EN-US">2.Revision<br />
+the Physical design<o:p></o:p></span></h2>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">1)</span>물리적인<br />
+설계문서 개발 시점에서는 거의 대부분 결정이 내려진 상태<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">2)</span>네트워크<br />
+설계 목표에 부합하는 내용 변경 가능<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">3)</span>최적인<br />
+네트워크를 구축하기 위한 <span lang="EN-US">“just one more thing” </span>이 가능한 마지막 단계유의<span lang="EN-US"><o:p></o:p></span></h3>
+<h3 style="margin-top:0cm;margin-right:10.0pt;margin-bottom:0cm;margin-left:<br />
+34.0pt;margin-bottom:.0001pt;text-indent:-24.0pt"><span lang="EN-US">4)</span>네트워크<br />
+설치가 시작된 뒤에<span lang="EN-US">”one more thing”</span>하는데 막대한 비용 지출</p>
+<p>
+중간중간 오타있더라도 양해바래요~</h3>

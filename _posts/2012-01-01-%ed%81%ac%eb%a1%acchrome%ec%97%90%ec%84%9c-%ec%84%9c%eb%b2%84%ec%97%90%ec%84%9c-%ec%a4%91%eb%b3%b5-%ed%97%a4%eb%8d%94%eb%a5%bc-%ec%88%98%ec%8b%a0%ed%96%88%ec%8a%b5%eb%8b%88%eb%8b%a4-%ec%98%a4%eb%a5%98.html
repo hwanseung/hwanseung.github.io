@@ -1,0 +1,26 @@
+---
+layout: post
+title: 크롬(chrome)에서 "서버에서 중복 헤더를 수신했습니다." 오류 해결방법
+date: 2012-01-01 10:46:08.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Web
+tags: []
+meta:
+  _thumbnail_id: '2152'
+author: Hwanseung Lee
+---
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile1.uf.125872474F00385828E0B4.png" class="aligncenter" width="750" height="181" alt="" filename="제목 없음2,,,.png" filemime="image/jpeg" /></p>
+<p>이전까지 잘 되었었는 몇일 전부터 첨부파일을 받을때 이러한게 오류 문구가 나오는 일이 발생했습니다.</p>
+<p>처음 문의 왔을때는 잘되길레... 그 사람만의 문제 인가 싶었는데</p>
+<p>갑자기 저도 &nbsp;그렇게 뜨는걸 보았을 때</p>
+<p>최근 크롬이 업데이트를 하면서 헤더를 읽는 방법이 바뀌었나 봅니다. ㅋㅋ</p>
+<p>해결 방법은 의외로 간단했습니다.</p>
+<p>첨부파일로 받는 파일의 이름에 ,(콤마)를 제거해주면 됩니다.</p>
+<p>
+response.setHeader("Content-disposition","attachment; filename=+FileName);</p>
+<p>이렇게 헤더를 설정하시게 되는데</p>
+<p>저기보이는 FileName부분의 스트링에 ,(콤마)가 있으면 다른걸로 replace하시면 됩니다.</p>
+<p>&nbsp;</p>

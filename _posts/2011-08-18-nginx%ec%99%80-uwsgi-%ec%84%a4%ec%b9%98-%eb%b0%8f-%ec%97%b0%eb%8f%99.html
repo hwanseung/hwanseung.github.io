@@ -1,0 +1,111 @@
+---
+layout: post
+title: nginx와 uwsgi 설치 및 연동
+date: 2011-08-18 18:15:16.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Web
+tags:
+- nginx
+- Python3
+- python3.2
+- uwsgi
+- was
+- web server
+- wsgi
+meta:
+  _thumbnail_id: '1849'
+author: Hwanseung Lee
+---
+<p><span class="Apple-style-span" style="background-color: transparent;">ubuntu 기준으로 작성되었습니다.&nbsp;검색해봐도 한글로 된 자료는 없어서<br />
+짧은 영어실력으로 설치하고 삽질하고 한거라&nbsp;국내에서는 레어자료일것 같네요 ㅋ&nbsp;</span></p>
+<p><b><span style="font-size: 14pt; background-color: rgb(124, 67, 177);"><font class="Apple-style-span" color="#ffffff">1. 설치준비</font></span></b><br />
+<a href="http://nginx.org/en/download.html" style="background-color: transparent; ">http://nginx.org/en/download.html</a><span class="Apple-style-span" style="background-color: transparent;">&nbsp;</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+위의 링크에서 nginx 설치파일을 받습니다.</span><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+전 1.0.5버전이 최신버전입니다.</span></p>
+<p><a href="http://projects.unbit.it/uwsgi/wiki/WikiStart#Getit" style="background-color: transparent; ">http://projects.unbit.it/uwsgi/wiki/WikiStart#Getit</a><br />
+<span class="Apple-style-span" style="background-color: transparent;"><br />
+위의 링크에서 uwsgi를 받습니다. 0.9.8.3이 릴리즈중 최신이네요&nbsp;</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">두개의 받은 것을 압축을 풉니다.</span><br />
+<span class="Apple-style-span" style="background-color: rgb(255, 255, 255);"><br />
+</span><b><span style="font-size: 14pt; background-color: rgb(124, 67, 177);"><font class="Apple-style-span" color="#ffffff">2. &nbsp;PCRE(Perl 5 Compatible Regular Expression Library) Library 설치</font></span></b></p>
+<div>
+<span class="Apple-style-span" style="background-color: transparent;">#&nbsp;</span><span class="Apple-style-span" style="color: rgb(17, 17, 17); font-family: Consolas, 'Andale Mono', Monaco, Courier, 'Courier New', Verdana, sans-serif; background-color: rgb(238, 238, 238); ">apt-get install libpcre3 libpcre3-dev</span></p>
+<p><b><font class="Apple-style-span" color="#ffffff"><span style="font-size: 14pt; "><span class="Apple-style-span" style="background-color: rgb(124, 67, 177);"><span style="font-size: 14pt; ">3.nginx설치</span></span></span></font></b></p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><span style="font-size: 9pt; "><span style="font-size: 9pt; ">nginx의 압축이 풀린 폴더에 들어가면&nbsp;</span></span></span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><span style="font-size: 9pt; "><span style="font-size: 9pt; ">configure 파일이 있습니다.</span></span></span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><span style="font-size: 9pt; "><span style="font-size: 9pt; ">그리고 uwsgi의 압축을 푼 경로를 알아야됩니다</span></span></span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><span style="font-size: 9pt; "><span style="font-size: 9pt; "># &nbsp;sudo&nbsp;</span></span></span><span class="Apple-style-span" style="font-family: monospace; font-size: 13px; line-height: normal; white-space: pre; "><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; "><span style="font-size: 9pt; ">./configure --prefix=/etc/nginx</span></span><br />
+<span style="font-size: 9pt; "><span style="font-size: 9pt; "># sudo make</span></span><br />
+<span style="font-size: 9pt; "><span style="font-size: 9pt; "><br />
+# sudo make install </span></span><br />
+<span style="font-size: 9pt; "><span style="font-size: 9pt; "><br />
+nginx가 설치가 완료가 되었습니다.</span></span></p>
+<p><span style="font-size: 9pt; "><span style="font-size: 9pt; ">80포트에 다른 애들(아파치나 등등)이 미리 설치 되어있으면 </span></span></p>
+<p><span style="font-size: 9pt; "><span style="font-size: 9pt; ">이미 사용중이라고 안된다고 합니다.</span></span><br />
+<span style="font-size: 9pt; "><span style="font-size: 9pt; "><br />
+/etc/nginx/sbin에 nginx를 실행시키면 welcame to Nginx라는 문구를 볼 실수 있을 거에요</span></span></p>
+<p></span><b><font class="Apple-style-span" color="#ffffff" style="background-color: rgb(124, 67, 177);"><span style="font-size: 14pt; ">4.uwsgi 설치</span></font></b><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><br />
+<span style="font-size: 9pt; ">압축 푼 경로로 들어가셔서</span><br />
+<span style="font-size: 9pt; "># sudo apt-get install build-essential python-dev libxml2-dev</span><br />
+<span style="font-size: 9pt; ">실행해서 설치전 요구되는 것들을 깔아줍니다.</span><br />
+<span style="font-size: 9pt; ">특정 python 버전을 선택하기 위해서</span><br />
+<span style="font-size: 9pt; "># sudo make -f Makefile.Py32</span><br />
+<span style="font-size: 9pt; ">로 실행하면 python 3.2버전으로 설치가 가능합니다.</span><br />
+<span style="font-size: 9pt; ">설치가 완료되면</span><br />
+<span style="font-size: 9pt; "><br />
+그폴더에 uwsgi 실행파일이 하나 생깁니다.</span><br />
+<span style="font-size: 9pt; "><br />
+이것에 명령어를 주어서 실행시킬수 있습니다.</span><br />
+</span></span>
+<div style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); ">
+<span style="font-size: 9pt; ">/var/www/hello.py 경로에 아래의 소스를 위치시키구요</span><br />
+<textarea name="code" class="py"><br />
+ def application(env, start_response):<br />
+    start_response('200 OK', [('Content-Type','text/html')])<br />
+    return "Hello World"<br />
+</textarea>
+<div>
+<span style="font-size: 9pt; ">$ ./uwsgi --http :9090 --wsgi-file /var/www/hello.py</span><br />
+<span style="font-size: 9pt; "><br />
+실행후 </span><br />
+<span style="font-size: 9pt; "><br />
+http://localhost:9090으로 접근하시면 </span></p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile25.uf.150F22444E4D5424087859.png" class="aligncenter" width="750" height="447" alt="" filename="제목 없음.png" filemime="image/jpeg" /></p>
+<p>&nbsp;</p></div>
+<p><span style="font-size: 9pt; ">위의 사진처럼 보실수 있습니다.</span><br />
+<span style="font-size: 9pt; "><br />
+ 위에 사진에는 잘 되는지 확인하기 위해서 응답헤더에 Server이름을 추가해 봤습니다.</span></div>
+<p><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><br />
+</span>
+<p style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><img src="{{ site.baseurl }}/assets/cfile29.uf.1118F3394E4D54EA0D8054.png" class="aligncenter" width="663" height="449" alt="" filename="제목 없음1.png" filemime="image/jpeg" /></p>
+<p><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; ">python 3.2으로 실행되었다는것도 확인이 되네요 ㅋ</span><br />
+</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; "><br />
+인제 지지분한 포트번호를 때기 위해서 Nginx와 연결해보겟습니다.</span><br />
+</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><br />
+</span><b><span class="Apple-style-span" style="background-color: rgb(124, 67, 177); "><font class="Apple-style-span" color="#ffffff"><span style="font-size: 14pt; ">5. nginx와 uwsgi 연결</span></font></span></b><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><br />
+</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><br />
+<span style="font-size: 9pt; ">/etc/nginx에 nginx를 설치했는데요</span><br />
+</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; ">/etc/nginx/config에 nginx.conf 파일이 있는데</span><br />
+</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; ">nginx.conf가 서버 설정을 담당하는 파일입니다.</span><br />
+</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; ">여기서 server { ... } 안에 location / { .... } 부분이 있는데</span><br />
+</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; ">location / { .. } 의 중괄호 안에 값을 바뀌어 줍니다.</span><br />
+</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><br />
+</span>
+<div class="txc-textbox" style="color: rgb(0, 0, 0); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(254, 254, 184); border-right-color: rgb(254, 254, 184); border-bottom-color: rgb(254, 254, 184); border-left-color: rgb(254, 254, 184); background-color: rgb(254, 254, 184); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; ">
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">include uwsgi_params;<br />
+uwsgi_pass 127.0.0.1:9090&nbsp;</p>
+</div>
+<p><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; ">으로 바꾸어서 저장을 하시고</span><br />
+</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; "><br />
+다시 nginx를 실행시키시고</span><br />
+</span><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; "><br />
+http://locahost나 http://127.0.0.1로 실행시키면 </span><br />
+</span>
+<p style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><img src="{{ site.baseurl }}/assets/cfile21.uf.1265B4514E4D560B06CA78.png" class="aligncenter" width="668" height="495" alt="" filename="제목 없음2.png" filemime="image/jpeg" /></p>
+<p><span class="Apple-style-span" style="color: rgb(0, 0, 0); background-color: rgb(247, 247, 247); "><span style="font-size: 9pt; ">위의 그림처럼 잘 반영되었음을 확인할수 있습니다.</span><br />
+&nbsp;</span></div>

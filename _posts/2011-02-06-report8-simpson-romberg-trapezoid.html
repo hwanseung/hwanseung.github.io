@@ -1,0 +1,115 @@
+---
+layout: post
+title: Report8 simpson Romberg trapezoid
+date: 2011-02-06 03:01:25.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/numerical analysis
+tags:
+- Romberg
+- Simpson
+- trapezoid
+- 수치해석
+meta:
+  _thumbnail_id: '1079'
+author: Hwanseung Lee
+---
+<div>
+<img src="{{ site.baseurl }}/assets/cfile3.uf.1750993D4D4E0E8E1FA906.png" class="aligncenter" width="549" height="369" alt="" filename="제목 없음.png" filemime="image/jpeg" />
+</div>
+<div>
+<textarea name="code" class="cpp" style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><br />
+#include &lt;stdio.h&gt;<br />
+#include &lt;math.h&gt;</p>
+<p>float Tarr[100]={0,};<br />
+float Sarr[100]={0,};<br />
+float Carr[100]={0,};<br />
+float Darr[100]={0,};</p>
+<p>float function(float x);</p>
+<p>void trapezoid();<br />
+void simpson();<br />
+void Romberg();</p>
+<p>float e;<br />
+float l=3;<br />
+float start = -1;<br />
+float end = 2;<br />
+int index = 0;</p>
+<p>int main()<br />
+{</p>
+<p>	printf("upsilon? : ");<br />
+	scanf("%f",&amp;e);</p>
+<p>	trapezoid();<br />
+	simpson();<br />
+	Romberg();<br />
+	printf("     Ti      //     Si     //      Ci    //     Di      \n" );<br />
+	for(int z =0 ; z&lt;index ; z++)<br />
+	{<br />
+		printf("%d &gt;&gt; %f // %f // %f // %f\n",z,Tarr[z],Sarr[z],Carr[z],Darr[z] );<br />
+	}</p>
+<p>}</p>
+<p>void simpson()<br />
+{<br />
+	for(int i=0;;i++)<br />
+	{<br />
+		if(Tarr[i+1]==0)<br />
+			break;<br />
+		else<br />
+		{<br />
+			Sarr[i] = (4*Tarr[i+1]-Tarr[i] )/3;<br />
+		}<br />
+	}<br />
+}</p>
+<p>void Romberg()<br />
+{<br />
+	for(int i=0;;i++)<br />
+	{<br />
+		if(Sarr[i+1]==0)<br />
+			break;<br />
+		else<br />
+		{<br />
+			Carr[i] = (pow((float)4,2)*Sarr[i+1]-Sarr[i] )/(pow((float)4,2)-1);<br />
+		}<br />
+	}</p>
+<p>	for(int i=0;;i++)<br />
+	{<br />
+		if(Carr[i+1]==0)<br />
+			break;<br />
+		else<br />
+		{<br />
+			Darr[i] = (pow((float)4,3)*Carr[i+1]-Carr[i] )/(pow((float)4,3)-1);<br />
+		}<br />
+	}<br />
+}</p>
+<p>void trapezoid()<br />
+{<br />
+	Tarr[0] = (function(start)+function(end))/2;</p>
+<p>	for(int i=1;;i++)<br />
+	{<br />
+		float temp=0;<br />
+		int Max_index = pow((float)2,(float)i);<br />
+		int Max_indexd2 = pow((float)2,(float)i-1);<br />
+		for(int j=0; j&lt; Max_indexd2  ;j++)<br />
+		{<br />
+			temp += function( (start +  ((end-start)/(Max_index))*(2*j+1)) );<br />
+			//printf("%d ",2*j+1);<br />
+		}<br />
+		temp= temp*l/Max_indexd2;<br />
+		//printf("$$%f %d\n ",temp,Max_index);<br />
+		temp = Tarr[i-1]+temp;</p>
+<p>		temp = temp/2;<br />
+		Tarr[i]=temp;<br />
+		index = i;</p>
+<p>		float temp1 =abs(Tarr[i]-Tarr[i-1]);<br />
+		if(temp1&lt;e)<br />
+			break;<br />
+	}</p>
+<p>}</p>
+<p>float function(float x)<br />
+{<br />
+	return 3*pow(x,3)-2*pow(x,2)+x-1;<br />
+}</p>
+<p></textarea></p>
+</div>
+<p></p>

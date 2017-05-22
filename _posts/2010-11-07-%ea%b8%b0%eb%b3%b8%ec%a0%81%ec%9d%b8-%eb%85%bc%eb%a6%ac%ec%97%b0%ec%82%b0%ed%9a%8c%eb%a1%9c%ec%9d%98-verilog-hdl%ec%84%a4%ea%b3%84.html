@@ -1,0 +1,208 @@
+---
+layout: post
+title: 기본적인 논리연산회로의 verilog HDL설계
+date: 2010-11-07 18:53:14.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/verilog HDL
+tags:
+- verilog HDL
+- 논리연산회로
+meta: {}
+author: Hwanseung Lee
+---
+<p><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; font-size: 9pt; ">컴퓨터구조 교재에 나와있는 다음 회로를 VHDL로 설계하시오.</p>
+<p>&nbsp;그림2.12&nbsp; 기본적인 논리연산회로(1비트)</p>
+<p>세부사항 1. 4*1MUX를 별도의 모듈로 설계하고,&nbsp; 이것을 부품으로 사용하여 전체회로를 설계하시오.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.&nbsp; 테스트를 위한 입력값은 S1,S0 및 A,B의 모든 비트패턴의 값(16개)을 설정하시오.</span>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; ">
+<span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; "><br />
+</span></div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; "><br />
+</span></div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; "><br />
+</span></div>
+<div style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; "><br />
+</span></div>
+<div>
+<div>
+<font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">`timescale 1ps / 1ps</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">module test;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;wire E1; &nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;reg Ai; &nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;reg Bi;&nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;reg S1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;reg S0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;Basic_logic_circuit logic_diagram(Ai,Bi,S1,S0,E1);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">initial</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;begin &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//SIGNAL S1</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;S1 = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#800</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;S1 = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#800</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;end</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">initial</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; begin &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//SIGNAL S0</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;S0 = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#400</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;S0 = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#400</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;S0 = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#400</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;S0 = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#400</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;end</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">initial</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;begin &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//SIGNAL Ai</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Ai = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#200</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Ai = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#200</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Ai = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#200</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Ai = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#200</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Ai = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#200</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Ai = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#200</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Ai = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#200</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Ai = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#200</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;end</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">initial</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;begin &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//SIGNAL Bi</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bi = 1'b1;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp;#100</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;end</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;initial</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp; &nbsp;#1600</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">$finish;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">endmodule</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>
+</div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>
+<div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">//** Basic_logic_circuit ************************</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">module Basic_logic_circuit (Ai,Bi,S1,S0,Ei);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;output Ei;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;input Ai,Bi,S1,S0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;wire w1,w2,w3,w4;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;and (w1,Ai,Bi);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;or (w2,Ai,Bi);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;xor (w3,Ai,Bi);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;not (w4,Ai);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;Mux_4to1 mux4_1(w1,w2,w3,w4,S1,S0,Ei);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">endmodule</span></font></div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>
+</div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>
+<div>
+<div>
+<font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">//** Mux_4to1( ************************</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">module Mux_4to1(I0,I1,I2,I3,S1,S0,Y);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;output Y;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;input I0,I1,I2,I3,S1,S0;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;wire w1,w2,w3,w4,w5,w6;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;not (w6,S1);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;not (w5,S0);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;and (w1,I0,w6,w5);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;and (w2,I1,w6,S0);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;and (w3,I2,S1,w5);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;and (w4,I3,S1,S0);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;or (Y,w1,w2,w3,w4);</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">&nbsp;&nbsp;&nbsp;</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;">endmodule</span></font></div>
+<div><font class="Apple-style-span" color="#888888" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><br />
+</span></font></div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>
+</div>
+<div style="border-collapse: collapse; color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; font-size: 9pt; line-height: 16px; ">
+</div>

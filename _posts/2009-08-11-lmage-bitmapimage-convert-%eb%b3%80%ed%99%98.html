@@ -1,0 +1,95 @@
+---
+layout: post
+title: lmage -> BitmapImage Convert 변환
+date: 2009-08-11 11:31:05.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/WPF
+tags:
+- BitmapImage
+- CONVERT
+- lmage
+- wpf
+meta: {}
+author: Hwanseung Lee
+---
+<p><font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">Image 을 BimmapImage Convert 변환하는 방법을 알아보자</span></font></p>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">C#까지만 해도 image(<span class="Apple-style-span" style="white-space: normal; font-family: 굴림; line-height: 18px; "><font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">using System.Drawing-컨트롤 Image보고 그러는게 아니다.</span></font><span class="Apple-style-span" style="font-family: Gulim; line-height: normal; white-space: pre; ">)</span></span></span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><span class="Apple-style-span" style="white-space: normal; font-family: 굴림; line-height: 18px; "><span class="Apple-style-span" style="font-family: Gulim; line-height: normal; white-space: pre; ">클래스를 써서 잘 활용한거 같은데</span></span></span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">WPF에 오면서 image클래스는 안쓰고 uri를 바로 던지던데</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">그나마.. BitmapImage를 쓰던데 요거</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">Image를 BitmapImage로 바꾸는 방법이 필요했다.ㅋ</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">(머 내가 잘 몰라서 하는 말이라 위의 말은 책임지지 않겠음)</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">음.. 이거 찾는다고 적어도 하루을 보낸거 같다.</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font>
+<div class="txc-textbox" style="border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(254, 254, 184); border-right-color: rgb(254, 254, 184); border-bottom-color: rgb(254, 254, 184); border-left-color: rgb(254, 254, 184); background-color: rgb(254, 254, 184); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; ">
+Image image = (Image)value;<br />
+BitmapImage bi = new BitmapImage();<br />
+MemoryStream imgstream = new MemoryStream();<br />
+image.Save(imgstream, System.Drawing.Imaging.ImageFormat.Jpeg);//50*50으로 변경후 스트림을 저장.<br />
+imgstream.Position = 0; //스트림 위치 초기화<br />
+bi.BeginInit();<br />
+bi.StreamSource = imgstream;<br />
+bi.EndInit();<br />
+imgstream.Close();</p>
+<p>return bi;</p></div>
+</div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">위에 소스에서 보면 아래와 같은 게 소스가 있는데</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;" /></font>
+<div class="txc-textbox" style="border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(219, 232, 251); border-right-color: rgb(219, 232, 251); border-bottom-color: rgb(219, 232, 251); border-left-color: rgb(219, 232, 251); background-color: rgb(219, 232, 251); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; ">
+imgstream.Position = 0; //스트림 위치 초기화</div>
+<div>
+</div>
+<p>매우 중요하다 다른 소스는 다 작성해노코 요걸 몰라</p></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;">반나절을 소비하다닝.ㅋ</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><b>이로 인해 image 객체를 바인딩을 던져서</b></span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><b><br />
+</b></span></font></div>
+<div>
+<font class="Apple-style-span" face="Gulim"><span class="Apple-style-span" style="line-height: normal; white-space: pre;"><b>converter을 이용하여 이미지를 출력할 수 있게 되었다.</b></span></font></div>

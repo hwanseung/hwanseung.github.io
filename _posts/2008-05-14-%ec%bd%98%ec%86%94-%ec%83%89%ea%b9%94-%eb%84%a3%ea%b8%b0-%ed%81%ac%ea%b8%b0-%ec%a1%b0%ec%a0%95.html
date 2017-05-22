@@ -1,0 +1,29 @@
+---
+layout: post
+title: 콘솔 색깔 넣기 ,크기 조정
+date: 2008-05-14 10:40:50.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/C
+tags:
+- 콘솔
+meta: {}
+author: Hwanseung Lee
+---
+<div class="view" style="FONT-SIZE: 9pt; FONT-FAMILY: 돋움">
+<p><strong><font color="#ff6c00">1. 콘솔 텍스트 변경</font></strong></p>
+<p>SetConsoleTitle("<u>String...</u>");</p>
+<p><font color="#ff6c00"><strong>2. 텍스트 색상 변경</strong></font></p>
+<p>// VC++에서는 다음의 enum 상수를 지정해 주지 않아도 작동한다. 다른 컴파일러는 잘 모르겠음.</p>
+<p>enum {<br />&nbsp; BLOCK, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/*&nbsp; 0 : 까망 */<br />&nbsp; DARK_BLUE, &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;/*&nbsp; 1 : 어두운 파랑 */<br />&nbsp; DARK_GREEN, &nbsp; &nbsp; &nbsp; &nbsp;/*&nbsp; 2 : 어두운 초록 */<br />&nbsp; DARK_SKY_BLUE, &nbsp; /*&nbsp; 3 : 어두운 하늘 */<br />&nbsp; DARK_RED, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;/*&nbsp; 4 : 어두운 빨강 */<br />&nbsp; DARK_VOILET, &nbsp; &nbsp; &nbsp; &nbsp;/*&nbsp; 5 : 어두운 보라 */<br />&nbsp; DARK_YELLOW, &nbsp;&nbsp; &nbsp; /*&nbsp; 6 : 어두운 노랑 */<br />&nbsp; GRAY, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;/*&nbsp; 7 : 회색 */<br />&nbsp; DARK_GRAY, &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; /*&nbsp; 8 : 어두운 회색 */<br />&nbsp; BLUE, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; /*&nbsp; 9 : 파랑 */<br />&nbsp; GREEN, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* 10 : 초록 */<br />&nbsp; SKY_BLUE, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* 11 : 하늘 */<br />&nbsp; RED, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* 12 : 빨강 */<br />&nbsp; VOILET, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; /* 13 : 보라 */<br />&nbsp; YELLOW, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; /* 14 : 노랑 */<br />&nbsp; WHITE, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* 15 : 하양 */<br />};</p>
+<p>// 다음과 같은 형식으로 함수를 만들어 사용하면 된다.</p>
+<p>// 함수가 사용된 다음 부터 지정한 색상으로 출력된다.</p>
+<p>void SetColor(short color)<br />{<br />&nbsp; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);<br />}</p>
+<p></p>
+<p><strong><font color="#ff6c00">3. 콘솔 크기 조절</font></strong></p>
+<p>system() 함수를 사용하여 콘솔의 크기를 조정하는 mode명령어를 실행 시켜 조절이 가능하다.</p>
+<p>system("mode con: lines='세로길이' cols='가로길이' "); </p>
+<p>ps. 콘솔 테트리스 만들면서 사용했던 콘솔용 색깔 함수</p>
+</div>

@@ -1,0 +1,232 @@
+---
+layout: post
+title: midi(.mid) 파일 구조
+date: 2010-05-23 18:33:18.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/etc
+tags:
+- file format
+- MIDI
+meta: {}
+author: Hwanseung Lee
+---
+<div>
+<font style="BACKGROUND-COLOR: #5c7fb0"><font color="#c2c2c2"><font style="BACKGROUND-COLOR: #ffffff" color="#474747">midi(.mid) 파일 구조 &lt;1&gt;을 참조하면</p>
+<p><font color="#801fbf">Header Chunk</font> 과 <span lang="EN-US"><font size="2">Track Chunk</font></span>&nbsp;으로 나눠어져 있다는 것을 알수 있을 것이고</p>
+<p>Header Chunk 의 부분부터 먼저 알아 보자 </font><br />
+</font></font><br />
+비교적 Header Chunk은 간단하다.</p>
+<table style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; MARGIN: auto auto auto 68.15pt; WIDTH: 355.95pt; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none; mso-border-alt: solid windowtext .5pt; mso-padding-alt: 0cm 4.95pt 0cm 4.95pt; mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext" class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" width="475">
+<tbody>
+<tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 4.95pt; WIDTH: 40.95pt; PADDING-RIGHT: 4.95pt; BACKGROUND: #dddddd; BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt" valign="top" width="55">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Offset<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; PADDING-LEFT: 4.95pt; WIDTH: 45pt; PADDING-RIGHT: 4.95pt; BACKGROUND: #dddddd; BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt" valign="top" width="60">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Length <o:p></o:p></font></font></span></p>
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">(byte)<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; PADDING-LEFT: 4.95pt; WIDTH: 54pt; PADDING-RIGHT: 4.95pt; BACKGROUND: #dddddd; BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt" valign="top" width="72">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Type<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; PADDING-LEFT: 4.95pt; WIDTH: 99pt; PADDING-RIGHT: 4.95pt; BACKGROUND: #dddddd; BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt" valign="top" width="132">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Description<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; PADDING-LEFT: 4.95pt; WIDTH: 117pt; PADDING-RIGHT: 4.95pt; BACKGROUND: #dddddd; BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt" valign="top" width="156">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Value<o:p></o:p></font></font></span></p>
+</td>
+</tr>
+<tr style="mso-yfti-irow: 1">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 40.95pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="55">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">00<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 45pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="60">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">4<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 54pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="72">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Char[4]<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 99pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="132">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Chunk ID<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 117pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="156">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">“MThd” (0x4D546864)<o:p></o:p></font></font></span></p>
+</td>
+</tr>
+<tr style="mso-yfti-irow: 2">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 40.95pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="55">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">04<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 45pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="60">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">4<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 54pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="72">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Dword<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 99pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="132">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Chunk Size<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 117pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="156">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">6 (0x00000006)<o:p></o:p></font></font></span></p>
+</td>
+</tr>
+<tr style="mso-yfti-irow: 3">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 40.95pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="55">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">08<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 45pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="60">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">2<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 54pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="72">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Word<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 99pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="132">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Format Type<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 117pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="156">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">0~2<o:p></o:p></font></font></span></p>
+</td>
+</tr>
+<tr style="mso-yfti-irow: 4">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 40.95pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="55">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">10<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 45pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="60">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">2<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 54pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="72">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Word<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 99pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="132">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Number of Tracks<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 117pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="156">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">1~65,535<o:p></o:p></font></font></span></p>
+</td>
+</tr>
+<tr style="mso-yfti-irow: 5; mso-yfti-lastrow: yes">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 40.95pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="55">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">12<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 45pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="60">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">2<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 54pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="72">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Word<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 99pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="132">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><font size="2"><font color="#000000">Time Division<o:p></o:p></font></font></span></p>
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #f0f0f0; PADDING-BOTTOM: 0cm; BACKGROUND-COLOR: transparent; PADDING-LEFT: 4.95pt; WIDTH: 117pt; PADDING-RIGHT: 4.95pt; BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; PADDING-TOP: 0cm; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="156">
+<p style="MARGIN: 0cm 0cm 0pt; tab-stops: 64.8pt 72.0pt 81.0pt" class="MsoNormal"><span lang="EN-US"><o:p><font color="#000000" size="2">&nbsp;</font></o:p></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+
+</div>
+<div>
+시작 4바이트는 MThd시작을 한다.</div>
+<div>
+<br />
+<textarea style="WIDTH: 718px; HEIGHT: 139px" class="c#" rows="6" cols="76" name="code">int totaltick = 0;<br />
+//Header Chunk 시작<br />
+char[] isMidi = new char[4];<br />
+isMidi = br.ReadChars(4);<br />
+//미디 파일 확인<br />
+if (new string(isMidi) != "MThd")<br />
+{<br />
+    return null;//null보내고 종료;<br />
+}</textarea><br />
+&nbsp;</div>
+<div>
+헤더 사이즈 크기&nbsp;크기는&nbsp;언제나 4임.</div>
+<div>
+<textarea class="c#" name="code">//사이즈 수 읽기<br />
+br.ReadChars(4);</textarea></div>
+<div>
+<font class="Apple-style-span" color="#000000" size="3" face="monospace"><span style="LINE-HEIGHT: normal; WHITE-SPACE: pre-wrap; FONT-SIZE: 13px" class="Apple-style-span"><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" color="#000000" size="3" face="monospace"><span style="LINE-HEIGHT: normal; WHITE-SPACE: pre-wrap; FONT-SIZE: 13px" class="Apple-style-span">파일 포멧 0,1,2가 있음. 그중 0은 재 사용성이 어려운 포멧이고 1은 가장 널리 알려져있고 2는 잘안보임.</span></font></div>
+<div>
+<font class="Apple-style-span" color="#000000" size="3" face="monospace"><span style="LINE-HEIGHT: normal; WHITE-SPACE: pre-wrap; FONT-SIZE: 13px" class="Apple-style-span"><span style="LINE-HEIGHT: 18px; FONT-FAMILY: 굴림; WHITE-SPACE: normal; COLOR: rgb(51,51,51); FONT-SIZE: 12px" class="Apple-style-span"><textarea class="c#" name="code">br.ReadByte();<br />
+Song.format_Type = br.ReadByte();</textarea></span></span></font></div>
+<div>
+<font class="Apple-style-span" color="#000000" size="3" face="monospace"><span style="LINE-HEIGHT: normal; WHITE-SPACE: pre-wrap; FONT-SIZE: 13px" class="Apple-style-span"><span style="LINE-HEIGHT: 18px; FONT-FAMILY: 굴림; WHITE-SPACE: normal; COLOR: rgb(51,51,51); FONT-SIZE: 12px" class="Apple-style-span"></span><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" color="#000000" size="3" face="monospace"><span style="LINE-HEIGHT: normal; WHITE-SPACE: pre-wrap; FONT-SIZE: 13px" class="Apple-style-span">트랙갯수 읽어오기</span></font></div>
+<div>
+<font class="Apple-style-span" color="#000000" size="3" face="monospace"><span style="LINE-HEIGHT: normal; WHITE-SPACE: pre-wrap; FONT-SIZE: 13px" class="Apple-style-span"><span style="LINE-HEIGHT: 18px; FONT-FAMILY: 굴림; WHITE-SPACE: normal; COLOR: rgb(51,51,51); FONT-SIZE: 12px" class="Apple-style-span"><textarea class="c#" name="code">//트랙 갯수읽기<br />
+int Num_Track;<br />
+br.ReadByte();<br />
+Num_Track = br.ReadByte();<br />
+for (int i = 0; i &lt; Num_Track; i++)<br />
+{<br />
+    Song.track.Add(new Track());//트랙갯수만큼 트랙생성<br />
+}<br />
+int Track_index = 0;</textarea></span></span></font></div>
+<div>
+<font class="Apple-style-span" color="#000000" size="3" face="monospace"><span style="LINE-HEIGHT: normal; WHITE-SPACE: pre-wrap; FONT-SIZE: 13px" class="Apple-style-span"><span style="LINE-HEIGHT: 18px; FONT-FAMILY: 굴림; WHITE-SPACE: normal; COLOR: rgb(51,51,51); FONT-SIZE: 12px" class="Apple-style-span"></span><br />
+</span></font></div>
+<div>
+<font class="Apple-style-span" color="#000000" size="3" face="monospace"><span style="LINE-HEIGHT: normal; WHITE-SPACE: pre-wrap; FONT-SIZE: 13px" class="Apple-style-span">Time_Division 읽어오기가 소스로 구현하기가 까다로웠다.</span></font></div>
+<div>
+<font class="Apple-style-span" color="#000000" size="3" face="monospace"><span style="LINE-HEIGHT: normal; WHITE-SPACE: pre-wrap; FONT-SIZE: 13px" class="Apple-style-span"><span style="LINE-HEIGHT: 18px; FONT-FAMILY: 굴림; WHITE-SPACE: normal; COLOR: rgb(51,51,51); FONT-SIZE: 12px" class="Apple-style-span"><textarea class="c#" name="code">//time division 읽기<br />
+int temp = 0;<br />
+temp = br.ReadByte();<br />
+int size = 0;<br />
+//범위 초과라면<br />
+if (isVI(temp))<br />
+{<br />
+    int local_temp = 0;<br />
+    for (int i = 0; i &lt; 4; i++)<br />
+    {<br />
+        if (i == 0)<br />
+            local_temp = temp;<br />
+        else<br />
+        {<br />
+            local_temp = br.ReadByte();<br />
+        }</p>
+<p>        for (int j = 0; j &lt; 7; j++)<br />
+        {<br />
+            if ((int)(Math.Pow(2, j)) == (local_temp &amp; (int)(Math.Pow(2, j))))<br />
+            {<br />
+                size += (int)(Math.Pow(2, j));<br />
+            }<br />
+        }<br />
+        if (!isVI(local_temp))<br />
+            break;<br />
+        else<br />
+            size *= (int)(Math.Pow(2, 6));<br />
+    }<br />
+}<br />
+//아니라면<br />
+else<br />
+{<br />
+    for (int j = 0; j &lt; 8; j++)<br />
+    {<br />
+        if ((int)(Math.Pow(2, j)) == (temp &amp; (int)(Math.Pow(2, j))))<br />
+        {<br />
+            size += (int)(Math.Pow(2, (8 + j)));<br />
+        }<br />
+    }<br />
+    temp = br.ReadByte();<br />
+    for (int j = 0; j &lt; 8; j++)<br />
+    {<br />
+        if ((int)(Math.Pow(2, j)) == (temp &amp; (int)(Math.Pow(2, j))))<br />
+        {<br />
+            size += (int)(Math.Pow(2, j));<br />
+        }<br />
+    }<br />
+}<br />
+int Time_Division = size;<br />
+Song.Time_Division = size;</textarea></span><br />
+</span></font></div>
+<p></p>

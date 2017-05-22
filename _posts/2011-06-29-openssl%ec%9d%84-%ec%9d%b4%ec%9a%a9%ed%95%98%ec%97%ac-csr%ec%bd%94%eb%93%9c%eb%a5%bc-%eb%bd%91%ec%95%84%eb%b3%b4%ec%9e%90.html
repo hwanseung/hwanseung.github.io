@@ -1,0 +1,75 @@
+---
+layout: post
+title: OpenSSL을 이용하여 CSR코드를 뽑아보자.
+date: 2011-06-29 01:50:33.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Web
+tags:
+- CRS
+- OpenSSL
+- ssl
+meta:
+  _oembed_17adced6ec26bdd5ddd5da4ce6f95d5d: "{{unknown}}"
+  _thumbnail_id: '1744'
+  _oembed_3f757a2fac75e5d9ecb954e98f1eda6c: "{{unknown}}"
+  _oembed_9e9add6f138ff4abc8b15a9de60c30a3: "{{unknown}}"
+author: Hwanseung Lee
+---
+<p><font class="Apple-style-span" color="#ffffff"><span class="Apple-style-span" style="background-color: rgb(186, 52, 166);"></span><span style="font-size: 24pt; "><span style="font-size: 24pt; background-color: rgb(186, 52, 166);">OpenSSL 설치</span></span></font><a href="http://www.openssl.org/source/" style="background-color: transparent; "><br />
+http://www.openssl.org/source/</a><br />
+<br />
+위의 주소로 들어가보면 소스를 받아서 컴파일해서 써야되는데<br />
+리눅스에서는 바로 쓰면 되겠지만...<br />
+윈도우에서는 귀찮으므로.............</p>
+<p>아래의 주소로 들어가보면 설치파일이 있어서 바로 설치가 가능하다.<br />
+자신의 pc의 맞는 버전을 알아서 설치하면 될것이다.</p>
+<p><a href="http://www.slproweb.com/products/Win32OpenSSL.html" target="_blank" title="[http://www.slproweb.com/products/Win32OpenSSL.html]로 이동합니다.">http://www.slproweb.com/products/Win32OpenSSL.html</a></p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile25.uf.2001C5574E0A300D181727.png" class="aligncenter" width="750" height="654" alt="" filename="1.png" filemime="image/jpeg" /></p>
+<p>
+<span class="Apple-style-span" style="color: rgb(255, 255, 255); font-size: 32px; line-height: 48px; background-color: rgb(186, 52, 166);">Key 생성</span></p>
+<div>
+&gt;&gt;<b style="background-color: rgb(255, 255, 255); "><font class="Apple-style-span" color="#2b8400">openssl genrsa -rand rand.dat -des3 -out ssl.test.key 2048</font></b></div>
+<div>218 semi-random bytes loaded</div>
+<div>Generating RSA private key, 512 bit long modulus</div>
+<div>.....++++++++++++</div>
+<div>.......................................++++++++++++</div>
+<div>e is 65537 (0x10001)</div>
+<div>Enter pass phrase for ssl.nerv-team.key:<b><font class="Apple-style-span" color="#2b8400">비밀번호입력</font></b></div>
+<div>Verifying - Enter pass phrase for ssl.nerv-team.key:<font class="Apple-style-span" color="#2b8400"><b>비밀번호입력</p>
+<p></b></font>마지막에 2048처럼 숫자를 붙이면 그에 해당되는 bit인 키값이 생성된다.<br />
+그냥 default는 512bit이다.</div>
+<p></p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile22.uf.1645FB584E0A822D1D3C86.png" class="aligncenter" width="613" height="217" alt="" filename="2.png" filemime="image/jpeg" /><br />
+완료하면 다음과 같이 아래의 키 값이 생성된다..</p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile25.uf.1745FB584E0A822D1E10D0.png" class="aligncenter" width="488" height="473" alt="" filename="3.png" filemime="image/jpeg" /><br />
+<span class="Apple-style-span" style="font-size: 32px; line-height: 48px; background-color: rgb(186, 52, 166); "><font class="Apple-style-span" color="#ffffff">CSR 생성<br />
+</font></span>&gt;&gt;<b><font class="Apple-style-span" color="#2b8400">openssl req -new -key ssl.test.key -out ssl.test.csr</font></b></p>
+<p style="margin:0">Enter pass phrase for ssl.test.key:<font class="Apple-style-span" color="#2b8400"><b>비밀번호입력(키생성시 넣은)</b></font></p>
+<p style="margin:0">You are about to be asked to enter information that will be incorporated</p>
+<p style="margin:0">into your certificate request.</p>
+<p style="margin:0">What you are about to enter is what is called a Distinguished Name or a DN.</p>
+<p style="margin:0">There are quite a few fields but you can leave some blank</p>
+<p style="margin:0">For some fields there will be a default value,</p>
+<p style="margin:0">If you enter '.', the field will be left blank.</p>
+<p style="margin:0">-----</p>
+<p style="margin:0">Country Name (2 letter code) [AU]:<b><font class="Apple-style-span" color="#2b8400">KO</font></b></p>
+<p style="margin:0">State or Province Name (full name) [Some-State]:<font class="Apple-style-span" color="#2b8400"><b>Busan</b></font></p>
+<p style="margin:0">Locality Name (eg, city) []:<span class="Apple-style-span" style="color: rgb(43, 132, 0); "><b>Busan</b></span></p>
+<p style="margin:0">Organization Name (eg, company) [Internet Widgits Pty Ltd]:<font class="Apple-style-span" color="#2b8400"><b>TestCompany</b></font></p>
+<p style="margin:0">Organizational Unit Name (eg, section) []:<font class="Apple-style-span" color="#2b8400"><b>WebTeam</b></font></p>
+<p style="margin:0">Common Name (eg, YOUR name) []:<font class="Apple-style-span" color="#2b8400"><b>www.test.com</b></font></p>
+<p style="margin:0">Email Address []:<font class="Apple-style-span" color="#2b8400"><b>이메일입력</b></font></p>
+<p style="margin:0">Please enter the following 'extra' attributes</p>
+<p style="margin:0">to be sent with your certificate request</p>
+<p style="margin:0">A challenge password []:</p>
+<p>An optional company name []:<font class="Apple-style-span" color="#2b8400"><b><br />
+</b></font></p>
+<p style="margin:0"><img src="{{ site.baseurl }}/assets/cfile7.uf.1845FB584E0A822D1F8137.png" class="aligncenter" width="634" height="404" alt="" filename="4.png" filemime="image/jpeg" /></p>
+<p style="margin:0">
+다음과 같이 csr코드가 생성이 된다.<br />
+<img src="{{ site.baseurl }}/assets/cfile10.uf.1745FB584E0A822D20F491.png" class="aligncenter" width="491" height="184" alt="" filename="5.png" filemime="image/jpeg" /></p>
+<p>
+<a href="http://www.slproweb.com/products/Win32OpenSSL.html" style="background-color: transparent; "></a></p>

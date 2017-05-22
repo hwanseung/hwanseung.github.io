@@ -1,0 +1,30 @@
+---
+layout: post
+title: "[eclipse]Tomcat server 생성시 Cannot create a server using the selected type
+  에러 해결방법"
+date: 2011-04-25 14:14:51.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Web
+tags:
+- eclipse
+- error
+- server
+- tomcat
+meta: {}
+author: Hwanseung Lee
+---
+<p>이클립스에서 종종 프로젝트의 경로를 바꾸어서 하다가</p>
+<p>서버를 새로 연결 해야 될 경우 지웠다가 다시 서버를 만들때 보면</p>
+<p>&nbsp;Cannot create a server using the selected type 에러를 볼 수 있는데</p>
+<p>이럴때는</p>
+<p>workspace의 &nbsp;</p>
+<p>.metadata\.plugins\org.eclipse.core.runtime\.settings에 보면</p>
+<p>org.eclipse.wst.server.core.prefs
+<div>
+org.eclipse.jst.server.tomcat.core.prefs<br />
+두개의 파일이 있는데 이것을 삭제하고 다시 이클립스를 시작하면</p>
+<p>잘 생성이 된다.<br />
+&nbsp;</div>

@@ -1,0 +1,324 @@
+---
+layout: post
+title: Report4 LU 분해법, Gauss-Jordan 소거법 with partial pivoting, 역행렬
+date: 2011-02-06 02:41:09.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/numerical analysis
+tags:
+- Gauss-Jordan 소거법
+- LU 분해법
+- 수치해석
+- 역행렬
+meta:
+  _thumbnail_id: '1062'
+author: Hwanseung Lee
+---
+<p><font class="Apple-style-span" color="#333333" face="굴림"><span class="Apple-style-span" style="font-size: 9pt; line-height: 1.5;"><img src="{{ site.baseurl }}/assets/cfile26.uf.1725AA3B4D4E0968225FF9.png" class="aligncenter" width="559" height="515" alt="" filename="제목 없음.png" filemime="image/jpeg" /></span></font>
+<div>
+<div>
+<textarea name="code" class="language" style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><br />
+#include <iostream><br />
+#include <fstream><br />
+#include <cmath><br />
+#include <iomanip></p>
+<p>using namespace std;</p>
+<p>float A[3][3]={0,};<br />
+float B[3][1]={0,};<br />
+float b_[3][1]={0,};<br />
+float result[3][1]={0,};</p>
+<p>float U[3][3]={0,};<br />
+float L[3][3]={1,0,0,0,1,0,0,0,1};</p>
+<p>int main(void)<br />
+{<br />
+	cout.setf(ios::fixed);<br />
+	cout.precision(4);<br />
+	ifstream fin;<br />
+	fin.open("input4_1.txt");</p>
+<p>	int i=0;<br />
+	int j=0;<br />
+	int p=0;</p>
+<p>	int inputx=0;<br />
+	int inputy=0;</p>
+<p>	float x;<br />
+	float y;<br />
+	float z;</p>
+<p>	fin>>inputx;<br />
+	fin>>inputy;<br />
+	for(int j=0;j<inputx;j++)<br />
+	{<br />
+		for(int p=0;p<inputy;p++)<br />
+		{<br />
+			if( p!=3)<br />
+				fin>>A[j][p];<br />
+			else<br />
+				fin>>B[j][0];<br />
+		}<br />
+	}</p>
+<p>	for(int i=0;i<3;i++)<br />
+	{<br />
+		for(int j=0;j<3;j++)<br />
+		{<br />
+			cout <<A[i][j]<<" ";<br />
+		}<br />
+		cout <<endl;<br />
+	}<br />
+	cout <<endl;</p>
+<p>	float L21 = A[1][0]/A[0][0];<br />
+	L[1][0]=L21;<br />
+	for(int i=0;i<3;i++)<br />
+	{<br />
+		A[1][i] = A[1][i]-(L21*A[0][i]);<br />
+	}</p>
+<p>	for(int i=0;i<3;i++)<br />
+	{<br />
+		for(int j=0;j<3;j++)<br />
+		{<br />
+			cout <<A[i][j]<<" ";<br />
+		}<br />
+		cout <<endl;<br />
+	}<br />
+	cout <<endl;</p>
+<p>	float L31 = A[2][0]/A[0][0];<br />
+	L[2][0]=L31;<br />
+	for(int i=0;i<3;i++)<br />
+	{<br />
+		A[2][i] = A[2][i]-(L31*A[0][i]);<br />
+	}</p>
+<p>	for(int i=0;i<3;i++)<br />
+	{<br />
+		for(int j=0;j<3;j++)<br />
+		{<br />
+			cout <<A[i][j]<<" ";<br />
+		}<br />
+		cout <<endl;<br />
+	}<br />
+	cout <<endl;</p>
+<p>	float L32 = A[2][1]/A[1][1];<br />
+	L[2][1]=L32;<br />
+	for(int i=0;i<3;i++)<br />
+	{<br />
+		A[2][i] = A[2][i]-(L32*A[1][i]);<br />
+	}</p>
+<p>	cout<<"L"<<endl;<br />
+	for(int i=0;i<3;i++)<br />
+	{<br />
+		for(int j=0;j<3;j++)<br />
+		{<br />
+			cout <<L[i][j]<<" ";<br />
+		}<br />
+		cout <<endl;<br />
+	}<br />
+	cout <<endl;</p>
+<p>	cout<<"U"<<endl;<br />
+	for(int i=0;i<3;i++)<br />
+	{<br />
+		for(int j=0;j<3;j++)<br />
+		{<br />
+			U[i][j]=A[i][j];<br />
+			cout <<U[i][j]<<" ";<br />
+		}<br />
+		cout <<endl;<br />
+	}<br />
+	cout <<endl;</p>
+<p>	b_[0][0] = B[0][0];<br />
+	b_[1][0] = (B[1][0]-(L[1][0]*b_[0][0]));<br />
+	b_[2][0] = B[2][0]-(L[2][0]*b_[0][0])-(L[2][1]*b_[2][0]);</p>
+<p>	for(int i=0;i<3;i++)<br />
+	{<br />
+		cout<<"b"<<i<<" : "<<b_[i][0]<<endl;<br />
+	}</p>
+<p>	result[2][0] = b_[2][0]/U[2][2];<br />
+	result[1][0] = (b_[1][0]-(U[1][2]*result[2][0]))/U[1][1];<br />
+	result[0][0] = (b_[0][0]-(U[0][1]*result[1][0])-(U[0][2]*result[2][0]))/U[0][0];</p>
+<p>	for(int i=0;i<3;i++)<br />
+	{<br />
+		cout<<"result"<<i<<" : "<<result[i][0]<<endl;<br />
+	}<br />
+	return 0;<br />
+}</p>
+<p> </iomanip></cmath></fstream></iostream></textarea>
+</div>
+<p>
+<font class="Apple-style-span" color="#333333" face="굴림"><span class="Apple-style-span" style="font-size: 9pt; line-height: 1.5;"><img src="{{ site.baseurl }}/assets/cfile29.uf.1825AA3B4D4E09682383D7.png" class="aligncenter" width="573" height="633" alt="" filename="제목 없음1.png" filemime="image/jpeg" /><br />
+</span></font>
+<div>
+<textarea name="code" class="language" style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><br />
+#include <iostream><br />
+#include <fstream><br />
+#include <cmath><br />
+#include <iomanip></p>
+<p>using namespace std;</p>
+<p>float A[3][4]={0,};<br />
+float result[3][1]={0,};</p>
+<p>int main(void)<br />
+{<br />
+	cout.setf(ios::fixed);<br />
+	cout.precision(4);<br />
+	ifstream fin;<br />
+	fin.open("input4_1.txt");</p>
+<p>	int i=0;<br />
+	int j=0;<br />
+	int p=0;</p>
+<p>	int inputx=0;<br />
+	int inputy=0;</p>
+<p>	fin>>inputx;<br />
+	fin>>inputy;<br />
+	for(int j=0;j<inputx;j++)<br />
+	{<br />
+		for(int p=0;p<inputy;p++)<br />
+		{<br />
+				fin>>A[j][p];<br />
+				cout<<A[j][p]<<" ";<br />
+		}<br />
+		cout<<endl;<br />
+	}<br />
+	cout<<endl;</p>
+<p>	for(int i=inputx-1;i>=0;i--)<br />
+	{<br />
+		if(A[i][i]!=1)<br />
+		{<br />
+			cout<<i<<endl;<br />
+			float temp = A[i][i];<br />
+			for(int j=0;j<inputy;j++)<br />
+			{<br />
+				A[i][j] = A[i][j]/temp;<br />
+			}</p>
+<p>			for(int p=0;p<inputx;p++)<br />
+			{<br />
+				for(int o=0;o<inputy;o++)<br />
+				{<br />
+					cout <<A[p][o]<<" ";<br />
+				}<br />
+				cout<<endl;<br />
+			}<br />
+			cout<<endl;<br />
+		}</p>
+<p>		for(int j=0;j<inputx;j++)<br />
+		{<br />
+			if(i!=j)<br />
+			{<br />
+				float temp = A[j][i];<br />
+				for(int p=0;p<inputy;p++)<br />
+				{<br />
+					A[j][p]=A[j][p]-A[i][p]*temp;<br />
+				}<br />
+			}<br />
+		}</p>
+<p>		for(int  j=0;j<inputx;j++)<br />
+		{<br />
+			for(int p=0;p<inputy;p++)<br />
+			{<br />
+				cout<<A[j][p]<<" ";<br />
+			}<br />
+			cout<<endl;<br />
+		}<br />
+		cout<<endl;<br />
+	}</p>
+<p>	for(int  j=0;j<inputx;j++)<br />
+	{<br />
+		for(int p=3;p<inputy;p++)<br />
+		{<br />
+			cout<<A[j][p]<<" ";<br />
+		}<br />
+		cout<<endl;<br />
+	}<br />
+	cout<<endl;</p>
+<p>	return 0;<br />
+}</p>
+<p> </iomanip></cmath></fstream></iostream></textarea>
+</div>
+<p><img src="{{ site.baseurl }}/assets/cfile22.uf.1925AA3B4D4E096824D276.png" class="aligncenter" width="576" height="610" alt="" filename="제목 없음2.png" filemime="image/jpeg" />
+</div>
+<div>
+<textarea name="code" class="language" style="color: rgb(51, 51, 51); font-family: 굴림; font-size: 9pt; line-height: 1.5; "><br />
+#include <iostream><br />
+#include <fstream><br />
+#include <cmath><br />
+#include <iomanip></p>
+<p>using namespace std;</p>
+<p>float A[4][8]={0,};</p>
+<p>int main(void)<br />
+{<br />
+	cout.setf(ios::fixed);<br />
+	cout.precision(4);<br />
+	ifstream fin;<br />
+	fin.open("input4_2.txt");</p>
+<p>	int i=0;<br />
+	int j=0;<br />
+	int p=0;</p>
+<p>	int inputx=0;<br />
+	int inputy=0;</p>
+<p>	fin>>inputx;<br />
+	fin>>inputy;<br />
+	for(int j=0;j<inputx;j++)<br />
+	{<br />
+		for(int p=0;p<inputy;p++)<br />
+		{<br />
+				fin>>A[j][p];<br />
+		}<br />
+	}</p>
+<p>	for(int  j=0;j<inputx;j++)<br />
+	{<br />
+		for(int p=0;p<inputy;p++)<br />
+		{<br />
+			cout<<A[j][p]<<" ";<br />
+		}<br />
+		cout<<endl;<br />
+	}<br />
+	cout<<endl;</p>
+<p>	for(int i=0;i<inputx;i++)<br />
+	{<br />
+		if(A[i][i]!=1)<br />
+		{<br />
+			float temp = A[i][i];<br />
+			for(int j=0;j<inputy;j++)<br />
+			{<br />
+				A[i][j] = A[i][j]/temp;<br />
+			}</p>
+<p>			for(int p=0;p<inputx;p++)<br />
+			{<br />
+				for(int o=0;o<inputy;o++)<br />
+				{<br />
+					cout <<A[p][o]<<" ";<br />
+				}<br />
+				cout<<endl;<br />
+			}<br />
+			cout<<endl;<br />
+		}</p>
+<p>		for(int j=0;j<inputx;j++)<br />
+		{<br />
+			if(i!=j)<br />
+			{<br />
+				float temp = A[j][i];<br />
+				for(int p=0;p<inputy;p++)<br />
+				{<br />
+					A[j][p]=A[j][p]-A[i][p]*temp;<br />
+				}<br />
+			}<br />
+		}</p>
+<p>		for(int  j=0;j<inputx;j++)<br />
+		{<br />
+			for(int p=0;p<inputy;p++)<br />
+			{<br />
+				cout<<A[j][p]<<" ";<br />
+			}<br />
+			cout<<endl;<br />
+		}<br />
+		cout<<endl;<br />
+	}</p>
+<p>	for(int  j=0;j<inputx;j++)<br />
+	{<br />
+		for(int p=4;p<inputy;p++)<br />
+		{<br />
+			cout<<A[j][p]<<" ";<br />
+		}<br />
+		cout<<endl;<br />
+	}<br />
+	cout<<endl;</p>
+<p>	return 0;<br />
+}</p>
+<p> </iomanip></cmath></fstream></iostream></textarea>
+</div>

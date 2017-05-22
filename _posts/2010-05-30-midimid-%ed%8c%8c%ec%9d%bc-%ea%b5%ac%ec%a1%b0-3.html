@@ -1,0 +1,1184 @@
+---
+layout: post
+title: midi(.mid) 파일 구조
+date: 2010-05-30 15:27:12.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/etc
+tags:
+- MIDI
+- 파일 구조
+meta: {}
+author: Hwanseung Lee
+---
+<div><span style="FONT-SIZE: 9pt">Track Chunk에 대해서 알아보자.</span><br />
+<font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><br />
+<span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">Header Chunk서의 트랙 개수만큼 Track Chunk를 가지고 있으며 아래는 Track </span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">Chunk를 구조를 나타냅니다.</span></span></font> </p>
+<p style="MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px">
+<table style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none; mso-padding-alt: 0pt 0pt 0pt 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt; mso-border-right-alt: solid black 0.25pt; mso-border-bottom-alt: solid black 0.25pt" border="1" cellspacing="0" cellpadding="0" width="557" height="215">
+<tbody>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt" height="21" width="112">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">16진수</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt" width="118">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">10진수</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt" width="327">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 10pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">Infomaiton</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" height="21" width="112">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">4D</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" width="118">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">77</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" width="327">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 10pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">M</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" height="21" width="112">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">54</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" width="118">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">84</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" width="327">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 10pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">t</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" height="21" width="112">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">72</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" width="118">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">114</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" width="327">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 10pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">r</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" height="21" width="112">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">6B</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" width="118">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">107</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" width="327">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 10pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">k</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="21" width="112">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">0</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="118">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">0</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" rowspan="4" width="327">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 10pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">Track Size</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="21" width="112">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">0</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="118">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">0</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="21" width="112">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">2C</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="118">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">44</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="21" width="112">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">94</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="118">
+<p style="LINE-HEIGHT: 1.45; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 20pt" align="right"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">148</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" bgcolor="#c0c0c0" height="23" width="557" colspan="3">
+<p style="LINE-HEIGHT: 1.6; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-SIZE: 9pt"><span style="FONT-FAMILY: Gulim">MIDI Channel Events ,System Events,Meta Events</span></span></font></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+시작 은 다음과 같이 시작하며<br />
+트랙이 여러가 존재 할수 있으므로 트랙수 만큼 루프를 돌아야됨.<br />
+<textarea style="WIDTH: 718px; HEIGHT: 139px" class="c#" rows="6" cols="76" name="code">//Track Chunk 시작<br />
+for (int q = 0; q &lt; Num_Track; q++)<br />
+{<br />
+    char[] isTrack = new char[4];<br />
+    isMidi = br.ReadChars(4);<br />
+    //MTrk 구분<br />
+    if (new string(isMidi) != "MTrk")<br />
+    {<br />
+        break;<br />
+    }</textarea><br />
+&nbsp;</div>
+<div>chunk size 구하기.<br />
+<textarea style="WIDTH: 718px; HEIGHT: 139px" class="c#" rows="6" cols="76" name="code">    //track_lenght 읽기<br />
+    size = 0;<br />
+    for (int i = 0; i &lt; 4; i++)<br />
+    {<br />
+        temp = br.ReadByte();</p>
+<p>        for (int j = 0; j &lt; 8; j++)<br />
+        {<br />
+            if ((int)(Math.Pow(2, j)) == (temp &amp; (int)(Math.Pow(2, j))))<br />
+            {<br />
+                //총4바이트인 태그가져오기<br />
+                size += (int)(Math.Pow(2, (8 * (3 - i)) + j));</p>
+<p>            }<br />
+        }</p>
+<p>    }<br />
+    int track_lenght = size;</textarea></p>
+<p></p>
+<p style="LINE-HEIGHT: 1.6; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">MIDI Channel Events ,System Events,Meta Events 는 다음과 같이 존재 합니다.</span></span></font></p>
+<p></p>
+<p style="LINE-HEIGHT: 1.6; MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px" b:bd="1"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">①</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;MIDI Channel Events :MIDI Channel과 관련된 MIDI messages</span></span></font></p>
+<p style="MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px">
+<table style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none; mso-padding-alt: 0pt 0pt 0pt 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt; mso-border-right-alt: solid black 0.25pt; mso-border-bottom-alt: solid black 0.25pt" border="1" cellspacing="0" cellpadding="0" width="543" height="192">
+<tbody>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt" height="16" width="178" colspan="2">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Status &nbsp;&nbsp;byte</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt" width="365" colspan="3">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Data &nbsp;&nbsp;byte</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="76">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">1stnibble</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="102">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">2ndnibble</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="117">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">2ndbyte</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="96">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">3rdbyte</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="152">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Description</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="76">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">8</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="102">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Channel #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="117">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Note #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="96">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Velocity</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="152">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Note off</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="76">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">9</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="102">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Channel #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="117">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Note #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="96">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Velocity</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="152">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Note on</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="76">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">A</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="102">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Channel #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="117">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Note #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="96">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Velocity</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="152">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">After touch</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="32" width="76">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">B</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="102">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Channel #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="117">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Controller #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="96">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">New Value</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="152">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Control</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;change</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="32" width="76">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">C</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="102">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Channel #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="117">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">New Program #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="96"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="152">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Program</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;change</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="32" width="76">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">D</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="102">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Channel #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="117">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Pressure</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="96"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="152">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Channel</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">after touch</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="76">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">E</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="102">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Channel #</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="117">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Bottom 7 bits</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="96">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Top 7 bits</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="152">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Pitch wheel change</span></span></font></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="LINE-HEIGHT: 1.6; MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 12pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;<br />
+<textarea style="WIDTH: 718px; HEIGHT: 139px" class="c#" rows="6" cols="76" name="code">#region MIDI Channel</p>
+<p>//((Track)(Song.track[Track_index])).tempo 설정되어 있으면<br />
+if (((Track)(Song.track[Track_index])).tempo != 0)<br />
+{<br />
+    prograss_time = new TimeSpan(0, 0, 0, 0, (int)(((Track)(Song.track[Track_index])).tempo / 1000 / Time_Division * T_time));</p>
+<p>}<br />
+//Song.tempo에 설정되어 있으면<br />
+else if (Song.tempo != 0)<br />
+    prograss_time = new TimeSpan(0, 0, 0, 0, (int)(Song.tempo / 1000 / Time_Division * T_time));<br />
+//설정이 되어있지 않는다면<br />
+else<br />
+    prograss_time = new TimeSpan(0, 0, 0, 0, 900000 / 1000 / Time_Division * T_time);</p>
+<p>//note off<br />
+if (status_1 == 8)<br />
+{<br />
+    //현재 채널 설정<br />
+    current_channel = status_2;<br />
+    ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, br.ReadByte(), br.ReadByte(), prograss_time, (Byte)status_2, true, 8));<br />
+}<br />
+//note on<br />
+else if (status_1 == 9)<br />
+{<br />
+    current_channel = status_2;<br />
+    ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, br.ReadByte(), br.ReadByte(), prograss_time, (Byte)status_2, true, 9));</p>
+<p>}<br />
+//A After touch<br />
+else if (status_1 == 10)<br />
+{<br />
+    current_channel = status_2;<br />
+    ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, br.ReadByte(), br.ReadByte(), prograss_time, (Byte)status_2, true, 10));<br />
+}<br />
+//B Control change<br />
+else if (status_1 == 11)<br />
+{<br />
+    current_channel = status_2;<br />
+    ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, br.ReadByte(), br.ReadByte(), prograss_time, (Byte)status_2, false, 11));<br />
+}<br />
+//C Program change<br />
+else if (status_1 == 12)<br />
+{<br />
+    current_channel = status_2;<br />
+    ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, br.ReadByte(), 0, prograss_time, (Byte)status_2, false, 12));<br />
+}<br />
+//D Channel after touch<br />
+else if (status_1 == 13)<br />
+{<br />
+    current_channel = status_2;<br />
+    ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, br.ReadByte(), 0, prograss_time, (Byte)status_2, false, 13));<br />
+}<br />
+//E Pitch wheel change<br />
+else if (status_1 == 14)<br />
+{<br />
+    br.ReadByte();<br />
+    br.ReadByte();<br />
+}<br />
+else<br />
+{<br />
+    ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, (Byte)status_2, br.ReadByte(), prograss_time, (Byte)current_channel, true, 0));<br />
+}<br />
+#endregion</textarea></span></span><br />
+</font></p>
+<p style="LINE-HEIGHT: 1.6; MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">②</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;System Events :</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">MIDI System을 총괄적으로 제어하는 MIDI message</span></span></font></p>
+<p style="LINE-HEIGHT: 1.6; MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px"><font style="FONT-FAMILY: 바탕; FONT-SIZE: 10pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">다음의 세 가지 종류의 메시지들로 구성된다.</span></span></font></p>
+<p style="LINE-HEIGHT: 1.6; MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 10pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></font></p>
+<p style="MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px">
+<table style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none; mso-padding-alt: 0pt 0pt 0pt 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt; mso-border-right-alt: solid black 0.25pt; mso-border-bottom-alt: solid black 0.25pt" border="1" cellspacing="0" cellpadding="0" width="542" height="268">
+<tbody>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt" height="22" valign="top" width="542" colspan="3">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">System Real-Time Messages</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="45" valign="top" width="542" colspan="3">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Regulate and Synchronize timing by</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">sequencers</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Status byte로만 구성된다. </span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Data byte는 없다.</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="147" colspan="2">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Status</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">byte</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="395">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Data</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">byte</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="72">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">1stnibble</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="75">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">2ndnibble</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="395">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Description</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="72">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="75">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">8</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="395">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Timing Clock for Synchronization</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="72">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="75">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">9</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="395">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Undefined</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="72">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="75">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">A</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="395">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Start current sequence</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="72">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="75">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">B</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="395">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Continue a stopped sequence</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="72">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="75">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">C</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="395">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Stop a sequence</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="72">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="75">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">D</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="395">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Undefined</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="72">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="75">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">E</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="395">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Active Sensing</span></span></font></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px">
+<table style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none; mso-padding-alt: 0pt 0pt 0pt 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt; mso-border-right-alt: solid black 0.25pt; mso-border-bottom-alt: solid black 0.25pt" border="1" cellspacing="0" cellpadding="0" width="541" height="335">
+<tbody>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt" height="22" valign="top" width="541" colspan="5">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">System Common Messages</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="45" valign="top" width="541" colspan="5">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Sequencer가 사용하는 song position pointer, song select, MIDI Time</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Code </span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Quarter Frame 등의 메시지들을 포함한다.</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="132" colspan="2">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Status &nbsp;&nbsp;byte</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="409" colspan="3">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Data byte</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="45" valign="top" width="64">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">1stnibbl</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">e</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="68">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">2ndnibble</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="56">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">2ndbyte</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="55">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">3rdbyte</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="298">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Description</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="64">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="68">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">1</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="56">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Data</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="55">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">-</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="298">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">MTC Quarter Frame</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="64">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="68">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">2</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="56">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Data</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="55">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Data</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="298">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Song position pointer</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="64">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="68">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">3</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="56">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Data</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="55">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">-</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="298">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Song select</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="64">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="68">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">4</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="56">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">-</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="55">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">-</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="298">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Undefined</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="64">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="68">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">5</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="56">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">-</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="55">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">-</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="298">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Undefined</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="64">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="68">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">6</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="56">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">-</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="55">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">-</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="298">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Tune request</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="541" colspan="5">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">System Exclusive Messages</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="45" valign="top" width="541" colspan="5">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">MIDI protocol에 대한 각 제조업체의 장비에 따라 갖게 되는 특정 메시지들을 </span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">위한 확장. 제조업체에 따라 &nbsp;&nbsp;정의가 틀리다.</span></span></font></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none; mso-padding-alt: 0pt 0pt 0pt 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt; mso-border-right-alt: solid black 0.25pt; mso-border-bottom-alt: solid black 0.25pt" border="1" cellspacing="0" cellpadding="0" width="541" height="112">
+<tbody>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt" height="22" valign="top" width="132" colspan="2">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Status &nbsp;&nbsp;byte</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt" valign="top" width="409" colspan="2">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Data</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">byte</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="45" valign="top" width="64">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">1stnibbl</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">e</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="68">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">2ndnibble</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="100">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Other</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">bytes</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="309">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Description</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="64">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="68">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">0</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="100">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">nn &nbsp;&nbsp;dd…</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="309">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">System Exclusive Messages</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="22" valign="top" width="64">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="68">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">7</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="100">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">-</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="309">
+<p style="LINE-HEIGHT: 17pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">End of Sysex Messages</span></span></font></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="LINE-HEIGHT: 1.6; MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;<textarea style="WIDTH: 718px; HEIGHT: 139px" class="c#" rows="6" cols="76" name="code">#region System<br />
+else<br />
+{<br />
+    //System Real-Time Messages</p>
+<p>    //Timing Clock for Synchronization<br />
+    if (status_2 == 8){}<br />
+    //Undefined<br />
+    else if (status_2 == 9){}<br />
+    //Start current sequence<br />
+    else if (status_2 == 10){}<br />
+    //Continue a stopped sequence<br />
+    else if (status_2 == 11){}<br />
+    //Stop a sequence<br />
+    else if (status_2 == 12){}<br />
+    //Undefined<br />
+    else if (status_2 == 13){}<br />
+    //Active Sensing<br />
+    else if (status_2 == 14){}</p>
+<p>    //System Common Messages<br />
+    //MTC Quarter Frame<br />
+    else if (status_2 == 1){ }<br />
+    //Song position pointer<br />
+    else if (status_2 == 2)<br />
+    {<br />
+        br.ReadByte();<br />
+        br.ReadByte();<br />
+    }<br />
+    //Song select<br />
+    else if (status_2 == 3)<br />
+    {<br />
+        br.ReadByte();<br />
+    }<br />
+    //Undefined<br />
+    else if (status_2 == 4){}<br />
+    //Undefined<br />
+    else if (status_2 == 5){}<br />
+    //Tune request<br />
+    else if (status_2 == 6){}</p>
+<p>    //System Exclusive Messages<br />
+    //System Exclusive Messages<br />
+    else if (status_2 == 0)<br />
+    {<br />
+        int temp1 = br.ReadByte();<br />
+        string info = new string(br.ReadChars(temp1));<br />
+    }<br />
+    //End of Sysex Messages<br />
+    else if (status_2 == 7){}<br />
+}<br />
+#endregion</textarea></span></span></font></p>
+<p style="LINE-HEIGHT: 1.6; MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px"><a name="_TocChView1135" target="_blank"></a><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">③</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;Meta Events : &nbsp;MIDI message로 다루어지지는 않는다.</span></span></font></p>
+<p style="LINE-HEIGHT: 1.6; MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">&nbsp;&nbsp;</span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">MIDI file에 대한 유용한 정보들을 담고 있다.</span></span></font></p>
+<p style="MARGIN-TOP: 0px; TEXT-INDENT: 5pt; MARGIN-BOTTOM: 0px">
+<table style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none; mso-padding-alt: 0pt 0pt 0pt 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt; mso-border-right-alt: solid black 0.25pt; mso-border-bottom-alt: solid black 0.25pt" border="1" cellspacing="0" cellpadding="0" width="539" height="432">
+<tbody>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt" valign="top" rowspan="2" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Status </span></span></font><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">byte</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: black 0.25pt solid; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt" height="16" valign="top" width="478" colspan="3">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Data &nbsp;&nbsp;byte</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" valign="top" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">2ndbyte</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Other &nbsp;&nbsp;bytes</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" valign="top" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Description</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">00</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">02 &nbsp;&nbsp;ss ss</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Set track’s sequence #</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">01</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">nn &nbsp;&nbsp;tt… </span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Any Text user wants </span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">02</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">nn &nbsp;&nbsp;tt…</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Text for copyright info.</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">03</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">nn &nbsp;&nbsp;tt…</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Track name</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">04</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">nn &nbsp;&nbsp;tt…</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Track instrument name</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">05</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">nn tt…</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Lyric</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">06</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">nn tt…</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Marker</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">07</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">nn tt…</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Cue point</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">20</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">01 channel</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Channel prefix</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">21</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">01 pp</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">MIDI port</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">2F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">00</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">End of Track</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="32" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">51</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">03 tt tt tt</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Set tempo</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">(microseconds/quarter note)</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="48" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">54</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">05 hh mm ss ff sf </span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">hour/minute/second</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">/frame/subframe</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">SMPTE Offset</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="80" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">58</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">04 nn dd cc bb</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">numerator/ </span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">denominator/</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">metronome ticks #/</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">32ndnotes#perquarternote</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Time signature</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="48" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">59</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">02 sf mi</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">key(sharp/flat#)</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">scale(0:major, 1:minor)</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Key signature</span></span></font></p>
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">(C when Key=0)</span></span></font></p>
+</td>
+</tr>
+<tr>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: black 0.25pt solid; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-top-alt: solid black 0.25pt" height="16" width="61">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">FF</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="63">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">7F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="205">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 6pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">7F</span></span></font></p>
+</td>
+<td style="BORDER-BOTTOM: black 0.25pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; BORDER-TOP: medium none; BORDER-RIGHT: black 0.25pt solid; PADDING-TOP: 0pt; mso-border-left-alt: solid black 0.25pt; mso-border-top-alt: solid black 0.25pt" width="210">
+<p style="LINE-HEIGHT: 12pt; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 5pt"><font style="FONT-FAMILY: 바탕체; FONT-SIZE: 11pt"><span style="FONT-FAMILY: Gulim"><span style="FONT-SIZE: 9pt">Sequencer specific info.</span></span></font></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<textarea style="WIDTH: 718px; HEIGHT: 139px" class="c#" rows="6" cols="76" name="code">#region Meta<br />
+//Meta Events<br />
+if (status_2 == 15)<br />
+{<br />
+    //2번째 바이트 읽기<br />
+    temp = br.ReadByte();</p>
+<p>    //Set track’s sequence #<br />
+    if (temp == 0)<br />
+    {<br />
+        //02   ss ss<br />
+        br.ReadByte();//02</p>
+<p>        ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, 0, 0, prograss_time, 0, false, 1));<br />
+        int index = ((Track)(Song.track[Track_index])).Events.Count - 1;<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).track_sequence1 = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).track_sequence2 = br.ReadByte();</p>
+<p>    }<br />
+    //Any Text user wants<br />
+    else if (temp == 1)<br />
+    {<br />
+        //nn   tt…<br />
+        int temp1 = br.ReadByte();<br />
+        for (int i = 0; i &lt; temp1; i++)<br />
+        {<br />
+            br.ReadByte();<br />
+        }<br />
+    }<br />
+    //Text for copyright info<br />
+    else if (temp == 2)<br />
+    {<br />
+        //nn   tt…<br />
+        int temp1 = br.ReadByte();<br />
+        for (int i = 0; i &lt; temp1; i++)<br />
+        {<br />
+            br.ReadByte();<br />
+        }<br />
+    }<br />
+    //Track name<br />
+    else if (temp == 3)<br />
+    {<br />
+        //nn   tt…<br />
+        int temp1 = br.ReadByte();<br />
+        for (int i = 0; i &lt; temp1; i++)<br />
+        {<br />
+            br.ReadByte();<br />
+        }</p>
+<p>    }<br />
+    //Track instrument name<br />
+    else if (temp == 4)<br />
+    {<br />
+        //nn   tt…<br />
+        int temp1 = br.ReadByte();<br />
+        for (int i = 0; i &lt; temp1; i++)<br />
+        {<br />
+            br.ReadByte();<br />
+        }<br />
+    }<br />
+    //Lyric<br />
+    else if (temp == 5)<br />
+    {<br />
+        //nn   tt…<br />
+        int temp1 = br.ReadByte();<br />
+        for (int i = 0; i &lt; temp1; i++)<br />
+        {<br />
+            br.ReadByte();<br />
+        }<br />
+    }<br />
+    //Marker<br />
+    else if (temp == 6)<br />
+    {<br />
+        //nn   tt…<br />
+        int temp1 = br.ReadByte();<br />
+        for (int i = 0; i &lt; temp1; i++)<br />
+        {<br />
+            br.ReadByte();<br />
+        }<br />
+    }<br />
+    //Cue point<br />
+    else if (temp == 7)<br />
+    {<br />
+        //nn   tt…<br />
+        int temp1 = br.ReadByte();<br />
+        for (int i = 0; i &lt; temp1; i++)<br />
+        {<br />
+            br.ReadByte();<br />
+        }<br />
+    }<br />
+    //hex 20 Channel prefix<br />
+    else if (temp == 32)<br />
+    {<br />
+        //01 channel<br />
+        br.ReadByte(); //01<br />
+        ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, 0, 0, prograss_time, 0, false, 32));<br />
+        int index = ((Track)(Song.track[Track_index])).Events.Count - 1;<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).Channel_prefix = br.ReadByte();</p>
+<p>    }<br />
+    //hex 21 MIDI port<br />
+    else if (temp == 33)<br />
+    {<br />
+        //01 pp<br />
+        br.ReadByte();<br />
+        ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, 0, 0, prograss_time, 0, false, 33));<br />
+        int index = ((Track)(Song.track[Track_index])).Events.Count - 1;<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).midiport = br.ReadByte();<br />
+    }<br />
+    //hex 2f End of Track<br />
+    else if (temp == 47)<br />
+    {<br />
+        br.ReadByte();//00<br />
+        Track_index++;<br />
+        prograss_time = new TimeSpan(0);<br />
+        break;<br />
+    }<br />
+    //hex 51 Set tempo (microseconds/quarter note)<br />
+    else if (temp == 81)<br />
+    {<br />
+        //03 tt tt tt<br />
+        br.ReadByte();//03</p>
+<p>        ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, 0, 0, prograss_time, 0, false, 81));<br />
+        int index = ((Track)(Song.track[Track_index])).Events.Count - 1;<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).tempo1 = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).tempo2 = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).tempo3 = br.ReadByte();</p>
+<p>        int sum = 0;<br />
+        int local_temp = 0;<br />
+        for (int i = 0; i &lt; 3; i++)<br />
+        {<br />
+            if (i == 0)<br />
+                local_temp = ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).tempo1;<br />
+            else if (i == 1)<br />
+                local_temp = ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).tempo2;<br />
+            else if (i == 2)<br />
+                local_temp = ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).tempo3;</p>
+<p>            for (int j = 0; j &lt; 8; j++)<br />
+            {<br />
+                if ((int)(Math.Pow(2, j)) == (local_temp &amp; (int)(Math.Pow(2, j))))<br />
+                {<br />
+                    sum += (int)(Math.Pow(2, (8 * (2 - i)) + j));<br />
+                }<br />
+            }<br />
+        }<br />
+        ((Track)(Song.track[Track_index])).tempo = sum;<br />
+        Song.tempo = sum;<br />
+        //Console.WriteLine("tempo = " + sum);</p>
+<p>    }<br />
+    //hex 54 SMPTE Offset<br />
+    else if (temp == 84)<br />
+    {<br />
+        //05 hh mm ss ff sf<br />
+        //hour/minute/second/frame/subframe<br />
+        br.ReadByte();//05<br />
+        ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, 0, 0, prograss_time, 0, false, 84));<br />
+        int index = ((Track)(Song.track[Track_index])).Events.Count - 1;<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).hour = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).minute = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).second = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).frame = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).subframe = br.ReadByte();<br />
+    }<br />
+    //hex 58 Time signature<br />
+    else if (temp == 88)<br />
+    {<br />
+        //04 nn dd cc bb //numerator/ denominator/metronome ticks #/32nd notes# per quarter note<br />
+        br.ReadByte();</p>
+<p>        ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, 0, 0, prograss_time, 0, false, 88));<br />
+        int index = ((Track)(Song.track[Track_index])).Events.Count - 1;<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).numerator = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).denominator = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).metronome_ticks = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).n32d_notes_per_quarter_note = br.ReadByte();<br />
+    }<br />
+    //hex 59 Key signature (C when Key=0)<br />
+    else if (temp == 89)<br />
+    {<br />
+        //02 sf mi<br />
+        //key(sharp/flat#) /scale(0:major, 1:minor)<br />
+        br.ReadByte();//02<br />
+        ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, 0, 0, prograss_time, 0, false, 89));<br />
+        int index = ((Track)(Song.track[Track_index])).Events.Count - 1;<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).key_sharp = br.ReadByte();<br />
+        ((ChannelEvent)(((Track)(Song.track[Track_index])).Events[index])).scale = br.ReadByte();</p>
+<p>    }<br />
+    //hex 7f  Sequencer specific info.<br />
+    else if (temp == 127)<br />
+    {<br />
+        //7F<br />
+        ((Track)(Song.track[Track_index])).Events.Add(new ChannelEvent(T_time, 0, 0, prograss_time, 0, false, 127));<br />
+        int index = ((Track)(Song.track[Track_index])).Events.Count - 1;</p>
+<p>    }<br />
+}<br />
+#endregion</textarea></p>
+<p>
+</div>

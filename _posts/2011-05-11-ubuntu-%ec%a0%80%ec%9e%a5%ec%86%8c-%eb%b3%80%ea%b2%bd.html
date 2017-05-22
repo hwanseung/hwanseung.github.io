@@ -1,0 +1,23 @@
+---
+layout: post
+title: Ubuntu 저장소 변경
+date: 2011-05-11 14:55:59.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Linux
+tags:
+- Linux
+- unbuntu
+- 저장소 변경
+meta: {}
+author: Hwanseung Lee
+---
+<p>1. 저장소 정보 변경<br />
+$sudo vi /etc/apt/sources.list</p>
+<p>&nbsp;2.kr.archive.ubuntu.com을 ftp.daum.net으로 변경<br />
+:%s/kr.archive.ubuntu.com/ftp.daum.net/g</p>
+<p>3.저장소 변경 저장&nbsp;<br />
+$sudo apt-get update<br />
+$sudo apt-get upgrade&nbsp;</p>

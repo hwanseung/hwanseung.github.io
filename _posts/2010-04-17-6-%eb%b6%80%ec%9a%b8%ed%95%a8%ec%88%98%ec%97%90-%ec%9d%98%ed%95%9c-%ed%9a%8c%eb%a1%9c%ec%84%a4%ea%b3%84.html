@@ -1,0 +1,33 @@
+---
+layout: post
+title: 6. 부울함수에 의한 회로설계
+date: 2010-04-17 16:43:37.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Sophomore/Logic Circuit
+tags:
+- gray code
+- Logic Circuit
+- LogicWorks 5
+- Nor
+- 카르노맵
+meta:
+  _thumbnail_id: '360'
+author: Hwanseung Lee
+---
+<p><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; ">다음 부울함수에 대해&nbsp;로직웍스로 설계하고, 진리치표로 확인하라.<br />
+1.&nbsp;(연습문제3.16 a)<br />
+&nbsp;&nbsp;&nbsp; 다음 부울함수를 AND-OR와 only NOR로 구성하여, 두 함수의 출력이 동일함을 확인함<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F(A,B,C)=(A'+B'+C')(A'+B')(A'+C')</span>
+<div>
+<span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; "><br />
+</span></div>
+<div><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; "><img src="{{ site.baseurl }}/assets/cfile3.uf.20165F234BC9E4A10903E4.jpg" class="aligncenter" width="753" height="428" alt="" filename="1.jpg" filemime="image/jpeg" />2.(연습문제4.5)<br />
+&nbsp;&nbsp; 4bit Gray code를 4bit Binary code로 변환하는 회로를 구성하고, 출력을 확인함<br />
+&nbsp;&nbsp;&nbsp;&nbsp;(단 Map을 사용하여&nbsp;부울함수를 간략화하고, SOP형식으로 표현한다.)</span></div>
+<div><span class="Apple-style-span" style="color: rgb(136, 136, 136); font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif; line-height: 16px; border-collapse: collapse; "><img src="{{ site.baseurl }}/assets/cfile27.uf.18165F234BC9E4A10AE76B.jpg" class="aligncenter" width="795" height="729" alt="" filename="제목 없음.jpg" filemime="image/jpeg" /><span style="font-size: 10pt; "><span class="Apple-style-span" style="background-color: rgb(239, 244, 216);"><font class="Apple-style-span" color="#000000">W = A</font></span></span></span></div>
+<div><font class="Apple-style-span" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><span style="font-size: 10pt; "><span class="Apple-style-span" style="background-color: rgb(239, 244, 216);"><font class="Apple-style-span" color="#000000">X = A'B + AB'</font></span></span></span></font></div>
+<div><font class="Apple-style-span" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><span style="font-size: 10pt; "><span class="Apple-style-span" style="background-color: rgb(239, 244, 216);"><font class="Apple-style-span" color="#000000">Y = A'B'C + A'BC' + ABC + AB'C'</font></span></span></span></font></div>
+<div><font class="Apple-style-span" face="dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse; line-height: 16px;"><span style="font-size: 10pt; "><span class="Apple-style-span" style="background-color: rgb(239, 244, 216);"><font class="Apple-style-span" color="#000000">Z = (BD'+B'D+A'C+AC')(BD+B'D'+AC+A'C')</font></span></span></span></font></div>

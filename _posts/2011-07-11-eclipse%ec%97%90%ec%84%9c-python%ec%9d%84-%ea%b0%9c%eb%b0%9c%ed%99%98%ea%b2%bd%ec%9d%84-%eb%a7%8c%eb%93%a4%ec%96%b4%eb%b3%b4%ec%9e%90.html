@@ -1,0 +1,67 @@
+---
+layout: post
+title: Eclipse에서 python 개발 환경을 만들어보자.
+date: 2011-07-11 16:31:51.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/Python
+tags:
+- eclipse
+- Linux
+- python
+- Python3
+- ubuntu
+meta:
+  _thumbnail_id: '1775'
+author: Hwanseung Lee
+---
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><span class="Apple-style-span" style="background-color: transparent;">만능 IDE Eclipse에서 python을 개발가능한 환경으로 만들어보겠습니다.</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">이클립스를 설치해서 하는 이 과정이 귀찮은시면...</span></p>
+<p><a href="http://www.aptana.com/" style="background-color: transparent; ">http://www.aptana.com/&nbsp;</a></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">위의 주소로 가시면 aptana studio 3을 받을 수가 있는데</span><br />
+<span class="Apple-style-span" style="background-color: transparent;">이 프로그램은 이클립스기반 스크립트언어 개발 IDE인데 pydev가 포함 되어 있습니다.</span></p>
+<p>
+<span style="font-size: 18pt; background-color: rgb(95, 182, 54);"><font class="Apple-style-span" color="#ffffff">1. pyDev 설치</font></span><br />
+<span class="Apple-style-span" style="background-color: transparent;">일단 이클립스를 설치하시고 나시면</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;">Help메뉴에 Instal New Software...메뉴를 선택가능합니다.</span></p>
+<p><span class="Apple-style-span" style="background-color: transparent;"><img src="{{ site.baseurl }}/assets/cfile25.uf.1974874B4E1B1AF92A1696.png" class="aligncenter" width="750" height="612" alt="" filename="제목 없음.png" filemime="image/jpeg" /></span></p>
+<p style="background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">
+그 후 다음과 같이 pyDev 플러그인을 설치 가능한 저장소를 추가적으로 입력합니다.<br />
+저장소의 주소는 http://pydev.org/updates 입니다.<br />
+<img src="{{ site.baseurl }}/assets/cfile9.uf.2074874B4E1B1AFC2B7D6E.png" class="aligncenter" width="750" height="612" alt="" filename="제목 없음1.png" filemime="image/jpeg" /></p>
+<p style="background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">
+<p>work with에 아까 등록한 pydev를 선택하시면<br />
+두개의 설치목록이 나오며<br />
+<img src="{{ site.baseurl }}/assets/cfile23.uf.1374874B4E1B1AFE2CA4B3.png" class="aligncenter" width="750" height="612" alt="" filename="제목 없음2.png" filemime="image/jpeg" /><br />
+선택하셔서 설치하시게 되면 열라게 진행이 되며&nbsp;</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><span class="Apple-style-span" style="background-color: transparent;"><img src="{{ site.baseurl }}/assets/cfile4.uf.1274874B4E1B1B002DDDC7.png" class="aligncenter" width="750" height="613" alt="" filename="제목 없음3.png" filemime="image/jpeg" /></span><br />
+<span class="Apple-style-span" style="background-color: transparent;">다음과 같이 프로젝트 생성시 pyDev 프로젝트로 개발이 가능하신 걸 보시면 완료가 됩니다.</span></p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><span class="Apple-style-span" style="background-color: transparent;"><img src="{{ site.baseurl }}/assets/cfile7.uf.1820BB554E1B1C7C299BD4.png" class="aligncenter" width="750" height="613" alt="" filename="제목 없음4.png" filemime="image/jpeg" /></span></p>
+<p><span style="font-size: 18pt; background-color: rgb(95, 182, 54);"><font class="Apple-style-span" color="#ffffff">2. interpreter 설정</font></span><br />
+<span class="Apple-style-span" style="background-color: transparent;">파이썬을 어떤 버전으로 프로젝트를 진행하기 전에 설정을 또 해야됩니다.</span><br />
+<span class="Apple-style-span" style="background-color: transparent;">이클립스의 상단메뉴에 Windows-Preference로 들어가게되면</span><br />
+<span class="Apple-style-span" style="background-color: transparent;">옆의 메뉴에 Editor부분에 Interpreter-Python을 선택을 해야됩니다.&nbsp;</span><br />
+<span class="Apple-style-span" style="background-color: transparent;">오른쪽 상단에 New버튼을 클릭하면</span><br />
+<span class="Apple-style-span" style="background-color: transparent;">아래와 같은 창이 뜨며 인터프리터의 위치를 잡아 주어야 됩니다.</span></p>
+<p style="background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><img src="{{ site.baseurl }}/assets/cfile6.uf.14196F444E1B2219016939.png" class="aligncenter" width="750" height="613" alt="" filename="제목 없음5.png" filemime="image/jpeg" /></p>
+<p>저는 ubuntu에서 python3.2버전을 깔았는데 (sudo apt-get install python3 이걸로 깔았습니다.)<br />
+인터프리터 경로가 /user/bin/python3.2 로 잡혀있었습니다.</p>
+<p style="background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><img src="{{ site.baseurl }}/assets/cfile5.uf.14196F444E1B221B02F876.png" class="aligncenter" width="750" height="613" alt="" filename="제목 없음6.png" filemime="image/jpeg" /><br />
+선택하게 되면 아라서 필요한것을 잡아주게되며</p>
+<p style="background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><img src="{{ site.baseurl }}/assets/cfile8.uf.18196F444E1B221E032F60.png" class="aligncenter" width="750" height="613" alt="" filename="제목 없음7.png" filemime="image/jpeg" /><br />
+OK를 누르면 아래의 그림과 같이 잘 잡힌걸 볼수 있으며 적용시키면 됩니다.</p>
+<p style="background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><img src="{{ site.baseurl }}/assets/cfile3.uf.19196F444E1B22200458E7.png" class="aligncenter" width="750" height="613" alt="" filename="제목 없음8.png" filemime="image/jpeg" /><br />
+다음 프로젝트 생성시때마다<br />
+&nbsp;Grammer version을 python3<br />
+interpreter을 아까 설정한 경로로 선택하여서 작성하시면 되겠습니다.&nbsp;</p>
+<p style="background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><img src="{{ site.baseurl }}/assets/cfile9.uf.12196F444E1B222205C488.png" class="aligncenter" width="750" height="613" alt="" filename="제목 없음9.png" filemime="image/jpeg" /></p>
+<p><font class="Apple-style-span" color="#ffffff"><span class="Apple-style-span" style="background-color: rgb(95, 182, 54);"><span style="font-size: 18pt; ">3. 확인</span></span></font></p>
+<p style="background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">인제 확인을 해보도록 하겠습니다.<br />
+test.py를 하나 만들어서 <br />
+위에 python2 버전의 문법과 아래의 python3 문법을 쳐보니 틀리다고 나오며&nbsp;</p>
+<p style="background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><img src="{{ site.baseurl }}/assets/cfile10.uf.193BF0384E1B24C5119B17.png" class="aligncenter" width="750" height="611" alt="" filename="제목 없음10.png" filemime="image/jpeg" /><br />
+아래와 같이 실행시키면 결과물이 잘 나오는 걸 볼수 있습니다.ㅋ</p>
+<p style="background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; "><img src="{{ site.baseurl }}/assets/cfile7.uf.123BF0384E1B24C7128FB0.png" class="aligncenter" width="750" height="611" alt="" filename="제목 없음11.png" filemime="image/jpeg" /></p></p>
+<p></p>

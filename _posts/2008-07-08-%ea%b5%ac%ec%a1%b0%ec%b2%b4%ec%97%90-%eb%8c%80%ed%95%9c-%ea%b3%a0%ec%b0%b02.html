@@ -1,0 +1,43 @@
+---
+layout: post
+title: 구조체에 대한 고찰2(구조체와 printf)
+date: 2008-07-08 12:32:22.000000000 +09:00
+type: post
+published: true
+status: publish
+categories:
+- Programing/C
+tags:
+- C++ Language
+- C++ 프로그래밍
+- C언어
+- 구조체
+- 구조체에 대한 고찰?
+meta: {}
+author: Hwanseung Lee
+---
+<p>어제에 이은 구조체의 대한 고찰 2번째 시간이다.;</p>
+<p><font color="#ff7635">역시나 인터넷엔 고수들이 많은 것 같다는 것을 <br /></font><br />다신 한번 느끼게 해준 시간이다.</p>
+<p>음... 나의 궁금증은 이것이다.</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>typedef struct Test_Struct{<br />&nbsp;int x;<br />&nbsp;int y;<br />}TestStruct;</p>
+<p>TestStruct TS={22,33};</p>
+<p>int main()<br />{</p>
+<p>&nbsp;printf("%d %d",TS,TS.x);</p>
+<p>&nbsp;return 0;<br />}</p>
+<p><font color="#ff3399">이렇게하면 결과는 22 33이 나오게 된다.</font></p>
+<p><font color="#ff3399">&nbsp;printf("%d %d",&amp;TS,&amp;TS.x);<br /></font></p>
+<p><font color="#ff3399">을 해본다면 결과는 분명히 두개 똑같은 주소값을 가진다.;</p>
+<p>도데체 똑같은 주소값에 다른 값이 나온다니;;<br /></font><br />그런글을 올리고 다음 날 </p>
+<p>어떤 인터넷의 고수분이 명쾌한 답변을 주셨다.</p>
+<p>위의 예제의 구조체의 크기는 4*2=8바이트였다.;</p>
+<p><font color="#0000ff">하지만 %d가 뽑아 낼수있는량은 4바이트;</p>
+<p>그러므로 %d그리고 %d가 뽑아내는 총량은 8바이트이다.<br /></font><br />그러므로 TS,TS.x중 TS.x값은 나오지 않는 다는 것이다.</p>
+<p>원칙상으로 이렇케 안쓰지만</p>
+<p><font color="#008000">printf("%d %d %d",&amp;TS,&amp;TS.x);</p>
+<p>이렇케 %d를 하나 더 넣는다면 22 33 22라는 결과 값을 나오게 된다.<br /></font><br />printf의 원리(?)가 우리가 보통 배울때와 다른 다는 것을 알게 되었다.</p>
+<p><font color="#ff0000">원칙상 printf의 처음 ""(따옴표)안의 %d같은 것들의 수와 뒤의 변수와의 수가 일정해야 되는데</p>
+<p>그렇지 않아도 된다는 것과</font> </p>
+<p><font color="#993366">%d는 뒤의 있는 한 변수의 크기만큼 모두 읽어 올때까지 </p>
+<p>쓰이고 끝났다면 다음 변수를 읽어 온다는 것;</p>
+<p></font></p>
