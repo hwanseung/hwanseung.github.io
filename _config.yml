@@ -1,0 +1,35 @@
+title: Hwanseung
+description: > # this means to ignore newlines until "baseurl:"
+  This is a software develop Blog.
+permalink: ':title/'
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+site-twitter: #if your site has a twitter account, enter it here
+
+# Author Settings
+author: Hwanseung Lee # add your name
+author-img: hwanseung.jpg # add your photo
+about-author: # add description
+social-twitter: # add your Twitter handle
+social-facebook: # add your Facebook handle
+social-github: hwanseung # add your Github handle
+social-linkedin: hwanseung # add your Linkedin handle
+social-email: hs1217.lee@gmail.com # add your Email address
+
+# Disqus
+discus-identifier: hwanseung-github-io # add your discus identifier
+
+# Tracker
+analytics: UA-20365477-4 # Google Analytics
+
+# Build Settings
+markdown: kramdown
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jemoji
+
+paginate: 8
+paginate_path: "/page/:num"
+
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
