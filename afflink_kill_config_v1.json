@@ -1,3 +1,4 @@
 {
-   "afflink_feature_enabled":"true"
+    "background_play": "true",
+    "banana_notice": "false"
 }
